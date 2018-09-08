@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2018-09-08T16:17:08.682Z</updated>
+  <updated>2018-09-08T16:19:08.592Z</updated>
   <id>/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>ContextMenu，自定义右键菜单</title>
-    <link href="/2018/09/09/ContextMenu/"/>
-    <id>/2018/09/09/ContextMenu/</id>
+    <link href="/2018/09/09/front-end/React/record/ContextMenu/"/>
+    <id>/2018/09/09/front-end/React/record/ContextMenu/</id>
     <published>2018-09-08T16:07:08.000Z</published>
-    <updated>2018-09-08T16:17:08.682Z</updated>
+    <updated>2018-09-08T16:19:08.592Z</updated>
     
     <content type="html"><![CDATA[<p>基本用法:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;span onContextMenu=&#123;contextHandler&#125;&gt;</div><div class="line">contextHandler = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</div><div class="line">    event.preventDefault();<span class="comment">// 可禁用掉默认右键菜单</span></div><div class="line">    ...一系列处理</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -41,10 +41,10 @@
   
   <entry>
     <title>createPortal</title>
-    <link href="/2018/09/08/createPortal/"/>
-    <id>/2018/09/08/createPortal/</id>
+    <link href="/2018/09/08/front-end/React/record/createPortal/"/>
+    <id>/2018/09/08/front-end/React/record/createPortal/</id>
     <published>2018-09-08T15:53:10.000Z</published>
-    <updated>2018-09-08T16:06:48.807Z</updated>
+    <updated>2018-09-08T16:18:34.123Z</updated>
     
     <content type="html"><![CDATA[<p>基本用法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ReactDOM.createPortal(child, container)</div></pre></td></tr></table></figure></p>
 <p><a href="https://reactjs.org/docs/portals.html" target="_blank" rel="external">Portals-React官方文档</a><br><a id="more"></a><br>穿梭框，一般用于将子组件内容render到父组件里。<br>大概实现就是父组件给子组件预留一个dom接口(指定个id方便子组件找到)，一般是个空span或空div<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> Parent = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">        &lt;div&gt;</div><div class="line">            我是父组件,我的子组件名字是：</div><div class="line">            &lt;div id=<span class="string">"childContainer"</span> /&gt;</div><div class="line">            下面请我的子组件讲话:</div><div class="line">            &lt;Child /&gt;</div><div class="line">        &lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp">    )</span></div><div class="line"><span class="regexp">&#125;</span></div></pre></td></tr></table></figure></p>
