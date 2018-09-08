@@ -195,7 +195,7 @@ function doDecrypt(pwd, onError) {
    document.getElementById("enc_passwd").style.display = "none";
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX19E00XEmuxJvDLaWS+1zssBlAOe4QjYjyD06IhU40jMxSbQpzIjutM7jXmenL7MTGxX9CBwmJVpKjftFhC9wQJApEkv8ENYR7MRzK0n8WLdD/ZYIlTUggbFMBD3KDWQMGItNHfnDfI9tMDrV+/wooo0FwR37v1H8V+GFcC061BoevcAKMJwWU8GeVwAPUxW1SMe8MZ7wuye9QUD0wdqwOuABsYbvGa/nkblS9Eq+Ob1/Dy9uYPB0jrKfe61p10vuEbnBOJK7rKIyAtsTaRrsJlvMf0V1KmDoKULoKpQALTFPa3lj6IKq+QMr50iQGaBwo5GGxOHgOitI2vTM5JE5bhpgvT/3Rok4WCPIRMqaOnt/fInLT8lm7+Gj5z4e1/THPAZ05GFyMyCVF/zjV2J/Er/v8t/5XYBp24OvAcw+PNYem0yANy1OZZsrz+aMNMWEg/iOjjwXyvfFiVoYRFbcGsEWCkSpfLAB56CycRNcPI0lAaV4WjM0kwiZ8Ih/Awc69NCHTzyHuKdZC9kHl9ypIz0+ztUD9OAmnMt9Q2hBNIbzRf68eUVWMQRwIMf4CFkRjxX4H/qkvmLoAf5WKViXUrmZkOCHd1kefQ=</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<div id="enc_content" style="display:none">U2FsdGVkX18xiULzkiVTSkG+mBGlppvUe6ijd8hReYuhnrMaXLF4Zwf0LbPtTWzKBozaKkWzFtXZu5HR/SrS2ivxEpZEtn/D0DY/6p1LWj4UKGGbNuC1et9C5WVCtuGDQDkOtPx2iYZrcdb0/KQ0JGEhfWpn9mmfbt1OBfF4tAdZ2mcpahq7FkQJDpMPFxnAGIRPbJZf30S7dXcXwVmOYtHVHPyha7l6hkKCmxyOmpJKXSyIGYyJwvbSUmK1irpVuEm/QGw2MYwKspboipEMC8VUkCEZYZH4OEZBv1J2xw3aK0QqcjNWD8U1DzJZZaoeEB/hit9HJq7qVfu76YIAZATMcX1FL/Vp3qS+M3hk3vTHms76eKeuUfE/QTJuH7FQmAxs8BajtbUOCQsOTv4Pw0v1nWxPSG+VIeyd1oNVCbAXTM/IPPHxcYiaK3imlK3446yutp4ya1qT9VaB+bfz1Cz/lP401sLI7wYKkibvP9VXWx+4Gra9pw6GBYeYxWvzzP1w1GqllhgEp2ugZncJlk0vryzvtzCD2Qhe6fu90MH87l/qNPbuXlBzU3IiFXDfib5Z3ZyT4HDQYq1k1HPWe/1Zs9JIfPEBhbhosPb9VyI=</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
 	document.getElementById("enc_error").innerHTML = "password error!"
@@ -298,6 +298,15 @@ doDecrypt(passwd, onError);
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/09/08/createPortal/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          createPortal
+        
+      </div>
+    </a>
   
   
     <a href="/2018/05/28/front-end/basic/cssAndHtml/cssFlex/" id="article-nav-older" class="article-nav-link-wrap">
@@ -444,23 +453,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Work</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Summery</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Work</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Tool</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Network</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -472,15 +473,23 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Network</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,15 +509,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">morningDiary</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">svn</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">von</a>
+                <a href="javascript:void(0)" class="js-tag color3">morningDiary</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,7 +521,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Front-end</a>
+                <a href="javascript:void(0)" class="js-tag color4">von</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JAVASCRIPT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -524,7 +533,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JAVASCRIPT</a>
+                <a href="javascript:void(0)" class="js-tag color5">Front-end</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,11 +557,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Drag-dnd</a>
+                <a href="javascript:void(0)" class="js-tag color3">Summary</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Summary</a>
+                <a href="javascript:void(0)" class="js-tag color4">Drag-dnd</a>
               </li>
              
               <li class="article-tag-list-item">
