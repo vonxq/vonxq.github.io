@@ -259,21 +259,37 @@ doDecrypt(passwd, onError);
     <link href="/2018/04/23/front-end/wishList/"/>
     <id>/2018/04/23/front-end/wishList/</id>
     <published>2018-04-23T03:17:55.000Z</published>
-    <updated>2018-09-08T15:25:33.545Z</updated>
+    <updated>2018-09-08T16:21:10.012Z</updated>
     
-    <content type="html"><![CDATA[<p>很久没更新博客，一半因为忙，一般因为懒。<br>想想日子过得好快好快，想做的事情、要学的东西还好多好多，不去规划就永远执行不了了。<br><a id="more"></a></p>
-<h2 id="从想学的东西去找需要看的书吧"><a href="#从想学的东西去找需要看的书吧" class="headerlink" title="从想学的东西去找需要看的书吧"></a>从想学的东西去找需要看的书吧</h2><p>技术类:</p>
-<ol>
-<li>前端技术，深入一点的<br> 熟练使用css<br> Shadow DOM<br> 熟悉Vue<br> Angular(了解)<br> 微信小程序(能独立完成简单开发)</li>
-</ol>
-<p>-17:09<br>京东活动买了三百多的书，回来一看发现买的好像跟上面想要学的技能有点差距，买的全是畅销的一些基础类书籍<br>思想就是爱南辕北辙，曲线救国&gt;w&lt;</p>
-<p>两个小时的会，没睡午觉，整个人全身软绵绵的，以后还是要好好休息<del>~</del>~</p>
-<h2 id="Todo"><a href="#Todo" class="headerlink" title="Todo"></a>Todo</h2><ol>
-<li>看完一本英文书</li>
-<li>能较快浏览英文技术文档</li>
-<li>能较为熟练使用尤克里里</li>
-</ol>
-]]></content>
+    <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
+function doDecrypt(pwd, onError) {
+	console.log("in doDecrypt");
+	var txt = document.getElementById("enc_content").innerHTML;
+	var plantext;
+	try {
+	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
+		plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {onError(err);}
+		return;
+	}
+	document.getElementById("enc_content").innerHTML = plaintext;
+	document.getElementById("enc_content").style.display = "block";
+   document.getElementById("enc_passwd").style.display = "none";
+}
+</script>
+<div id="enc_content" style="display:none">U2FsdGVkX1/CymPkWkvaGebDYvyLkl/G5I1uJlPxv7eGOTkMpErYGfT2rW0SLL2YUmMEqNdCzsG+OnwbcPdsL9fM/TcOdIpXskNIK2aBK7rBAIMX23urOotoFsMmEfl+ZMpcPiV1snTg7eKqLR/n7X4eG8UNNg3jND4GqWHPBBOxUDLkMmQt6lcxq6F4KKJKT1w10zOHhEgdL7VqijW00M3Eg1BThSrPmn5LczySoJQUjfBU2iVNVpsVIT7Onw9sDODV5PTaYzDIyVw1VmlErRF80tk3YFR8G73eJSeNdREAmjK778bL2jiRSfQJcpePJsN02R+uwIW61Dfo/zmt5LQs3ei62B8v5e8HQU/L0FjulZ0XvKDqMc4BoBUIuKOUhP1sx/qRfyGJTtHQeCkAzy+otmmr71ZZVjXbxNWha7iqNkJh2n7Ou/NjjDvLiU4Cd9xDtBHrk+0jJTxd0TvlkeRBiOV0tjcJ//WJm7S7tIaD/ps3mt/3ebC3JUt0h1Qu5aaNCNk/QYj264SY21J2k0EfMLicoJjvbiLzS9GDtzUyPI5h1KWKeZ2mKguu7xQYYCA7w2TjivrWMOskaR3pT71zztX0h8YR1SGq4/YF4NK2jRBHJSws0agjYG474yZMjX/mXkj89TMeu6q8z5hdaDejh1ughxAtJZX6qkjZSCrVjrGVjuaZA5WFrPGx3tIglJrfplQqE+SeUhh63fEfwnRE8Z+tL2u7Vf+icVjPeh7gAIl/NC/i4VTO0x7I7Fm5xOOONBtBB4fhazkWvGH/V4TZ+90xTPWH7bY/OGvPMZ2di1KCBkXg3tDzWnjkEk6ri0HTKnE2bPvNuI7zM8OcjoezZH+ZYkoB+uPcS+CSMDXHMfCq0qASx6EXvDK1eMowlyIwb4mf0tjSxnA8gK0wAcebRE5hG2jpoSyENK7dTlVGEOlvhFmGlVecQY3q5FLCkTJjwU/h/4qbfdHsKgJy/TKXSWEue49tupWCDbLZrXNgpDSdSjpZnZCGs28D/BGqecczNCTjeUTjCOwYxZi7Ei5ACxU7kTZLb3QOYULaZy3lJoItJqGCQUCH2uk0uc/VQtUdWbsA3Wbm/X/yczMol5OurIMve7Cbr0hm9qW8KxEXEKQCLjD8Sl9S215IgHEoiD/6It6ggChAZV4DQ+KpwzvqFUQAt8i9lgtCSOf29do+H067udEz0GZbVZQsWbZJ89fbbDzMxSXArgIJ1lvMizqTsUKwePcPtPXAsBCjeZZozpbClNdVYKtdmVLJBgnfBWhTxcHXGLEigqio0wxutYY/gmNqW8Pn1oHARNXDb3pnrplq3dPyyTieb3CcUckJtJs0lNlieXhIt2ELPvvJGbK/GjIeHGCr0hhYHQRJiI+cwfJG9cCfgJFp6anABc9NXfb7VIFtjkC/v33TO0JmZAgyPYGqf01pVe7oFBNOILCRzirJ2mNKJKG3L2bVIL5gCDGFuJkoPjGsfOZ8juHYzUiBlRLnyzuy8hkWJ5mEvylGIzk2mCnD5nhF2DsPk450FEPdNGh/k+Nh2v4tB0CL+wxJH43CaZ/kNSnY96HaVhtzaDhFh+0hicISbKSE9QET</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>]]></content>
     
     <summary type="html">
     
