@@ -66,56 +66,6 @@ doDecrypt(passwd, onError);
   </entry>
   
   <entry>
-    <title>新起点</title>
-    <link href="/2018/12/03/essay/fight/"/>
-    <id>/2018/12/03/essay/fight/</id>
-    <published>2018-12-03T14:58:55.000Z</published>
-    <updated>2018-12-03T15:17:51.051Z</updated>
-    
-    <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
-function doDecrypt(pwd, onError) {
-	console.log("in doDecrypt");
-	var txt = document.getElementById("enc_content").innerHTML;
-	var plantext;
-	try {
-	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
-		plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {onError(err);}
-		return;
-	}
-	document.getElementById("enc_content").innerHTML = plaintext;
-	document.getElementById("enc_content").style.display = "block";
-   document.getElementById("enc_passwd").style.display = "none";
-}
-</script>
-<div id="enc_content" style="display:none">U2FsdGVkX1/D8QHYt5Xl1fyNkWhBY4WvEznR+bbnJwRzQ0mS3JlBQNwat5sqxTXkYTHBxuFI0nNH/uZ4BJnDSB/0TFvv118lV/SaTfMuuKykZlWRw4MjfImaNtngnyKETZVYozMd8vDwVXONHtyMcNvz9e7A6mDHSnuSoQFuh/yq5zXETAb5qmPtADGmOgHRu9kiYuceZPROpaScxy32MgVHL/wdRSf0DNNeyCgbhckr/YVfyC+267tw+SANB9QFhqmWLRGoy8NJgWjKU5QWVmfRs5sj2/W92hQhbuetxZZUkHk6FOxMe1TSn968IHpMxlGnU3EZEpJXoYArkpXh9QKQdTdUJff+bv5rsXyAo54QtAHotLL2qQWn137MZGed</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;欲穷千里目，更上一层楼。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Plan" scheme="/categories/Plan/"/>
-    
-    
-      <category term="Plan" scheme="/tags/Plan/"/>
-    
-  </entry>
-  
-  <entry>
     <title>ContextMenu，自定义右键菜单</title>
     <link href="/2018/09/09/front-end/React/record/ContextMenu/"/>
     <id>/2018/09/09/front-end/React/record/ContextMenu/</id>
@@ -797,6 +747,56 @@ doDecrypt(passwd, onError);
     <summary type="html">
     
       &lt;p&gt;(っ•̀ω•́)っ✎⁾⁾ 我爱学习&lt;br&gt;
+    
+    </summary>
+    
+      <category term="dailyDiary" scheme="/categories/dailyDiary/"/>
+    
+    
+      <category term="morningDiary" scheme="/tags/morningDiary/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>171206</title>
+    <link href="/2017/12/06/dailyDiary/2017/171206/"/>
+    <id>/2017/12/06/dailyDiary/2017/171206/</id>
+    <published>2017-12-06T08:32:53.000Z</published>
+    <updated>2018-02-28T14:58:09.646Z</updated>
+    
+    <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
+function doDecrypt(pwd, onError) {
+	console.log("in doDecrypt");
+	var txt = document.getElementById("enc_content").innerHTML;
+	var plantext;
+	try {
+	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
+		plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {onError(err);}
+		return;
+	}
+	document.getElementById("enc_content").innerHTML = plaintext;
+	document.getElementById("enc_content").style.display = "block";
+   document.getElementById("enc_passwd").style.display = "none";
+}
+</script>
+<div id="enc_content" style="display:none">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</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;流水账&lt;br&gt;
     
     </summary>
     
