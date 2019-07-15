@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>博观而约取,厚积而薄发</title>
-  <subtitle>天行健，君子以自强不息。地势坤，君子以厚德载物。</subtitle>
+  <title>走四方</title>
+  <subtitle>路迢迢，水长长</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2018-12-03T15:22:41.831Z</updated>
+  <updated>2019-07-15T13:41:10.913Z</updated>
   <id>/</id>
   
   <author>
@@ -14,6 +14,468 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>object-proxy</title>
+    <link href="/2019/04/12/front-end/basic/object-proxy/"/>
+    <id>/2019/04/12/front-end/basic/object-proxy/</id>
+    <published>2019-04-12T06:42:21.000Z</published>
+    <updated>2019-07-15T13:41:10.913Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>前端测试</title>
+    <link href="/2019/04/12/front-end/advance/fe-test/"/>
+    <id>/2019/04/12/front-end/advance/fe-test/</id>
+    <published>2019-04-12T03:58:01.000Z</published>
+    <updated>2019-07-15T13:41:10.873Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a>
+<h2 id="React单元测试"><a href="#React单元测试" class="headerlink" title="React单元测试"></a>React单元测试</h2><ol>
+<li><p>Jest</p>
+<p>JS测试</p>
+</li>
+<li>Enzyme</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;React单元测试&quot;&gt;&lt;a href=&quot;#React单元测试&quot; class=&quot;headerlink&quot; title=&quot;React单元测试&quot;&gt;&lt;/a&gt;React单元测试&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Jest&lt;/p&gt;
+&lt;p&gt;JS测
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Suspense</title>
+    <link href="/2019/04/11/front-end/React/react-suspense/"/>
+    <id>/2019/04/11/front-end/React/react-suspense/</id>
+    <published>2019-04-11T12:49:50.000Z</published>
+    <updated>2019-07-15T13:41:10.861Z</updated>
+    
+    <content type="html"><![CDATA[<p>Suspense<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> getName = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</div><div class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    resolve(<span class="string">'Morgan'</span>);</div><div class="line">  &#125;, <span class="number">1000</span>);</div><div class="line">&#125;)</div><div class="line"> </div><div class="line"><span class="keyword">const</span> fetcher = createFetcher(getName);</div><div class="line"> </div><div class="line"><span class="keyword">const</span> Greeting = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello &#123;fetcher()&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">&#125;;</div><div class="line"> </div><div class="line"><span class="keyword">const</span> SuspenseDemo = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> (</div><div class="line">    &lt;Suspense&gt;</div><div class="line">      &lt;Greeting /&gt;</div><div class="line">    &lt;<span class="regexp">/Suspense&gt;</span></div><div class="line"><span class="regexp">  );</span></div></pre></td></tr></table></figure></p>
+<p>可与lazy连用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Suspense, lazy &#125; <span class="keyword">from</span> <span class="string">'react'</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> DemoA = lazy(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'./demo/a'</span>))</div><div class="line"><span class="keyword">const</span> DemoB = lazy(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'./demo/b'</span>))</div><div class="line"></div><div class="line">&lt;Suspense&gt;</div><div class="line">  &lt;NavLink to=<span class="string">"/demoA"</span>&gt;DemoA&lt;<span class="regexp">/NavLink&gt;</span></div><div class="line"><span class="regexp">  &lt;NavLink to="/</span>demoB<span class="string">"&gt;DemoB&lt;/NavLink&gt;</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">  &lt;Router&gt;</span></div><div class="line"><span class="string">    &lt;DemoA path="</span>/demoA<span class="string">" /&gt;</span></div><div class="line"><span class="string">    &lt;DemoB path="</span>/demoB<span class="string">" /&gt;</span></div><div class="line"><span class="string">  &lt;/Router&gt;</span></div><div class="line"><span class="string">&lt;/Suspense&gt;</span></div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Suspense&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>react-hooks</title>
+    <link href="/2019/04/11/front-end/React/react-hooks/"/>
+    <id>/2019/04/11/front-end/React/react-hooks/</id>
+    <published>2019-04-11T12:49:50.000Z</published>
+    <updated>2019-07-15T13:41:10.845Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hook 使你在无需修改组件结构的情况下复用状态逻辑<br>Hook 将组件中相互关联的部分拆分成更小的函数（比如设置订阅或请求数据），而并非强制按照生命周期划分。</p>
+<p>只能在函数最外层调用 Hook。不要在循环、条件判断或者子函数中调用。（React根据调用顺序来取值）<br>只能在 React 的函数组件中调用 Hook。不要在其他 JavaScript 函数中调用。（还有一个地方可以调用 Hook —— 就是自定义的 Hook 中，我们稍后会学习到。）<br><a id="more"></a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</div></pre></td></tr></table></figure>
+<h3 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a>useRef</h3><p>类似this<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> demoRef = useRef(<span class="literal">null</span>);</div><div class="line">demoRef.current = <span class="string">'12'</span>;<span class="comment">// 赋值</span></div><div class="line">demoRef.current<span class="comment">// 取值</span></div><div class="line">&lt;input ref=&#123;demoRef &#125; /&gt;<span class="comment">// 赋值</span></div></pre></td></tr></table></figure></p>
+<h3 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h3><p>useEffect 就是一个 Effect Hook，给函数组件增加了操作副作用的能力。它跟 class 组件中的 componentDidMount、componentDidUpdate 和 componentWillUnmount 具有相同的用途，只不过被合并成了一个 API。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);</div><div class="line">  &#125;;</div><div class="line">&#125;, [props.friend.id]);<span class="comment">// 只在props.friend.id变化时更新</span></div></pre></td></tr></table></figure></p>
+<h3 id="useCallback"><a href="#useCallback" class="headerlink" title="useCallback"></a>useCallback</h3><p>返回一个 memoized 回调函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// useCallback(fn, deps) 相当于 useMemo(() =&gt; fn, deps)。</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> memoizedCallback = useCallback(</div><div class="line">  () =&gt; &#123;</div><div class="line">    doSomething(a, b);</div><div class="line">  &#125;,</div><div class="line">  [a, b],</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<h3 id="useMemo"><a href="#useMemo" class="headerlink" title="useMemo"></a>useMemo</h3><p>返回一个 memoized 值<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> memoizedValue = useMemo(<span class="function"><span class="params">()</span> =&gt;</span> computeExpensiveValue(a, b), [a, b]);</div><div class="line"></div><div class="line"></div><div class="line">React.memo(<span class="function">(<span class="params">props</span>) =&gt;</span> (<span class="xml"><span class="tag">&lt;<span class="name">comp</span> /&gt;</span>), (props) =&gt; sholudUpdate() )</span></div></pre></td></tr></table></figure></p>
+<h3 id="自定义-Hook"><a href="#自定义-Hook" class="headerlink" title="自定义 Hook"></a>自定义 Hook</h3><p>自定义 Hook 更像是一种约定而不是功能。</p>
+<h3 id="useContext"><a href="#useContext" class="headerlink" title="useContext"></a>useContext</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> value = useContext(MyContext);<span class="comment">// （MyContext为React.createContext 的返回值）</span></div></pre></td></tr></table></figure>
+<h3 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer"></a>useReducer</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">const</span> reducer = <span class="function">(<span class="params">state, action</span>) =&gt;</span> newState</div><div class="line"> <span class="keyword">const</span> init = <span class="function">(<span class="params">initialArg</span>) =&gt;</span> initialState</div><div class="line"><span class="keyword">const</span> [state, dispatch] = useReducer(reducer, initialArg, init);<span class="comment">//</span></div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hook 使你在无需修改组件结构的情况下复用状态逻辑&lt;br&gt;Hook 将组件中相互关联的部分拆分成更小的函数（比如设置订阅或请求数据），而并非强制按照生命周期划分。&lt;/p&gt;
+&lt;p&gt;只能在函数最外层调用 Hook。不要在循环、条件判断或者子函数中调用。（React根据调用顺序来取值）&lt;br&gt;只能在 React 的函数组件中调用 Hook。不要在其他 JavaScript 函数中调用。（还有一个地方可以调用 Hook —— 就是自定义的 Hook 中，我们稍后会学习到。）&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>REACT生命周期</title>
+    <link href="/2019/04/10/front-end/React/react-life-cycle/"/>
+    <id>/2019/04/10/front-end/React/react-life-cycle/</id>
+    <published>2019-04-10T09:45:50.000Z</published>
+    <updated>2019-07-15T13:41:10.852Z</updated>
+    
+    <content type="html"><![CDATA[<p>生命周期调用顺序<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 第一次mount，顺序调用</span></div><div class="line"><span class="keyword">constructor</span>(props)</div><div class="line">componentWillMount()// unsafe</div><div class="line">static getDerivedStateFromProps(props, state)// state,props变化均会调用</div><div class="line">render()</div><div class="line">componentDidMount()</div><div class="line">// update</div><div class="line">componentWillReceiveProps()// unsafe,props变化时调用</div><div class="line">static getDerivedStateFromProps(props, state)// state,props变化均会调用</div><div class="line">shouldComponentUpdate(nextProps, nextState)</div><div class="line">render()</div><div class="line">getSnapshotBeforeUpdate(prevProps, prevState)</div><div class="line">componentDidUpdate(prevProps, prevState, snapshot)</div><div class="line">// unmount</div><div class="line">componentWillUnmount()</div><div class="line"></div><div class="line"></div><div class="line">// error handler</div><div class="line">static getDerivedStateFromError(error)</div><div class="line">componentDidCatch(error, info)</div><div class="line"></div><div class="line">// other API</div><div class="line">setState(updater[, callback])</div><div class="line">forceUpdate(callback)</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;生命周期调用顺序&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>React设计模式</title>
+    <link href="/2019/04/10/front-end/React/react-design-pattern/"/>
+    <id>/2019/04/10/front-end/React/react-design-pattern/</id>
+    <published>2019-04-10T09:13:44.000Z</published>
+    <updated>2019-07-15T13:41:10.836Z</updated>
+    
+    <content type="html"><![CDATA[<p>一些好的代码风格<br><a id="more"></a><br><a href="https://overreacted.io/" target="_blank" rel="external">Overreacted By Dan Abramov</a><br><a href="https://overreacted.io/zh-hans/writing-resilient-components/" target="_blank" rel="external">编写有弹性的组件</a><br><a href="https://github.com/dt-fe/weekly" target="_blank" rel="external">前端精读</a><br><a href="https://juejin.im/post/5cad39b3f265da03502b1c0a" target="_blank" rel="external">【React深入】从Mixin到HOC再到Hook</a><br><a href="https://juejin.im/book/5ba42844f265da0a8a6aa5e9" target="_blank" rel="external">React 实战：设计模式和最佳实践</a></p>
+<h2 id="容器组件和展示组件"><a href="#容器组件和展示组件" class="headerlink" title="容器组件和展示组件"></a>容器组件和展示组件</h2><p>一个专注逻辑<br>一个专注UI</p>
+<h2 id="高阶组件"><a href="#高阶组件" class="headerlink" title="高阶组件"></a>高阶组件</h2><p>接受&gt;=1个组件作为参数，返回一个新的组件<br>  属性代理<br>  渲染劫持</p>
+<h2 id="render-props"><a href="#render-props" class="headerlink" title="render props"></a>render props</h2><p>依赖注入<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<h2 id="提供者模式"><a href="#提供者模式" class="headerlink" title="提供者模式"></a>提供者模式</h2><p>Provider、Consumer<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> DemoContext = React.createContext()</div><div class="line"><span class="keyword">const</span> Provider = DemoContext.Provider</div><div class="line"><span class="keyword">const</span> Consumer = DemoContext.Consumer</div><div class="line"></div><div class="line"><span class="comment">// 父组件</span></div><div class="line">&lt;Provider value=&#123;&#123; <span class="attr">la</span>: <span class="string">'la'</span>, <span class="attr">ha</span>: <span class="string">'ha'</span> &#125;&#125;&gt;<span class="xml"><span class="tag">&lt;<span class="name">Page</span> /&gt;</span><span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span></div><div class="line"><span class="comment">// 子组件</span></div><div class="line">&lt;Consumer&gt;</div><div class="line">&#123;</div><div class="line">  (context) =&gt; (</div><div class="line">    &lt;div&gt;&#123;context.la&#125;&#123;context.ha&#125;&lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp">  )</span></div><div class="line"><span class="regexp">&#125;</span></div><div class="line"><span class="regexp">&lt;/</span>Consumer&gt;</div></pre></td></tr></table></figure></p>
+<p>new代码格式<br>old代码格式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 祖先</span></div><div class="line">getChildContext() &#123; <span class="keyword">return</span> &#123;&#125; &#125;</div><div class="line">childContextType = &#123;&#125;</div><div class="line"><span class="comment">// 子</span></div><div class="line"><span class="keyword">static</span> contextType = &#123;&#125;</div></pre></td></tr></table></figure>
+<h2 id="组合设计模式"><a href="#组合设计模式" class="headerlink" title="组合设计模式"></a>组合设计模式</h2><p>如 Radio，RadioGroup(只暴露value和onChange事件，内部Item使用map映射)</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一些好的代码风格&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Object.defineProperty与</title>
+    <link href="/2019/04/10/front-end/advance/propertyProxy/"/>
+    <id>/2019/04/10/front-end/advance/propertyProxy/</id>
+    <published>2019-04-10T08:14:58.000Z</published>
+    <updated>2019-07-15T13:41:10.889Z</updated>
+    
+    <content type="html"><![CDATA[<p>Object.defineProperty()</p>
+<a id="more"></a>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.jianshu.com/p/2df6dcddb0d7" target="_blank" rel="external">实现双向绑定Proxy比defineproperty优劣如何</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Object.defineProperty()&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>vue-grammer</title>
+    <link href="/2019/04/09/front-end/Vue/vue-grammer/"/>
+    <id>/2019/04/09/front-end/Vue/vue-grammer/</id>
+    <published>2019-04-09T10:56:52.000Z</published>
+    <updated>2019-07-15T13:41:10.863Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://cn.vuejs.org/v2/guide/events.html" target="_blank" rel="external">vue官方文档</a><br><a id="more"></a></p>
+<h1 id="vue总结"><a href="#vue总结" class="headerlink" title="vue总结"></a>vue总结</h1><p>渐进式JavaScript 框架</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="模板渲染"><a href="#模板渲染" class="headerlink" title="- 模板渲染"></a>- 模板渲染</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">  &#123;&#123; message &#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">  <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span></div><div class="line"><span class="javascript">    el: <span class="string">'#app'</span>,</span></div><div class="line"><span class="undefined">    data: &#123;</span></div><div class="line"><span class="javascript">      message: <span class="string">'Hello Vue!'</span></span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined">  &#125;)</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="指令"><a href="#指令" class="headerlink" title="- 指令"></a>- 指令</h3><p>等号右边为data<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">v-bind:title=<span class="string">"message"</span></div><div class="line"></div><div class="line">v-model=<span class="string">"message"</span><span class="comment">// 实现与data的双向绑定</span></div><div class="line"></div><div class="line">v-<span class="keyword">if</span>=<span class="string">"seen"</span></div><div class="line"></div><div class="line">v-<span class="keyword">for</span>=<span class="string">"todo in todos"</span></div><div class="line">&lt;li&gt;&#123;&#123; todo.text &#125;&#125;&lt;<span class="regexp">/li&gt;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">&lt;todo-item</span></div><div class="line"><span class="regexp">  v-for="item in groceryList"</span></div><div class="line"><span class="regexp">  v-bind:todo="item"</span></div><div class="line"><span class="regexp">  v-bind:key="item.id"</span></div><div class="line"><span class="regexp">&gt;&lt;/</span>todo-item&gt;</div><div class="line"></div><div class="line">v-on:click=<span class="string">"reverseMessage"</span><span class="comment">// reverseMessage为method</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 自定义事件也可以用于创建支持 v-model 的自定义输入组件。记住：</span></div><div class="line">&lt;input v-model=<span class="string">"searchText"</span> /&gt;</div><div class="line"><span class="comment">// 等价于：</span></div><div class="line">&lt;input</div><div class="line">  v-bind:value=<span class="string">"searchText"</span></div><div class="line">  v-on:input=<span class="string">"searchText = $event.target.value"</span></div><div class="line">/&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="指令缩写"><a href="#指令缩写" class="headerlink" title="指令缩写"></a>指令缩写</h4><p><a href="https://blog.csdn.net/gaoxiaoba/article/details/52756280" target="_blank" rel="external">v-bind,v-on的缩写</a><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 完整语法 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-bind:href</span>=<span class="string">"url"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"> </div><div class="line"><span class="comment">&lt;!-- 缩写 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">:href</span>=<span class="string">"url"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"> </div><div class="line"><span class="comment">&lt;!-- 完整语法 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">v-bind:disabled</span>=<span class="string">"someDynamicCondition"</span>&gt;</span>Button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"> </div><div class="line"><span class="comment">&lt;!-- 缩写 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">:disabled</span>=<span class="string">"someDynamicCondition"</span>&gt;</span>Button<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- 完整语法 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-on:click</span>=<span class="string">"doSomething"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"> </div><div class="line"><span class="comment">&lt;!-- 缩写 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> @<span class="attr">click</span>=<span class="string">"doSomething"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 新建vue实例</span></div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="comment">// 选项</span></div><div class="line">  data,<span class="comment">// object | function(vm),function参数为当前vue实例,可访问到其它属性，如props等，若非箭头函数则this指向当前vue实例</span></div><div class="line">  props,<span class="comment">// Array&lt;string&gt; | Object 对象允许配置高级选项，如类型检测、自定义校验和设置默认值</span></div><div class="line">  computed,<span class="comment">// &#123; [key: string]: Function | &#123; get: Function, set: Function &#125; &#125;</span></div><div class="line">  methods,<span class="comment">// &#123; [key: string]: Function &#125;,方法中的 this 自动绑定为 Vue 实例。不应该使用箭头函数来定义 method 函数 (例如 plus: () =&gt; this.a++)。理由是箭头函数绑定了父级作用域的上下文，所以 this 将不会按照期望指向 Vue 实例，this.a 将是 undefined。</span></div><div class="line">  watch,<span class="comment">// &#123; [key: string]: string | Function(val, oldVal) | Object | Array &#125;,回调函数，值也可以是方法名，或者包含选项的对象。</span></div><div class="line"></div><div class="line">  el,<span class="comment">// string | Element , 在实例挂载之后，元素可以用 vm.$el 访问。</span></div><div class="line">  template,<span class="comment">// string</span></div><div class="line">  render,<span class="comment">// (createElement: () =&gt; VNode) =&gt; VNode。 Vue 选项中的 render 函数若存在，则 Vue 构造函数不会从 template 选项或通过 el 选项指定的挂载元素中提取出的 HTML 模板编译渲染函数</span></div><div class="line">  renderError,</div><div class="line"></div><div class="line">  beforeCreate,</div><div class="line">  created,</div><div class="line">  beforeMount,</div><div class="line">  mounted,<span class="comment">// 注意 mounted 不会承诺所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，可以用 vm.$nextTick 替换掉 mounted：</span></div><div class="line">  beforeUpdate,</div><div class="line">  updated,</div><div class="line">  activated,<span class="comment">// keep-alive 组件激活时调用。</span></div><div class="line">  deactivated,<span class="comment">// keep-alive 组件停用时调用。</span></div><div class="line">  beforeDestroy,</div><div class="line">  destroyed,</div><div class="line">  errorCaptured,<span class="comment">// (err: Error, vm: Component, info: string) =&gt; ?boolean当捕获一个来自子孙组件的错误时被调用。此钩子会收到三个参数：错误对象、发生错误的组件实例以及一个包含错误来源信息的字符串。此钩子可以返回 false 以阻止该错误继续向上传播。</span></div><div class="line"></div><div class="line">  components,<span class="comment">// 包含 Vue 实例可用组件的哈希表。</span></div><div class="line">  directives,<span class="comment">// 包含 Vue 实例可用指令的哈希表。</span></div><div class="line"></div><div class="line">  <span class="comment">// 指定已创建的实例之父实例，在两者之间建立父子关系。子实例可以用 this.$parent 访问父实例，子实例被推入父实例的 $children 数组中。</span></div><div class="line">  mixins, <span class="comment">// Array&lt;Object&gt; mixins 选项接受一个混入对象的数组。这些混入实例对象可以像正常的实例对象一样包含选项，他们将在 Vue.extend() 里最终选择使用相同的选项合并逻辑合并。举例：如果你的混入包含一个钩子而创建组件本身也有一个，两个函数将被调用。Mixin 钩子按照传入顺序依次调用，并在调用组件自身的钩子之前被调用</span></div><div class="line"></div><div class="line">&#125;)</div><div class="line">vm.$data<span class="comment">// 访问原始数据对象，访问 vm.a(代理, 以 _ 或 $ 开头的属性**不会**被Vue实例代理) 等价于访问 vm.$data.a</span></div><div class="line"></div><div class="line">Vue.component(<span class="string">'todo-item'</span>, &#123;</div><div class="line">  <span class="comment">// todo-item 组件现在接受一个</span></div><div class="line">  <span class="comment">// "prop"，类似于一个自定义特性。</span></div><div class="line">  <span class="comment">// 这个 prop 名为 todo。</span></div><div class="line">  <span class="comment">// props: ['todo'],</span></div><div class="line">  props: &#123;</div><div class="line">    <span class="comment">// 检测类型</span></div><div class="line">    height: <span class="built_in">Number</span>,</div><div class="line">    <span class="comment">// 检测类型 + 其他验证</span></div><div class="line">    age: &#123;</div><div class="line">      type: <span class="built_in">Number</span>,</div><div class="line">      <span class="keyword">default</span>: <span class="number">0</span>,</div><div class="line">      required: <span class="literal">true</span>,</div><div class="line">      validator: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> value &gt;= <span class="number">0</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  template: <span class="string">'&lt;li&gt;&#123;&#123; todo.text &#125;&#125;&lt;/li&gt;'</span>,</div><div class="line">  mounted: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.$nextTick(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="comment">// Code that will run only after the</span></div><div class="line">      <span class="comment">// entire view has been rendered</span></div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="数据流"><a href="#数据流" class="headerlink" title="数据流"></a>数据流</h2><h3 id="数据绑定实现"><a href="#数据绑定实现" class="headerlink" title="数据绑定实现"></a>数据绑定实现</h3><p>???服务器端渲染</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://cn.vuejs.org/v2/guide/events.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;vue官方文档&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Vue 初步</title>
+    <link href="/2019/04/09/front-end/Vue/start-with-vue/"/>
+    <id>/2019/04/09/front-end/Vue/start-with-vue/</id>
+    <published>2019-04-09T10:08:53.000Z</published>
+    <updated>2019-07-15T13:41:10.862Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://cn.vuejs.org/v2/style-guide/" target="_blank" rel="external">Vue 风格指南</a><br><a id="more"></a><br>Vue三要素</p>
+<p>响应式: 例如如何监听数据变化,其中的实现方法就是我们提到的双向绑定<br>模板引擎: 如何解析模板<br>渲染: Vue如何将监听到的数据变化和解析后的HTML进行渲染</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://cn.vuejs.org/v2/style-guide/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Vue 风格指南&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>GIT常用命令整理</title>
+    <link href="/2019/04/05/Tec/git/gitCommands/"/>
+    <id>/2019/04/05/Tec/git/gitCommands/</id>
+    <published>2019-04-05T12:07:10.000Z</published>
+    <updated>2019-07-15T13:41:10.815Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>工作目录–add–》暂存区–commit–》本地repository–push–》远端repository<br><a id="more"></a></p>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="external">GIT中文文档</a></p>
+<p><a href="http://www.runoob.com/manual/git-guide/" target="_blank" rel="external">GIT简明指南</a></p>
+<h3 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">git clone ... <span class="comment">#克隆git repository到本地</span></div><div class="line">git config --global user.name <span class="string">"张三"</span></div><div class="line">git config --global user.email <span class="string">"zhangsan@asd.com"</span></div><div class="line">git add . <span class="comment">#添加文件到缓存区(待commit)</span></div><div class="line">git commit -m <span class="string">"提交说明"</span> <span class="comment">#将缓存区文件加到git repository</span></div><div class="line">git push [remote-name] [branch-name] <span class="comment">#推送master分支的commit内容到remote服务器，如:</span></div><div class="line">git push origin master</div><div class="line"></div><div class="line">git pull (&lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;)<span class="comment"># 从最初克隆的服务器上抓取数据并自动尝试合并到当前所在的分支</span></div><div class="line">git fetch (&lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;)<span class="comment"># 从远端仓库中获得数据（不会自动合并或修改你当前的工作，需手动merge）</span></div></pre></td></tr></table></figure>
+<h3 id="Reset操作"><a href="#Reset操作" class="headerlink" title="Reset操作"></a>Reset操作</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git reset --hard origin/master <span class="comment">#回退到某一版本origin/master</span></div><div class="line">git reset --hard commitID <span class="comment">#回退到某一commit状态，commitID可以使用git log 看到，很长的hash字符串</span></div><div class="line">git rest HEAD file <span class="comment">#file路径(支持正则),取消文件的暂存(add) </span></div><div class="line">git checkout -- file <span class="comment">#file路径(支持正则),放弃对文件的修改，类似revert(danger:你对那个文件做的任何修改都会消失 - 你只是拷贝了另一个文件来覆盖它)</span></div></pre></td></tr></table></figure>
+<h3 id="查看当前更改"><a href="#查看当前更改" class="headerlink" title="查看当前更改"></a>查看当前更改</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git status <span class="comment">#查看是否有更改， -s查看简要</span></div><div class="line">git diff <span class="comment">#查看更改，只显示尚未暂存（add）的改动</span></div><div class="line">git diff &lt;source_branch&gt; &lt;target_branch&gt; <span class="comment">#比较两个分支(target_branch默认为当前分支) </span></div><div class="line">git diff --cached &lt;source_branch&gt; &lt;target_branch&gt; <span class="comment"># (同--staged)查看已暂存(add)的将要添加到下次提交里的内容</span></div></pre></td></tr></table></figure>
+<h3 id="日志相关"><a href="#日志相关" class="headerlink" title="日志相关"></a>日志相关</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git show <span class="comment">#默认查看上一次commit内容</span></div><div class="line">git log <span class="comment">#查看commit记录，-p显示详细diff，-2显示最近两条，--state显示提交文件详情，--shortstate显示增删改条数，--pretty=online在一行显示</span></div><div class="line">git log --oneline --decorate <span class="comment">#查看各个分支当前所指的对象</span></div><div class="line">git log --pretty=format:<span class="string">"%an %ad %cn %cd %s"</span>查看提交记录，只显示作者、修改日期、提交者、提交日期和提交说明</div></pre></td></tr></table></figure>
+<h3 id="分支操作"><a href="#分支操作" class="headerlink" title="分支操作:"></a>分支操作:</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">git branch <span class="comment">#查看当前本地所有分支， --merged查看已合并到当前分支的分支，--no-merged查看未合并到当前分支的分支</span></div><div class="line">git branch -v <span class="comment">#查看当前所有分支及最后一次提交记录</span></div><div class="line">git branch -r <span class="comment">#查看远端分支</span></div><div class="line">git branch a <span class="comment">#创建a分支</span></div><div class="line">git checkout a <span class="comment">#切换到master分支</span></div><div class="line">git checkout -b a <span class="comment">#创建aaa并切换到aaa </span></div><div class="line">git branch -d aaa <span class="comment">#删除aaa分支，如有未处理的更改将会失败</span></div><div class="line">git branch -D aaa <span class="comment">#强制删除aaa分支</span></div><div class="line">git push origin mybranch <span class="comment">#推送分支到远端(可供协同工作)</span></div></pre></td></tr></table></figure>
+<h3 id="Remot操作"><a href="#Remot操作" class="headerlink" title="Remot操作"></a>Remot操作</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git remote <span class="comment">#查看远端名称(默认为orign)</span></div><div class="line">git remote -v <span class="comment">#查看remote名及对应url</span></div><div class="line">git remote add test https://url.com <span class="comment">#添加一个远端仓库,test为仓库名，后面为仓库地址</span></div><div class="line">git remote show [remote-name]  <span class="comment">#显示远端仓库详情</span></div><div class="line">git remote rename oldName newName <span class="comment">#重命名</span></div><div class="line">git remote rm  name <span class="comment">#移除远端仓库</span></div></pre></td></tr></table></figure>
+<h3 id="变基操作"><a href="#变基操作" class="headerlink" title="变基操作"></a>变基操作</h3><p><strong>只对尚未推送或分享给别人的本地修改执行变基操作清理历史，从不对已推送至别处的提交执行变基操作，这样，你才能享受到两种方式带来的便利</strong><br><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#将 targetBranch的基改为baseBranch(会merge修改)，若baseBranch为 targetBranch的祖先，则无变化，targetBranch默认为当前分支</span></div><div class="line">git rebase baseBranch targetBranch</div></pre></td></tr></table></figure></p>
+<h3 id="标签操作"><a href="#标签操作" class="headerlink" title="标签操作"></a>标签操作</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git tag <span class="comment">#查看已有标签</span></div><div class="line">git tag v1.<span class="number">1</span> <span class="comment">#打标签</span></div><div class="line">git show v1.<span class="number">1</span> <span class="comment">#查看标签详情</span></div></pre></td></tr></table></figure>
+<h3 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h3><h4 id="fetch和pull区别"><a href="#fetch和pull区别" class="headerlink" title="fetch和pull区别"></a>fetch和pull区别</h4><p><a href="https://blog.csdn.net/riddle1981/article/details/74938111" target="_blank" rel="external">详解git fetch与git pull的区别</a><br>git fetch 命令会将远端数据拉取到你的本地仓库，它并不会自动合并。<br>基本情况下git pull = git fetch + git merge<br>如果需要有选择的合并git fetch是更好的选择。效果相同时git pull将更为快捷。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h3&gt;&lt;p&gt;工作目录–add–》暂存区–commit–》本地repository–push–》远端repository&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Tec" scheme="/categories/Tec/"/>
+    
+      <category term="Git" scheme="/categories/Tec/Git/"/>
+    
+    
+      <category term="Git" scheme="/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS事件机制</title>
+    <link href="/2019/04/03/front-end/basic/js/event/"/>
+    <id>/2019/04/03/front-end/basic/js/event/</id>
+    <published>2019-04-03T07:32:29.000Z</published>
+    <updated>2019-07-15T13:41:10.907Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 监听subscribe，可有多个listener</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'needReload'</span>, (event) =&gt; &#123;</div><div class="line">  <span class="comment">// event.detail可得到传参</span></div><div class="line">  <span class="comment">// 相应处理</span></div><div class="line">&#125;)</div><div class="line"><span class="comment">// dispatch一个event， detail字段用于传参</span></div><div class="line"><span class="built_in">window</span>.dispatchEvent(<span class="keyword">new</span> CustomEvent(<span class="string">'needReload'</span>, &#123; <span class="attr">detail</span>: <span class="string">'123'</span> &#125;))</div><div class="line"><span class="comment">// remove一个listener</span></div><div class="line"> <span class="built_in">window</span>.removeEventListener(<span class="string">'needReload'</span>, <span class="keyword">this</span>.needReload)</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Cascading Style Sheets</title>
+    <link href="/2019/03/28/front-end/basic/css/css/"/>
+    <id>/2019/03/28/front-end/basic/css/css/</id>
+    <published>2019-03-28T02:37:36.000Z</published>
+    <updated>2019-07-15T13:41:10.897Z</updated>
+    
+    <content type="html"><![CDATA[<p>CSS也是很重要的<br><a id="more"></a><br><img src="/img/css_priority.jpg" alt="css层叠与继承"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;CSS也是很重要的&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>2019.03.28</title>
+    <link href="/2019/03/28/dailyDiary/2019/2019-03-28/"/>
+    <id>/2019/03/28/dailyDiary/2019/2019-03-28/</id>
+    <published>2019-03-28T02:28:18.000Z</published>
+    <updated>2019-07-15T13:41:10.835Z</updated>
+    
+    <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
+function doDecrypt(pwd, onError) {
+	console.log("in doDecrypt");
+	var txt = document.getElementById("enc_content").innerHTML;
+	var plantext;
+	try {
+	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
+		plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {onError(err);}
+		return;
+	}
+	document.getElementById("enc_content").innerHTML = plaintext;
+	document.getElementById("enc_content").style.display = "block";
+   document.getElementById("enc_passwd").style.display = "none";
+}
+</script>
+<div id="enc_content" style="display:none">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</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;青春须早为，岂能长少年。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="dailyDiary" scheme="/categories/dailyDiary/"/>
+    
+    
+      <category term="morningDiary" scheme="/tags/morningDiary/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面试小结</title>
+    <link href="/2019/03/06/summary/%E9%9D%A2%E8%AF%95%E5%B0%8F%E7%BB%93/"/>
+    <id>/2019/03/06/summary/面试小结/</id>
+    <published>2019-03-06T14:39:46.000Z</published>
+    <updated>2019-07-15T13:41:10.916Z</updated>
+    
+    <content type="html"><![CDATA[<p>啦啦啦<br><a id="more"></a></p>
+<h2 id="常见面试题"><a href="#常见面试题" class="headerlink" title="常见面试题"></a>常见面试题</h2><h3 id="Promise实现原理"><a href="#Promise实现原理" class="headerlink" title="Promise实现原理"></a>Promise实现原理</h3><ul>
+<li>自己写一个Promise</li>
+<li>异步实现<h3 id="JS实现倒计时"><a href="#JS实现倒计时" class="headerlink" title="JS实现倒计时"></a>JS实现倒计时</h3>实现倒计时的几种方式:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// setInterval</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">countDown</span> (<span class="params">counter</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> clear = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(counter--)</div><div class="line">    <span class="keyword">if</span> (counter &lt; <span class="number">0</span>) &#123;</div><div class="line">      clearInterval(clear)</div><div class="line">    &#125;</div><div class="line">  &#125;, <span class="number">1000</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Generator + setTimeOut +递归</span></div><div class="line"><span class="function"><span class="keyword">function</span> *<span class="title">nextId</span> (<span class="params">maxId = <span class="number">-1</span></span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> count = <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span>(count &lt;= maxId) &#123;</div><div class="line">    <span class="keyword">yield</span> count ++</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">countDownWithLogger</span> (<span class="params">logger</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> next = logger.next()</div><div class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">if</span> (!next.done) &#123;</div><div class="line">      <span class="built_in">console</span>.log(next.value)</div><div class="line">      countDownWithLogger(logger)</div><div class="line">    &#125;</div><div class="line">  &#125;, <span class="number">1000</span>)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">countDown</span> (<span class="params">counter</span>) </span>&#123;</div><div class="line">  countDownWithLogger(nextId(counter))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// promise</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">countDown</span> (<span class="params">max</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> p = <span class="built_in">Promise</span>.resolve(max - <span class="number">1</span>)</div><div class="line">  <span class="keyword">let</span> i = <span class="number">0</span></div><div class="line">  <span class="keyword">while</span>(i &lt;= max - <span class="number">1</span>) &#123;</div><div class="line">    i++</div><div class="line">    p = p.then(<span class="function">(<span class="params">count</span>) =&gt;</span> &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">          setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(count--)</div><div class="line">            resolve(count)</div><div class="line">          &#125;, <span class="number">1000</span>)</div><div class="line">      &#125;)</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">console</span>.log(max) <span class="comment">// 第一个值立即输出</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// async await</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">logCount</span> (<span class="params">count</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</div><div class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">          <span class="built_in">console</span>.log(count--)</div><div class="line">          resolve(count);</div><div class="line">      &#125;, <span class="number">1000</span>)</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">countDown</span> (<span class="params">count</span>) </span>&#123;</div><div class="line">  <span class="keyword">while</span>(count &gt;= <span class="number">0</span>) &#123;</div><div class="line">    count = <span class="keyword">await</span> logCount(count) </div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">countDown(<span class="number">4</span>)</div></pre></td></tr></table></figure>
+<h3 id="REDUX原理"><a href="#REDUX原理" class="headerlink" title="REDUX原理"></a>REDUX原理</h3><h3 id="双向绑定原理"><a href="#双向绑定原理" class="headerlink" title="双向绑定原理"></a>双向绑定原理</h3><p>  JS实现双向绑定</p>
+<h3 id="await原理"><a href="#await原理" class="headerlink" title="await原理"></a>await原理</h3><h3 id="项目经验"><a href="#项目经验" class="headerlink" title="项目经验"></a>项目经验</h3><h3 id="闭包作用，缺点？"><a href="#闭包作用，缺点？" class="headerlink" title="闭包作用，缺点？"></a>闭包作用，缺点？</h3><p>带环境的函数，可以访问到定义环境作用域的内容<br>缺点：受环境影响函数执行结果不同，环境作用域不会被垃圾回收机制回收，内存浪费</p>
+<h3 id="深浅拷贝的区别和用途？"><a href="#深浅拷贝的区别和用途？" class="headerlink" title="深浅拷贝的区别和用途？"></a>深浅拷贝的区别和用途？</h3><p>简单数据结构都是值拷贝，复杂数据区别:<br>深拷贝：值拷贝，不会相互影响<br>浅拷贝: 引用拷贝，操作同一块内存区域，相互影响</p>
+<h3 id="CSS-有哪些实现布局的方式？"><a href="#CSS-有哪些实现布局的方式？" class="headerlink" title="CSS 有哪些实现布局的方式？"></a>CSS 有哪些实现布局的方式？</h3><pre><code>[CSS常见布局方式](http://baijiahao.baidu.com/s?id=1580578435186877828&amp;wfr=spider&amp;for=pc)
+使用BFC隐藏属性
+float + margin
+absolute + margin
+圣杯布局
+双飞翼布局
+flex布局
+</code></pre><p>  以上5种方式都可以实现两栏或三栏布局</p>
+<h3 id="CSS-命名冲突如何解决？"><a href="#CSS-命名冲突如何解决？" class="headerlink" title="CSS 命名冲突如何解决？"></a>CSS 命名冲突如何解决？</h3><p>css-module</p>
+<h3 id="介绍下-ES-里的-Generator-是怎么运行的？和-async-await-有何区别？"><a href="#介绍下-ES-里的-Generator-是怎么运行的？和-async-await-有何区别？" class="headerlink" title="介绍下 ES 里的 Generator 是怎么运行的？和 async + await 有何区别？"></a>介绍下 ES 里的 Generator 是怎么运行的？和 async + await 有何区别？</h3><p><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/00143450083887673122b45a4414333ac366c3c935125e7000" target="_blank" rel="external">generator</a></p>
+<p>​ &gt; 从计算机角度看，生成器是一种类协程或半协程，它提供了一种可以通过特定语句或方法使其执行对象暂停的功能。<br>​ Generator函数，返回一个部署了Iterator接口的遍历器对象，用来操作内部指针。以后，每次调用遍历器对象的next方法，就会返回一个有着value和done两个属性的对象。value属性表示当前的内部状态的值，是yield语句后面那个表达式的值；done属性是一个布尔值，表示是否遍历结束。</p>
+<p>await的语义是:必须等到await后面跟的Promise有了返回值，才能继续执行await的下一行代码<br>generator由function<em>定义（注意多出的</em>号），并且，除了return语句，还可以用yield返回多次。<br>调用generator对象有两个方法</p>
+<pre><code>1. 一是不断地调用generator对象的next()方法（得到{value, done}）
+</code></pre><ol>
+<li>for … of循环迭代generator对象</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">logAfterSeconds</span> (<span class="params">seconds = <span class="number">1</span>, content</span>) </span>&#123;</div><div class="line">  setTimeOut(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(content)</div><div class="line">  &#125;, seconds * <span class="number">1000</span>)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> *<span class="title">nextId</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> count = <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</div><div class="line">    <span class="keyword">yield</span> count ++</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="React-里的-key-有什么用？"><a href="#React-里的-key-有什么用？" class="headerlink" title="React 里的 key 有什么用？"></a>React 里的 key 有什么用？</h3><pre><code>组件的唯一标示，用于virtual dom判断
+</code></pre><h3 id="React-里什么时候用-Context？"><a href="#React-里什么时候用-Context？" class="headerlink" title="React 里什么时候用 Context？"></a>React 里什么时候用 Context？</h3><pre><code>组件嵌套层级深且有数据共享情况时
+</code></pre><h3 id="render-props-是什么？什么时候用？和Hoc的异同"><a href="#render-props-是什么？什么时候用？和Hoc的异同" class="headerlink" title="render props 是什么？什么时候用？和Hoc的异同"></a>render props 是什么？什么时候用？和Hoc的异同</h3><h3 id="路由如何做权限校验？"><a href="#路由如何做权限校验？" class="headerlink" title="路由如何做权限校验？"></a>路由如何做权限校验？</h3><h3 id="SSR-的原理是什么？"><a href="#SSR-的原理是什么？" class="headerlink" title="SSR 的原理是什么？"></a>SSR 的原理是什么？</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;啦啦啦&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JS异步编程</title>
+    <link href="/2019/03/06/front-end/advance/asynchronous/"/>
+    <id>/2019/03/06/front-end/advance/asynchronous/</id>
+    <published>2019-03-06T14:28:48.000Z</published>
+    <updated>2019-07-15T13:41:10.865Z</updated>
+    
+    <content type="html"><![CDATA[<p>Promise Generator async await<br><a id="more"></a></p>
+<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span> (<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">let</span> i =<span class="number">0</span>;</div><div class="line">      <span class="built_in">console</span>.log(i++)</div><div class="line">      resolve(i)</div><div class="line">      reject(<span class="string">'I am error after resolve'</span>)</div><div class="line">    &#125;, <span class="number">1000</span>)</div><div class="line">  &#125;).then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">          setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(value++)</div><div class="line">            resolve(value)</div><div class="line">          &#125;, <span class="number">1000</span>)</div><div class="line">    &#125;)</div><div class="line">  &#125;).then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">          setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(value++)</div><div class="line">            reject(<span class="string">'I am error'</span>)</div><div class="line">            resolve(<span class="string">'I am value after error'</span>)<span class="comment">// 不会执行</span></div><div class="line">          &#125;, <span class="number">1000</span>)</div><div class="line">    &#125;)</div><div class="line">  &#125;).then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;<span class="comment">// 不会执行到此处</span></div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'skip me'</span>)</div><div class="line">    <span class="built_in">console</span>.log(value)</div><div class="line">  &#125;).catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'error'</span>)</div><div class="line">    <span class="built_in">console</span>.log(error)</div><div class="line">  &#125;)</div><div class="line">  <span class="built_in">console</span>.log(p)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="async-await"><a href="#async-await" class="headerlink" title="async await"></a>async await</h2><h2 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h2><ol>
+<li>介绍下 ES 里的 Generator 是怎么运行的？和 async + await 有何区别？</li>
+</ol>
+<p><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/00143450083887673122b45a4414333ac366c3c935125e7000" target="_blank" rel="external">generator</a></p>
+<p>​ &gt; 从计算机角度看，生成器是一种类协程或半协程，它提供了一种可以通过特定语句或方法使其执行对象暂停的功能。<br>​ Generator函数，返回一个部署了Iterator接口的遍历器对象，用来操作内部指针。以后，每次调用遍历器对象的next方法，就会返回一个有着value和done两个属性的对象。value属性表示当前的内部状态的值，是yield语句后面那个表达式的值；done属性是一个布尔值，表示是否遍历结束。</p>
+<p>await的语义是:必须等到await后面跟的Promise有了返回值，才能继续执行await的下一行代码<br>generator由function<em>定义（注意多出的</em>号），并且，除了return语句，还可以用yield返回多次。<br>调用generator对象有两个方法</p>
+<pre><code>1. 一是不断地调用generator对象的next()方法（得到{value, done}）
+</code></pre><ol>
+<li>for … of循环迭代generator对象</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">logAfterSeconds</span> (<span class="params">seconds = <span class="number">1</span>, content</span>) </span>&#123;</div><div class="line">  setTimeOut(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(content)</div><div class="line">  &#125;, seconds * <span class="number">1000</span>)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> *<span class="title">nextId</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> count = <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</div><div class="line">    <span class="keyword">yield</span> count ++</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>自己写一个Promise</li>
+<li>异步实现<h3 id="JS实现倒计时"><a href="#JS实现倒计时" class="headerlink" title="JS实现倒计时"></a>JS实现倒计时</h3>实现倒计时的几种方式:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// setInterval</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">countDown</span> (<span class="params">counter</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> clear = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(counter--)</div><div class="line">    <span class="keyword">if</span> (counter &lt; <span class="number">0</span>) &#123;</div><div class="line">      clearInterval(clear)</div><div class="line">    &#125;</div><div class="line">  &#125;, <span class="number">1000</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Generator + setTimeOut +递归</span></div><div class="line"><span class="function"><span class="keyword">function</span> *<span class="title">nextId</span> (<span class="params">maxId = <span class="number">-1</span></span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> count = <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span>(count &lt;= maxId) &#123;</div><div class="line">    <span class="keyword">yield</span> count ++</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">countDownWithLogger</span> (<span class="params">logger</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> next = logger.next()</div><div class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">if</span> (!next.done) &#123;</div><div class="line">      <span class="built_in">console</span>.log(next.value)</div><div class="line">      countDownWithLogger(logger)</div><div class="line">    &#125;</div><div class="line">  &#125;, <span class="number">1000</span>)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">countDown</span> (<span class="params">counter</span>) </span>&#123;</div><div class="line">  countDownWithLogger(nextId(counter))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// promise</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">countDown</span> (<span class="params">max</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> p = <span class="built_in">Promise</span>.resolve(max - <span class="number">1</span>)</div><div class="line">  <span class="keyword">let</span> i = <span class="number">0</span></div><div class="line">  <span class="keyword">while</span>(i &lt;= max - <span class="number">1</span>) &#123;</div><div class="line">    i++</div><div class="line">    p = p.then(<span class="function">(<span class="params">count</span>) =&gt;</span> &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">          setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(count--)</div><div class="line">            resolve(count)</div><div class="line">          &#125;, <span class="number">1000</span>)</div><div class="line">      &#125;)</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">console</span>.log(max) <span class="comment">// 第一个值立即输出</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// async await</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">logCount</span> (<span class="params">count</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</div><div class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">          <span class="built_in">console</span>.log(count--)</div><div class="line">          resolve(count);</div><div class="line">      &#125;, <span class="number">1000</span>)</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">countDown</span> (<span class="params">count</span>) </span>&#123;</div><div class="line">  <span class="keyword">while</span>(count &gt;= <span class="number">0</span>) &#123;</div><div class="line">    count = <span class="keyword">await</span> logCount(count) </div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">countDown(<span class="number">4</span>)</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Promise Generator async await&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>面试常见问题</title>
+    <link href="/2019/03/06/front-end/advance/interview/"/>
+    <id>/2019/03/06/front-end/advance/interview/</id>
+    <published>2019-03-06T14:28:48.000Z</published>
+    <updated>2019-07-15T13:41:10.880Z</updated>
+    
+    <content type="html"><![CDATA[<p>几个问题<br><a id="more"></a></p>
+<ol>
+<li>闭包作用，缺点？<br>带环境的函数，可以访问到定义环境作用域的内容<br>缺点：受环境影响函数执行结果不同，环境作用域不会被垃圾回收机制回收，内存浪费</li>
+<li>深浅拷贝的区别和用途？<br>简单数据结构都是值拷贝，复杂数据区别:<br>深拷贝：值拷贝，不会相互影响<br>浅拷贝: 引用拷贝，操作同一块内存区域，相互影响</li>
+<li><p>CSS 有哪些实现布局的方式？<br> <a href="http://baijiahao.baidu.com/s?id=1580578435186877828&amp;wfr=spider&amp;for=pc" target="_blank" rel="external">CSS常见布局方式</a><br> 使用BFC隐藏属性<br> float + margin<br> absolute + margin<br> 圣杯布局<br> 双飞翼布局<br> flex布局<br>以上5种方式都可以实现两栏或三栏布局</p>
+</li>
+<li><p>CSS 命名冲突如何解决？<br>css-module</p>
+</li>
+<li><p>介绍下 ES 里的 Generator 是怎么运行的？和 async + await 有何区别？</p>
+</li>
+</ol>
+<p><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/00143450083887673122b45a4414333ac366c3c935125e7000" target="_blank" rel="external">generator</a></p>
+<p>​ &gt; 从计算机角度看，生成器是一种类协程或半协程，它提供了一种可以通过特定语句或方法使其执行对象暂停的功能。<br>​ Generator函数，返回一个部署了Iterator接口的遍历器对象，用来操作内部指针。以后，每次调用遍历器对象的next方法，就会返回一个有着value和done两个属性的对象。value属性表示当前的内部状态的值，是yield语句后面那个表达式的值；done属性是一个布尔值，表示是否遍历结束。</p>
+<p>await的语义是:必须等到await后面跟的Promise有了返回值，才能继续执行await的下一行代码<br>generator由function<em>定义（注意多出的</em>号），并且，除了return语句，还可以用yield返回多次。<br>调用generator对象有两个方法</p>
+<pre><code>1. 一是不断地调用generator对象的next()方法（得到{value, done}）
+</code></pre><ol>
+<li>for … of循环迭代generator对象</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">logAfterSeconds</span> (<span class="params">seconds = <span class="number">1</span>, content</span>) </span>&#123;</div><div class="line">  setTimeOut(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(content)</div><div class="line">  &#125;, seconds * <span class="number">1000</span>)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> *<span class="title">nextId</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> count = <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</div><div class="line">    <span class="keyword">yield</span> count ++</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>React 里的 key 有什么用？<br> 组件的唯一标示，用于virtual dom判断</li>
+<li>React 里什么时候用 Context？<br> 组件嵌套层级深且有数据共享情况时</li>
+<li><p>render props 是什么？什么时候用？和Hoc的异同</p>
+</li>
+<li><p>路由如何做权限校验？</p>
+</li>
+<li><p>SSR 的原理是什么？</p>
+</li>
+</ol>
+<p>实现倒计时的几种方式:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// setInterval</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">countDown</span> (<span class="params">counter</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> clear = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(counter--)</div><div class="line">    <span class="keyword">if</span> (counter &lt; <span class="number">0</span>) &#123;</div><div class="line">      clearInterval(clear)</div><div class="line">    &#125;</div><div class="line">  &#125;, <span class="number">1000</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Generator + setTimeOut +递归</span></div><div class="line"><span class="function"><span class="keyword">function</span> *<span class="title">nextId</span> (<span class="params">maxId = <span class="number">-1</span></span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> count = <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span>(count &lt;= maxId) &#123;</div><div class="line">    <span class="keyword">yield</span> count ++</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">countDownWithLogger</span> (<span class="params">logger</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> next = logger.next()</div><div class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">if</span> (!next.done) &#123;</div><div class="line">      <span class="built_in">console</span>.log(next.value)</div><div class="line">      countDownWithLogger(logger)</div><div class="line">    &#125;</div><div class="line">  &#125;, <span class="number">1000</span>)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">countDown</span> (<span class="params">counter</span>) </span>&#123;</div><div class="line">  countDownWithLogger(nextId(counter))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// promise</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">countDown</span> (<span class="params">max</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> p = <span class="built_in">Promise</span>.resolve(max - <span class="number">1</span>)</div><div class="line">  <span class="keyword">let</span> i = <span class="number">0</span></div><div class="line">  <span class="keyword">while</span>(i &lt;= max - <span class="number">1</span>) &#123;</div><div class="line">    i++</div><div class="line">    p = p.then(<span class="function">(<span class="params">count</span>) =&gt;</span> &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">          setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(count--)</div><div class="line">            resolve(count)</div><div class="line">          &#125;, <span class="number">1000</span>)</div><div class="line">      &#125;)</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">console</span>.log(max) <span class="comment">// 第一个值立即输出</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// async await</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">logCount</span> (<span class="params">count</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</div><div class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">          <span class="built_in">console</span>.log(count--)</div><div class="line">          resolve(count);</div><div class="line">      &#125;, <span class="number">1000</span>)</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">countDown</span> (<span class="params">count</span>) </span>&#123;</div><div class="line">  <span class="keyword">while</span>(count &gt;= <span class="number">0</span>) &#123;</div><div class="line">    count = <span class="keyword">await</span> logCount(count) </div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">countDown(<span class="number">4</span>)</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;几个问题&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>新起点</title>
@@ -39,7 +501,7 @@ function doDecrypt(pwd, onError) {
    document.getElementById("enc_passwd").style.display = "none";
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX19c17SJzMJY3zwdxhFFJHthVabIr+32Z3nO6Cp2CACw8j3SDHW7kTU7LTuOnIVt9J5+aXNT30HgLZ0im7v35BWX7rEvKr3xPf6932j3ZwU/jLGdFDfC9chGJTZrTNc5Vs5G4s17+RtC0mOFTqT2FKXbgX0brhnLW6DTs4Shqdwx5nnQzEPbEk8CoF9ggXbI8phY90dw9rrTzSYVfGjgXr3XFCO84x0tIHt3N4x2Bc8uh6AsJ9Ol3lFKWjbtzQce7YPu180G0lj0I8jt0qwlIqZdUXYdAjhv3yWf0jaR2kK9IbuDpfWhCIBNGzYeE7cYyNCmS6yyPh1sMux+GHP1VBjXs3vUNdooZ/2MzBoz4YHwWdZvTEcPDjE/</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<div id="enc_content" style="display:none">U2FsdGVkX19CjZP9XY9rjlVmkSiJzaBpE/KjlTSTICJOlLIO1IgE3NkYAvNIQ0SA1iYqOTHk2412UfXFE6cpITbjApesJi2weVjSbaAg576iKoQ4gjVpxHsI7j/jsBNDA577lPJuO5RVY0VvA8ezcfP519tpk5ImbiOQ6+iVPygB+nKv71805+yi9zOewdoT8cOFpO03enMm3inmIpq1iumCApuSwUinCa1GhFaTGiEGsfbrXGvFmOa95A3yn/dUB907kxytODIhmG/9aD/Cs7nXAbVqDvaPVWuciuL3nD0tF5xzgfJA1GC5XowBLmaSRF8tQO4msKyGIFETCl7GROp6+09656YHjjAyMSRKTLsKwttIVUNrRVMgWiPqSzIc</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
 	document.getElementById("enc_error").innerHTML = "password error!"
@@ -139,7 +601,7 @@ function doDecrypt(pwd, onError) {
    document.getElementById("enc_passwd").style.display = "none";
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+bZHwqQQ+dg0IIcRc9OIMx3DHfBClH68tQ55YC8a1v8hPHbcDekc2cvcvRF4GF6rK4MfrbsnSrs0pGgHLeF1KhvLghAtaiuJY9yd6LPVhhV/pMyaCu+Jp3RA3APjap3kdaVkkGgxIUKFR5kZiE8nA0PZqvC9CagQAeZkkweeA+XFXFzjU1MTLoZ8qBqK8V+0uiSCN/2guLkzrxFZ+t0EfzadZvDF0dosKSc/OKIGwYN1065RKgi345BweZWTlM32Q0vwmrBLeEQeRGKDzwKPxL/jKWuiu74nAw7szSxbQ8ahrNo87iu09A1TLjx04aORuwlyl16vLLANmpBTOiFFZx810Ic/TBOQDlFEe8bKZlC7ANg8ZCSjhX8OoX6S8L83zU7iAKBLC5cG50Nx1Ufwxa03nS1hUMRcnr3YphisW+qxUFjV5xigyNG2ub/YF9APJVndic86NVmNl7Xq+VfY05Qs4nZJQc4KdrC95Wwk+dD+/n1nJzqodimiPvRHBGPCk0ajKMVESIfJh71k7dgj3Br+V/uajYxjK/GNXb1L54eUF3U5GMKhKzgiq//1KJ0HC+kctHFPbyCp15wAZRJbEI5A80ULktaaQ=</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<div id="enc_content" style="display:none">U2FsdGVkX1/Oz5x3juX5PnYkKicBHx3gZr1J3EIvpXqC329FQEN/XFmyRxQE9WjYag5z7CViQK/TzvEyf+VysEjz1x3PGUPoN8Cw+RU4K2Lu2xtul+MltazRODKu5ULVqBAxwSKauTZv8DGGChlQdp/NHpr0IihSR0pS3nPBd7PNEaMN//Dj2AVR1a1JoivUbO9XGdluqsG31PxhUvnWuZTrMd56HUTK4xcqhMmMN4Eqiylac9sakdWvUMZp729gMjLx/Kw37iPwaAO/OgwD+7Z6WPfawWWbMPaJInX3j8p6pxat036AHaHuLmc9t6iixkHT9qGZMscdLZFqo+XPdH6uMqc8TnLKTImhxW8bBkt6PfpOfL5ZYZedpKM5SKROKQpQYZ4P00J7fUkRwWam+WYaw0bDe/XDl8OPLPX1k2o5BF/ciQPU1ciyUAkfbWJAcZEZnFwWeBwNZok1wDy3hL3o4DyLOUMO0yWO6cLL4vwGhUXE2XNqDMSbV9tOwLGvcZOal8Oc7WKQbDKc4bRR1cE6VB6KK3bNM7Dnf1bM/UE8ZF9rOJxWg9KGvYbbldxrzL93QPMUWXgEpUNiS8zIP8ZmRuEe1OTn76C2Wu3HMwQ=</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
 	document.getElementById("enc_error").innerHTML = "password error!"
@@ -158,652 +620,6 @@ doDecrypt(passwd, onError);
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>cssFlex</title>
-    <link href="/2018/05/28/front-end/basic/cssAndHtml/cssFlex/"/>
-    <id>/2018/05/28/front-end/basic/cssAndHtml/cssFlex/</id>
-    <published>2018-05-28T13:18:34.000Z</published>
-    <updated>2018-09-08T15:25:33.542Z</updated>
-    
-    <content type="html"><![CDATA[<p>Flex应用<br><a id="more"></a><br>      // text-align: center;<br>      width: 100%;<br>      display: flex;<br>      // justify-content: center;<br>      flex-wrap: wrap;<br>      flex-shrink: 0.5; // </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Flex应用&lt;br&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>虚拟机使用小结</title>
-    <link href="/2018/05/05/work/workExperience/"/>
-    <id>/2018/05/05/work/workExperience/</id>
-    <published>2018-05-05T02:43:56.000Z</published>
-    <updated>2018-09-08T15:25:33.547Z</updated>
-    
-    <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
-function doDecrypt(pwd, onError) {
-	console.log("in doDecrypt");
-	var txt = document.getElementById("enc_content").innerHTML;
-	var plantext;
-	try {
-	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
-		plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {onError(err);}
-		return;
-	}
-	document.getElementById("enc_content").innerHTML = plaintext;
-	document.getElementById("enc_content").style.display = "block";
-   document.getElementById("enc_passwd").style.display = "none";
-}
-</script>
-<div id="enc_content" style="display:none">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</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;虚拟机使用小结&lt;br&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>保存(下载)chrome console下的对象</title>
-    <link href="/2018/05/05/front-end/basic/js/saveConsoleParams/"/>
-    <id>/2018/05/05/front-end/basic/js/saveConsoleParams/</id>
-    <published>2018-05-05T02:38:29.000Z</published>
-    <updated>2018-09-08T15:25:33.544Z</updated>
-    
-    <content type="html"><![CDATA[<p>一点小技巧<br><a id="more"></a></p>
-<ol>
-<li>将对象store as global variable</li>
-<li><p>在控制台下输入以下函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">console</span>)</span>&#123;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.save = <span class="function"><span class="keyword">function</span>(<span class="params">data, filename</span>)</span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(!data) &#123;</div><div class="line">        <span class="built_in">console</span>.error(<span class="string">'Console.save: No data'</span>)</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(!filename) filename = <span class="string">'console.json'</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> data === <span class="string">"object"</span>)&#123;</div><div class="line">        data = <span class="built_in">JSON</span>.stringify(data, <span class="literal">undefined</span>, <span class="number">4</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> blob = <span class="keyword">new</span> Blob([data], &#123;<span class="attr">type</span>: <span class="string">'text/json'</span>&#125;),</div><div class="line">        e    = <span class="built_in">document</span>.createEvent(<span class="string">'MouseEvents'</span>),</div><div class="line">        a    = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>)</div><div class="line"></div><div class="line">    a.download = filename</div><div class="line">    a.href = <span class="built_in">window</span>.URL.createObjectURL(blob)</div><div class="line">    a.dataset.downloadurl =  [<span class="string">'text/json'</span>, a.download, a.href].join(<span class="string">':'</span>)</div><div class="line">    e.initMouseEvent(<span class="string">'click'</span>, <span class="literal">true</span>, <span class="literal">false</span>, <span class="built_in">window</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="number">0</span>, <span class="literal">null</span>)</div><div class="line">    a.dispatchEvent(e)</div><div class="line"> &#125;</div><div class="line">&#125;)(<span class="built_in">console</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>之后执行console.save(variableName)</p>
-</li>
-<li>下载即可看见</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;一点小技巧&lt;br&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>180423</title>
-    <link href="/2018/04/23/dailyDiary/2018/180423/"/>
-    <id>/2018/04/23/dailyDiary/2018/180423/</id>
-    <published>2018-04-23T13:58:43.000Z</published>
-    <updated>2018-09-08T15:25:33.540Z</updated>
-    
-    <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
-function doDecrypt(pwd, onError) {
-	console.log("in doDecrypt");
-	var txt = document.getElementById("enc_content").innerHTML;
-	var plantext;
-	try {
-	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
-		plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {onError(err);}
-		return;
-	}
-	document.getElementById("enc_content").innerHTML = plaintext;
-	document.getElementById("enc_content").style.display = "block";
-   document.getElementById("enc_passwd").style.display = "none";
-}
-</script>
-<div id="enc_content" style="display:none">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</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;凤凰于飞&lt;br&gt;
-    
-    </summary>
-    
-      <category term="dailyDiary" scheme="/categories/dailyDiary/"/>
-    
-    
-      <category term="morningDiary" scheme="/tags/morningDiary/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2018心愿单</title>
-    <link href="/2018/04/23/front-end/wishList/"/>
-    <id>/2018/04/23/front-end/wishList/</id>
-    <published>2018-04-23T03:17:55.000Z</published>
-    <updated>2018-09-08T16:21:10.012Z</updated>
-    
-    <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
-function doDecrypt(pwd, onError) {
-	console.log("in doDecrypt");
-	var txt = document.getElementById("enc_content").innerHTML;
-	var plantext;
-	try {
-	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
-		plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {onError(err);}
-		return;
-	}
-	document.getElementById("enc_content").innerHTML = plaintext;
-	document.getElementById("enc_content").style.display = "block";
-   document.getElementById("enc_passwd").style.display = "none";
-}
-</script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+0K/wHTY2hWLrj78bEiTWK6PkD/9GejytEee/lQAr6bgfR2k1hpFBCaBfNDaHgnIfXm2LZQ6fQiW8TbIAY2VKvbb3Iwz2Zxjw4A2cuCxyRvpPuTK/TVoPvJvVJ24ogj/ySBMLkFBADRuZF31icdQrluXp6kGa6s04GgldKHU9xuhrLTxFIXDootUbxzSk4GIx7SPn1BoCapsYsNPCTUXCkp2Z0EIZRouH+P9RJMBdy8VNRlKIGDp9WDi7XL1KQ+S5rv+f9NwfGpi0n8gctMNyELpZE4QUK7zDugtCbdLW2jLUFliHTADFN5WEJrz4JGeFGMKk7+VdQXSbj2HLw4ddiJvReTlbT+TkXeahbQpw6sVnfUC06ecp0oLsEnJfuGT7Jnc5j17O/4y8q36DjahoC9ifiCj9TIS0w6RAK+Vma7GbbThXq4y34qxT7vJS/fQT7hZG/uiYnw/IYmhV/P5dfGOf53vv6UKXkhCvdIhs2rSVuj1UCyET2oblBLIW+MSY5jcB2ZdIALmfDNXZziuXf1zMHNnWrlgmGhF+hu6jiDatdHV7mBWc+xC+0P6Hf/kb3MEdz5nOoAqIvMAjbMDyHpmqlF3MxflKXh5QKzwQgePhJhiEhIIu0EDZn60vDOmQ9jIageruYzOXFcokCrVMFMuUVLSY6KoEfj7dQV5atDYy8TRCMDi34+VBW1h5GvXP+EI94/fePOQ7p30HAOs76Dn1DPtXxoyWJZZyubBtuxMJOx2Qp5yBq1zzH72bdcsWG1q1xuP5sAUCebUBqwYmGhYGqs9PlsY81125EFL60+UQOweb0kdWrt3sviZ0H5vkYDu9bXtnR5xIJ4oKSj4SclyYZG/hVWtfTRtSixhhgn++oZadld30K77a2Ig5anUCRXq+i4AFQctF/BFCzcdElZFEGcjFDb2EuRTMjO03uYBSbvtjlXn8elvklT3nPg0bQaqmgjdIKwTL1XqwnJrJ9ezLv0x+DuGtiLR9jdlfj8F/GH5Xvb0YcA5vhdvFw8Wies1fW4UouzjMR/VcmDIaWsAI1CwK3fox/DFTMcABSef+FYx3adEd9tSSuzbXnM+RElxQ2yu42E1y2gRrPZqymjZeXgHQoLgZX6brqY9m9ZDR2xE37Ms3syQEOKXpmc+fit573lxROdBymynfTWMRDfDa/HXPV/lWBlcuNCzu19etDxIYs9wPnefVjbFZlC9YWmDXgUm4LLKNCXd6FbIn/1mK53Td7+F3y5+utfwcAwfTfbagKxgSrNGzvlg+BLZlH4rRezrDJODyJxAAYkruvwfm1osLXSSUNcjx9LybnU+DB8siuWEi/zOlBfJ0MxdJyE1ocdw99xh3lzXr9gGMQPpCmBShGvNTi0/Jakx7/Iv7IKuTy69+mFKHZfvpEiQ6Vzx3ENFGk9QrcSpcOkpQlFhgKDE8Y7oekXf/ni/nNaueMjfrnTLe+v8BFzlyi+W27Z+l7r/2BPdDg9ouLexgrqJgz21QqlNqVhMTQGDxnq+qpiG9D3Bu26knKB4u0yfH/Wc7pQEFvfluvhTqnLWIQRhGA/WXcvW7s3YvFfmcIkOSDAvi9ETS8</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;很久没更新博客，一半因为忙，一般因为懒。&lt;br&gt;想想日子过得好快好快，想做的事情、要学的东西还好多好多，不去规划就永远执行不了了。&lt;br&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>盛夏的果实</title>
-    <link href="/2018/03/19/essay/%E7%9B%9B%E5%A4%8F%E7%9A%84%E6%9E%9C%E5%AE%9E/"/>
-    <id>/2018/03/19/essay/盛夏的果实/</id>
-    <published>2018-03-19T13:28:57.000Z</published>
-    <updated>2018-09-08T15:27:48.232Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>180305</title>
-    <link href="/2018/03/05/dailyDiary/2018/180305/"/>
-    <id>/2018/03/05/dailyDiary/2018/180305/</id>
-    <published>2018-03-05T15:48:54.000Z</published>
-    <updated>2018-03-05T15:55:14.958Z</updated>
-    
-    <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
-function doDecrypt(pwd, onError) {
-	console.log("in doDecrypt");
-	var txt = document.getElementById("enc_content").innerHTML;
-	var plantext;
-	try {
-	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
-		plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {onError(err);}
-		return;
-	}
-	document.getElementById("enc_content").innerHTML = plaintext;
-	document.getElementById("enc_content").style.display = "block";
-   document.getElementById("enc_passwd").style.display = "none";
-}
-</script>
-<div id="enc_content" style="display:none">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</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Don’t be shy, just try.&lt;br&gt;Go Go Go, Let’s go!&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Plan" scheme="/categories/Plan/"/>
-    
-    
-      <category term="Plan" scheme="/tags/Plan/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>180304</title>
-    <link href="/2018/03/04/dailyDiary/2018/180304/"/>
-    <id>/2018/03/04/dailyDiary/2018/180304/</id>
-    <published>2018-03-04T15:05:12.000Z</published>
-    <updated>2018-03-05T15:49:16.757Z</updated>
-    
-    <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
-function doDecrypt(pwd, onError) {
-	console.log("in doDecrypt");
-	var txt = document.getElementById("enc_content").innerHTML;
-	var plantext;
-	try {
-	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
-		plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {onError(err);}
-		return;
-	}
-	document.getElementById("enc_content").innerHTML = plaintext;
-	document.getElementById("enc_content").style.display = "block";
-   document.getElementById("enc_passwd").style.display = "none";
-}
-</script>
-<div id="enc_content" style="display:none">U2FsdGVkX19NQh/SOUxe9NuTo1zE5Fm1xWyMl+68rrHpZR71hcmfvHNJNF0hUTMEiP2UqdgRuwWtlfRayXj1khlerNifNZOGZ7pm/AIKti9Cc8jPFUJNBMqLadQ6LkqGqhVqMM6IbQYN12KDMYPXWmcWa+7hM6mEH3kRWsFigINc2Ew+fJGSqszlYcYSZy+UYHJ4UvF0GJhGeQ91IXZRD2bG9PUpFBZrl3UUJVJDe17+paTIKgmnamUrI7j6xo6R0c1EXioSoxGb/Hbb4iPdIS71CA4ZaLrszYxdXSFawNt6e/fQSfpA6unCYTfB6vuNDSQKYpsTtgW2I30R8jRQBRBczxKORsj5bffGIXuu0azSBlXY7AbIa4udOHEpTwhgeO/pJ4DziwdMskcmjNSUgfSsOoDe99MWPgkQU3xX4lZrFsj2AWB3nI9d+YO9DNkaZvveEoMSagy/7NErN5lDI5OdwqdhXTUfCAnZj9yDl9x1aC2ii83SfPTYitG3VUudgYMonNdzECqHkE5ySbdbLK7vkbQnlme/1OdVpi9U1CtMedAyTPnlDdi8yTweMNNykFMlogjN0LHfK6pRKrpoMBZACUEFucFfzpGc7YClwc8N61mDIgp19Zwk5JQ27s7jXfuxv3p67znG2WzOz5PP3ffhpBybg9PH4c5llgSkfennwWPuPdumtAlaf5e+BiPgFCm/07N7CMtXRgxfcvfBfj7TysO17WLmwuiHdyxa9jl2vps2e1xlg/goFcgDVWFt5jxHO1RDauwLGfmlMTH8tPgPY6WKYR1A3wW4XIMuILMNndJR5unaJ1rVoHGtKqqqi0eKPCvIVGLpbhC43sLqUpIco2Y1+uLWWlv87IYVs2vBZiF47Yn2NHsp+nGJTv3OCqEZA2/NUTCsGE3Yf/BgAHGzFvzUDWZ93O1PTOvNg0N+Mv0pFIpJri1CXYuZkodesvdiaw6q7l9/Nzene7Rd3ocQiEX2zI3bZbgFJMFIlpZNWnlBgf7pbeH/ie/Wyx7HRpGONcBJ1cP6QTRbZtKwj/jvdMDpDeMrbfKzGm7THwRaGxuTC1Zh2SFjC7O+Vz5MxE4j+idsKOJcld2KwF58LabJNl2RaOIuAZ2IB/Bl1LxIl3tJG9OLJEk+UPkBdJnglSF/A9PfX6w12KOFljIQ+b87oh8fx408QG/o9yP1MHuk4sFu1izYtqKWOa7d9pyA9/0Mf8nesUoM0i4n3liN2iU3dm7D/Om0FHUC3IdNF1Y/kZT7vLclLv+CtRAzA/5MPlSBBzJQmPHF6vBFteQS+jhCuURmb1ncF/7ieLk+y1AD98V/wCm+dtoFrpOcePUVbX3S4CRfcFsYwl92+8N/fRgwhJzZvE7Yu7SaEyKCV/KCRSFw7yYUK83nEk/YNH7M4ofC9KT+t9jeYezMPxSPDMov2tjUPklcAqzrlmIoPazRkZIHFpwpetsATaB8YUD5M6zl5yH+kxlnNKnzFDEhIrpaMwsNxsQl8zPSYvileU4hlPc9ddDk9uy4AuWedmIFoASFu43TYSKuD9oTlaFV1cx6CVLRFMOsg4HeRmz5YBcqVQqG3CygxJDMb20JGMKoEAbbdcFTWAGnwH7fUKdmyxJY1O/pGKT4ZzW5qaYUbMtcLW1DWKKQRqr49uumBXDV6pAzVgcgdHbjkn3qg6t1dFicNroyuwGWBeaGcvBoxHU=</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Don’t be shy, just try.&lt;br&gt;Go Go Go, Let’s go!&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Plan" scheme="/categories/Plan/"/>
-    
-    
-      <category term="Plan" scheme="/tags/Plan/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一点碎碎念</title>
-    <link href="/2018/03/04/dailyDiary/2018/GOODBYE/"/>
-    <id>/2018/03/04/dailyDiary/2018/GOODBYE/</id>
-    <published>2018-03-04T14:41:18.000Z</published>
-    <updated>2018-03-04T15:04:41.257Z</updated>
-    
-    <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
-function doDecrypt(pwd, onError) {
-	console.log("in doDecrypt");
-	var txt = document.getElementById("enc_content").innerHTML;
-	var plantext;
-	try {
-	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
-		plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {onError(err);}
-		return;
-	}
-	document.getElementById("enc_content").innerHTML = plaintext;
-	document.getElementById("enc_content").style.display = "block";
-   document.getElementById("enc_passwd").style.display = "none";
-}
-</script>
-<div id="enc_content" style="display:none">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</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;.&lt;br&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>180222</title>
-    <link href="/2018/02/22/dailyDiary/2018/180222/"/>
-    <id>/2018/02/22/dailyDiary/2018/180222/</id>
-    <published>2018-02-22T07:26:30.000Z</published>
-    <updated>2018-02-28T14:58:09.646Z</updated>
-    
-    <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
-function doDecrypt(pwd, onError) {
-	console.log("in doDecrypt");
-	var txt = document.getElementById("enc_content").innerHTML;
-	var plantext;
-	try {
-	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
-		plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {onError(err);}
-		return;
-	}
-	document.getElementById("enc_content").innerHTML = plaintext;
-	document.getElementById("enc_content").style.display = "block";
-   document.getElementById("enc_passwd").style.display = "none";
-}
-</script>
-<div id="enc_content" style="display:none">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</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;老之前，我还是得认真活一活~&lt;br&gt;
-    
-    </summary>
-    
-      <category term="dailyDiary" scheme="/categories/dailyDiary/"/>
-    
-    
-      <category term="morningDiary" scheme="/tags/morningDiary/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>happy 2018</title>
-    <link href="/2018/02/22/essay/happy-2018/"/>
-    <id>/2018/02/22/essay/happy-2018/</id>
-    <published>2018-02-22T07:15:00.000Z</published>
-    <updated>2018-02-28T14:58:09.646Z</updated>
-    
-    <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
-function doDecrypt(pwd, onError) {
-	console.log("in doDecrypt");
-	var txt = document.getElementById("enc_content").innerHTML;
-	var plantext;
-	try {
-	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
-		plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {onError(err);}
-		return;
-	}
-	document.getElementById("enc_content").innerHTML = plaintext;
-	document.getElementById("enc_content").style.display = "block";
-   document.getElementById("enc_passwd").style.display = "none";
-}
-</script>
-<div id="enc_content" style="display:none">U2FsdGVkX19nTEMsaGLcYroi9p/qwJcPgQRSPJc+Q2vICNm+x8qZosJ/r3zzx0DTp+jmW+hg4PYQA47xjzzCUal6EOWuZ2CyzvsH3BXn2F/6ihGzoHeG/jfas+x4GqnYoPVhm1SAlyjmWAAw+lqA5Cy1Pa51P/ODvmjhCFmyRas4XfyDHgTsbOD4qSn6lJtmzOVPI8IAT08cx+g3qn42lOgkNqOXaqAlzSDv75/JP2ujklrIP3W2P4KmvRDN1XiUsIcM8ktez0jLO1lEwCaM69QJ87untmMrT7/HiVy7+FiWuA3MczrGvF2/zePFvaY9o9G8Gap2KRikeb2jj0FiqjjJTWotFbCSuxHdPXtXgWcMUMrkxMfY4Umz9xDkFej3kqV7TJ4PMbSHKIILmbX//YMHXUOvLYeIzH/XCJA1swM02A013eZAKSX0fkvcxLf5W3xRKUB+legN+baFFpwLvY5w6CpGH3n09FxT0S4mJEXv5Z5nDdkvDrp++VCVI+bzXWM8W5F6JSA5MehM87wAgOcBNO2ANJ/r7ToKuQ2Cl90=</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;行到水穷处，坐看云起时&lt;br&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>react-virtualized库使用</title>
-    <link href="/2018/01/29/front-end/React/react-virtualized/"/>
-    <id>/2018/01/29/front-end/React/react-virtualized/</id>
-    <published>2018-01-29T03:42:35.000Z</published>
-    <updated>2018-02-28T15:37:44.651Z</updated>
-    
-    <content type="html"><![CDATA[<p>主要用于树的大数据展示。<br><a id="more"></a><br>参考库：<br><a href="https://github.com/diogofcunha/react-virtualized-tree" target="_blank" rel="external">diogofcunha/react-virtualized-tree</a><br>这个库将树的数据平铺后通过indent来生成树结构(其实还是<li>，只是视觉上不同)<br>TreeContainer将props传来的树形结构datasource使用getFlattenedTree转成list供Tree渲染，注意:<br><strong>当node未expanded的时候不返回node的children的list数据</strong></li></p>
-<p><a href="TreeContainer"></a><br><a href="https://fritz-c.github.io/react-sortable-tree/" target="_blank" rel="external">React Sortable Tree</a><br>原理与上同<br><a href="https://github.com/Lodin/react-vtree" target="_blank" rel="external">react-vtree</a></p>
-<p><a href="https://github.com/bvaughn/react-virtualized/issues/980" target="_blank" rel="external">Nested Autosizer / List</a>表明react-virtualized不能直接用于嵌套结构之中，必须把内部结构打平铺才能使用。antd的rc-tree在被使用时已经是深层嵌套的结构了，这时候再把TreeNode components打平铺太困难了…决定还是自己另起一棵树吧</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;主要用于树的大数据展示。&lt;br&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>正则记录</title>
-    <link href="/2017/12/21/front-end/basic/%E6%AD%A3%E5%88%99%E8%AE%B0%E5%BD%95/"/>
-    <id>/2017/12/21/front-end/basic/正则记录/</id>
-    <published>2017-12-21T06:37:36.000Z</published>
-    <updated>2018-02-28T15:36:15.680Z</updated>
-    
-    <content type="html"><![CDATA[<p>一些常用正则整理<br><a id="more"></a></p>
-<h2 id="中文"><a href="#中文" class="headerlink" title="中文"></a>中文</h2><p>[\u4e00-\u9fa5]+</p>
-<p>#<br>双引号内中文</p>
-<p>查找:</p>
-<ol>
-<li>“.*?”,匹配双引号</li>
-<li>“.<em>?[\u4e00-\u9fa5]+.</em>?”是否存在中文(必须在1的基础上筛选，否则会匹配到多句子)</li>
-<li>替换: </li>
-<li>Intl.get(‘system.service.offlineAuth’)</li>
-</ol>
-<h2 id="8-3系统记录"><a href="#8-3系统记录" class="headerlink" title="8.3系统记录"></a>8.3系统记录</h2><h3 id="定义与使用"><a href="#定义与使用" class="headerlink" title="定义与使用"></a>定义与使用</h3><p>定义: “PRODUCT_LICENSE_NOTICE” =&gt; ‘提示：如果您现在无法连接网络，请保存授权申请码：<br>，便于日后登录获取激活码。’<br>使用:  $this-&gt;view-&gt;notice = str_replace(““, $this-&gt;view-&gt;serial, $this-&gt;translate<em>system-&gt;</em>(‘PRODUCT_LICENSE_NOTICE’));</p>
-<p>定义: “SYSTEM_ADMIN_LOG” =&gt; “登录名:{username},类型描述:{usertype},姓名:{name},邮件:{email},手机:{mobile},ukey状态:{ukey}”,<br>使用: $dscr = $option . ‘ ‘ .$usertype . ‘ ‘ . str<em>replace(array(“{username}”, “{usertype}”, “{name}”, “{email}”, “{mobile}”, “{ukey}”), array($paramArray[‘username’], $paramArray[‘usertype’], $paramArray[‘name’], $paramArray[‘email’], $paramArray[‘mobile’], $uksta), $this-&gt;t-&gt;</em>(‘SYSTEM_ADMIN_LOG’));</p>
-<h3 id="转化使用"><a href="#转化使用" class="headerlink" title="转化使用"></a>转化使用</h3><ol>
-<li>array变对象<br>“(.<em>?_.</em>?)”\s=&gt;\s”(.*?)”<br>$1: ‘$2’</li>
-<li>连字变驼峰</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;一些常用正则整理&lt;br&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>work1212</title>
-    <link href="/2017/12/12/work/work1212/"/>
-    <id>/2017/12/12/work/work1212/</id>
-    <published>2017-12-12T08:37:05.000Z</published>
-    <updated>2018-02-28T14:58:09.662Z</updated>
-    
-    <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
-function doDecrypt(pwd, onError) {
-	console.log("in doDecrypt");
-	var txt = document.getElementById("enc_content").innerHTML;
-	var plantext;
-	try {
-	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
-		plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {onError(err);}
-		return;
-	}
-	document.getElementById("enc_content").innerHTML = plaintext;
-	document.getElementById("enc_content").style.display = "block";
-   document.getElementById("enc_passwd").style.display = "none";
-}
-</script>
-<div id="enc_content" style="display:none">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</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;流水账&lt;br&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>171211</title>
-    <link href="/2017/12/11/dailyDiary/2017/171211/"/>
-    <id>/2017/12/11/dailyDiary/2017/171211/</id>
-    <published>2017-12-11T01:38:57.000Z</published>
-    <updated>2018-02-28T14:58:09.646Z</updated>
-    
-    <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
-function doDecrypt(pwd, onError) {
-	console.log("in doDecrypt");
-	var txt = document.getElementById("enc_content").innerHTML;
-	var plantext;
-	try {
-	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
-		plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {onError(err);}
-		return;
-	}
-	document.getElementById("enc_content").innerHTML = plaintext;
-	document.getElementById("enc_content").style.display = "block";
-   document.getElementById("enc_passwd").style.display = "none";
-}
-</script>
-<div id="enc_content" style="display:none">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</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;(っ•̀ω•́)っ✎⁾⁾ 我爱学习&lt;br&gt;
-    
-    </summary>
-    
-      <category term="dailyDiary" scheme="/categories/dailyDiary/"/>
-    
-    
-      <category term="morningDiary" scheme="/tags/morningDiary/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>171206</title>
-    <link href="/2017/12/06/dailyDiary/2017/171206/"/>
-    <id>/2017/12/06/dailyDiary/2017/171206/</id>
-    <published>2017-12-06T08:32:53.000Z</published>
-    <updated>2018-02-28T14:58:09.646Z</updated>
-    
-    <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>
-function doDecrypt(pwd, onError) {
-	console.log("in doDecrypt");
-	var txt = document.getElementById("enc_content").innerHTML;
-	var plantext;
-	try {
-	  	var bytes = CryptoJS.AES.decrypt(txt, pwd);
-		plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {onError(err);}
-		return;
-	}
-	document.getElementById("enc_content").innerHTML = plaintext;
-	document.getElementById("enc_content").style.display = "block";
-   document.getElementById("enc_passwd").style.display = "none";
-}
-</script>
-<div id="enc_content" style="display:none">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</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;流水账&lt;br&gt;
-    
-    </summary>
-    
-      <category term="dailyDiary" scheme="/categories/dailyDiary/"/>
-    
-    
-      <category term="morningDiary" scheme="/tags/morningDiary/"/>
     
   </entry>
   

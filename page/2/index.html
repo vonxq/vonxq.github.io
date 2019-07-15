@@ -6,15 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="">
-  <title>博观而约取,厚积而薄发</title>
+  <title>走四方</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="博观而约取,厚积而薄发">
+<meta property="og:title" content="走四方">
 <meta property="og:url" content="/page/2/index.html">
-<meta property="og:site_name" content="博观而约取,厚积而薄发">
+<meta property="og:site_name" content="走四方">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博观而约取,厚积而薄发">
+<meta name="twitter:title" content="走四方">
   
   
     <link rel="icon" href="/favicon.png">
@@ -47,7 +47,7 @@
 		  <h1 class="header-author"><a href="/">Anne</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">天行健，君子以自强不息。地势坤，君子以厚德载物。</p>
+		<p class="header-subtitle">路迢迢，水长长</p>
 		
 
 		<nav class="header-menu">
@@ -105,7 +105,7 @@
 			  <h1 class="header-author js-header-author">Anne</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>天行健，君子以自强不息。地势坤，君子以厚德载物。<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>路迢迢，水长长<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -156,29 +156,438 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-dailyDiary/2018/180305" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-front-end/basic/js/event" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/05/dailyDiary/2018/180305/">180305</a>
+      <a class="article-title" href="/2019/04/03/front-end/basic/js/event/">JS事件机制</a>
     </h1>
   
 
         
-        <a href="/2018/03/05/dailyDiary/2018/180305/" class="archive-article-date">
-  	<time datetime="2018-03-05T15:48:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-05</time>
+        <a href="/2019/04/03/front-end/basic/js/event/" class="archive-article-date">
+  	<time datetime="2019-04-03T07:32:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Don’t be shy, just try.<br>Go Go Go, Let’s go!<br>
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 监听subscribe，可有多个listener</span></div><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'needReload'</span>, (event) =&gt; &#123;</div><div class="line">  <span class="comment">// event.detail可得到传参</span></div><div class="line">  <span class="comment">// 相应处理</span></div><div class="line">&#125;)</div><div class="line"><span class="comment">// dispatch一个event， detail字段用于传参</span></div><div class="line"><span class="built_in">window</span>.dispatchEvent(<span class="keyword">new</span> CustomEvent(<span class="string">'needReload'</span>, &#123; <span class="attr">detail</span>: <span class="string">'123'</span> &#125;))</div><div class="line"><span class="comment">// remove一个listener</span></div><div class="line"> <span class="built_in">window</span>.removeEventListener(<span class="string">'needReload'</span>, <span class="keyword">this</span>.needReload)</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/03/front-end/basic/js/event/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
         
-          <a class="article-more-a" href="/2018/03/05/dailyDiary/2018/180305/#more">more >></a>
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-front-end/basic/css/css" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/28/front-end/basic/css/css/">Cascading Style Sheets</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/28/front-end/basic/css/css/" class="archive-article-date">
+  	<time datetime="2019-03-28T02:37:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>CSS也是很重要的<br>
+        
+          <a class="article-more-a" href="/2019/03/28/front-end/basic/css/css/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/28/front-end/basic/css/css/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-dailyDiary/2019/2019-03-28" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/28/dailyDiary/2019/2019-03-28/">2019.03.28</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/28/dailyDiary/2019/2019-03-28/" class="archive-article-date">
+  	<time datetime="2019-03-28T02:28:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>青春须早为，岂能长少年。<br>
+        
+          <a class="article-more-a" href="/2019/03/28/dailyDiary/2019/2019-03-28/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">morningDiary</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/dailyDiary//" class="article-tag-list-link color1">dailyDiary</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/28/dailyDiary/2019/2019-03-28/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-summary/面试小结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/06/summary/面试小结/">面试小结</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/06/summary/面试小结/" class="archive-article-date">
+  	<time datetime="2019-03-06T14:39:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>啦啦啦<br>
+        
+          <a class="article-more-a" href="/2019/03/06/summary/面试小结/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/06/summary/面试小结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-front-end/advance/asynchronous" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/06/front-end/advance/asynchronous/">JS异步编程</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/06/front-end/advance/asynchronous/" class="archive-article-date">
+  	<time datetime="2019-03-06T14:28:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Promise Generator async await<br>
+        
+          <a class="article-more-a" href="/2019/03/06/front-end/advance/asynchronous/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/06/front-end/advance/asynchronous/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-front-end/advance/interview" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/06/front-end/advance/interview/">面试常见问题</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/06/front-end/advance/interview/" class="archive-article-date">
+  	<time datetime="2019-03-06T14:28:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>几个问题<br>
+        
+          <a class="article-more-a" href="/2019/03/06/front-end/advance/interview/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/06/front-end/advance/interview/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Plan/fight" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/03/Plan/fight/">新起点</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/03/Plan/fight/" class="archive-article-date">
+  	<time datetime="2018-12-03T14:58:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>欲穷千里目，更上一层楼。<br>
+        
+          <a class="article-more-a" href="/2018/12/03/Plan/fight/#more">more >></a>
         
       
 
@@ -213,7 +622,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/05/dailyDiary/2018/180305/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/03/Plan/fight/">展开全文 >></a>
         </p>
       
 
@@ -243,29 +652,29 @@
 
 
   
-    <article id="post-dailyDiary/2018/180304" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-front-end/React/record/ContextMenu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/04/dailyDiary/2018/180304/">180304</a>
+      <a class="article-title" href="/2018/09/09/front-end/React/record/ContextMenu/">ContextMenu，自定义右键菜单</a>
     </h1>
   
 
         
-        <a href="/2018/03/04/dailyDiary/2018/180304/" class="archive-article-date">
-  	<time datetime="2018-03-04T15:05:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-04</time>
+        <a href="/2018/09/09/front-end/React/record/ContextMenu/" class="archive-article-date">
+  	<time datetime="2018-09-08T16:07:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Don’t be shy, just try.<br>Go Go Go, Let’s go!<br>
+        <p>基本用法:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;span onContextMenu=&#123;contextHandler&#125;&gt;</div><div class="line">contextHandler = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</div><div class="line">    event.preventDefault();<span class="comment">// 可禁用掉默认右键菜单</span></div><div class="line">    ...一系列处理</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
         
-          <a class="article-more-a" href="/2018/03/04/dailyDiary/2018/180304/#more">more >></a>
+          <a class="article-more-a" href="/2018/09/09/front-end/React/record/ContextMenu/#more">more >></a>
         
       
 
@@ -279,28 +688,17 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Plan</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Plan//" class="article-tag-list-link color5">Plan</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/04/dailyDiary/2018/180304/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/09/front-end/React/record/ContextMenu/">展开全文 >></a>
         </p>
       
 
@@ -330,94 +728,30 @@
 
 
   
-    <article id="post-dailyDiary/2018/GOODBYE" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-front-end/React/record/createPortal" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/04/dailyDiary/2018/GOODBYE/">一点碎碎念</a>
+      <a class="article-title" href="/2018/09/08/front-end/React/record/createPortal/">createPortal</a>
     </h1>
   
 
         
-        <a href="/2018/03/04/dailyDiary/2018/GOODBYE/" class="archive-article-date">
-  	<time datetime="2018-03-04T14:41:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-04</time>
+        <a href="/2018/09/08/front-end/React/record/createPortal/" class="archive-article-date">
+  	<time datetime="2018-09-08T15:53:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>.<br>
+        <p>基本用法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ReactDOM.createPortal(child, container)</div></pre></td></tr></table></figure></p>
+<p><a href="https://reactjs.org/docs/portals.html" target="_blank" rel="external">Portals-React官方文档</a><br>
         
-          <a class="article-more-a" href="/2018/03/04/dailyDiary/2018/GOODBYE/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/04/dailyDiary/2018/GOODBYE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-dailyDiary/2018/180222" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/22/dailyDiary/2018/180222/">180222</a>
-    </h1>
-  
-
-        
-        <a href="/2018/02/22/dailyDiary/2018/180222/" class="archive-article-date">
-  	<time datetime="2018-02-22T07:26:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>老之前，我还是得认真活一活~<br>
-        
-          <a class="article-more-a" href="/2018/02/22/dailyDiary/2018/180222/#more">more >></a>
+          <a class="article-more-a" href="/2018/09/08/front-end/React/record/createPortal/#more">more >></a>
         
       
 
@@ -431,28 +765,17 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">morningDiary</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/dailyDiary//" class="article-tag-list-link color1">dailyDiary</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/22/dailyDiary/2018/180222/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/08/front-end/React/record/createPortal/">展开全文 >></a>
         </p>
       
 
@@ -482,29 +805,29 @@
 
 
   
-    <article id="post-essay/happy-2018" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-essay/分割线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/22/essay/happy-2018/">happy 2018</a>
+      <a class="article-title" href="/2018/09/08/essay/分割线/">分割线</a>
     </h1>
   
 
         
-        <a href="/2018/02/22/essay/happy-2018/" class="archive-article-date">
-  	<time datetime="2018-02-22T07:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-22</time>
+        <a href="/2018/09/08/essay/分割线/" class="archive-article-date">
+  	<time datetime="2018-09-08T15:27:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>行到水穷处，坐看云起时<br>
+        <p>感觉到了个十字路口了<br>
         
-          <a class="article-more-a" href="/2018/02/22/essay/happy-2018/#more">more >></a>
+          <a class="article-more-a" href="/2018/09/08/essay/分割线/#more">more >></a>
         
       
 
@@ -517,376 +840,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/22/essay/happy-2018/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-front-end/React/react-virtualized" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/29/front-end/React/react-virtualized/">react-virtualized库使用</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/29/front-end/React/react-virtualized/" class="archive-article-date">
-  	<time datetime="2018-01-29T03:42:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>主要用于树的大数据展示。<br>
-        
-          <a class="article-more-a" href="/2018/01/29/front-end/React/react-virtualized/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/29/front-end/React/react-virtualized/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-front-end/basic/正则记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/21/front-end/basic/正则记录/">正则记录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/21/front-end/basic/正则记录/" class="archive-article-date">
-  	<time datetime="2017-12-21T06:37:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一些常用正则整理<br>
-        
-          <a class="article-more-a" href="/2017/12/21/front-end/basic/正则记录/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/21/front-end/basic/正则记录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-work/work1212" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/12/work/work1212/">work1212</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/12/work/work1212/" class="archive-article-date">
-  	<time datetime="2017-12-12T08:37:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>流水账<br>
-        
-          <a class="article-more-a" href="/2017/12/12/work/work1212/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/12/work/work1212/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-dailyDiary/2017/171211" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/11/dailyDiary/2017/171211/">171211</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/11/dailyDiary/2017/171211/" class="archive-article-date">
-  	<time datetime="2017-12-11T01:38:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>(っ•̀ω•́)っ✎⁾⁾ 我爱学习<br>
-        
-          <a class="article-more-a" href="/2017/12/11/dailyDiary/2017/171211/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">morningDiary</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/dailyDiary//" class="article-tag-list-link color1">dailyDiary</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/11/dailyDiary/2017/171211/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-dailyDiary/2017/171206" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/06/dailyDiary/2017/171206/">171206</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/06/dailyDiary/2017/171206/" class="archive-article-date">
-  	<time datetime="2017-12-06T08:32:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>流水账<br>
-        
-          <a class="article-more-a" href="/2017/12/06/dailyDiary/2017/171206/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">morningDiary</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/dailyDiary//" class="article-tag-list-link color1">dailyDiary</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/06/dailyDiary/2017/171206/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/08/essay/分割线/">展开全文 >></a>
         </p>
       
 
@@ -918,7 +872,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -930,7 +884,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Anne
+    		&copy; 2019 Anne
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1021,23 +975,15 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Summery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Work</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Tool</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Summery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1049,11 +995,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1093,11 +1047,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Front-end</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color5">Front-end</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1117,11 +1071,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Drag-dnd</a>
+                <a href="javascript:void(0)" class="js-tag color5">Antd</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Antd</a>
+                <a href="javascript:void(0)" class="js-tag color4">Drag-dnd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1129,11 +1083,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
             
             <div class="clearfix"></div>
