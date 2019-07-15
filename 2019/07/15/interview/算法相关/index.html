@@ -6,19 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="">
-  <title>面试小结 | 走四方</title>
+  <title>走四方</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="啦啦啦">
-<meta property="og:type" content="article">
-<meta property="og:title" content="面试小结">
-<meta property="og:url" content="/2019/03/06/summary/面试小结/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="走四方">
+<meta property="og:url" content="/2019/07/15/interview/算法相关/index.html">
 <meta property="og:site_name" content="走四方">
-<meta property="og:description" content="啦啦啦">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-07-15T13:41:10.916Z">
+<meta property="og:updated_time" content="2019-07-15T13:54:22.801Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="面试小结">
-<meta name="twitter:description" content="啦啦啦">
+<meta name="twitter:title" content="走四方">
   
   
     <link rel="icon" href="/favicon.png">
@@ -158,58 +155,12 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-summary/面试小结" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-interview/算法相关" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      面试小结
-    </h1>
-  
-
-        
-        <a href="/2019/03/06/summary/面试小结/" class="archive-article-date">
-  	<time datetime="2019-03-06T14:39:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-06</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>啦啦啦<br><a id="more"></a></p>
-<h2 id="常见面试题"><a href="#常见面试题" class="headerlink" title="常见面试题"></a>常见面试题</h2><h3 id="Promise实现原理"><a href="#Promise实现原理" class="headerlink" title="Promise实现原理"></a>Promise实现原理</h3><ul>
-<li>自己写一个Promise</li>
-<li>异步实现<h3 id="JS实现倒计时"><a href="#JS实现倒计时" class="headerlink" title="JS实现倒计时"></a>JS实现倒计时</h3>实现倒计时的几种方式:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// setInterval</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">countDown</span> (<span class="params">counter</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> clear = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(counter--)</div><div class="line">    <span class="keyword">if</span> (counter &lt; <span class="number">0</span>) &#123;</div><div class="line">      clearInterval(clear)</div><div class="line">    &#125;</div><div class="line">  &#125;, <span class="number">1000</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Generator + setTimeOut +递归</span></div><div class="line"><span class="function"><span class="keyword">function</span> *<span class="title">nextId</span> (<span class="params">maxId = <span class="number">-1</span></span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> count = <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span>(count &lt;= maxId) &#123;</div><div class="line">    <span class="keyword">yield</span> count ++</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">countDownWithLogger</span> (<span class="params">logger</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> next = logger.next()</div><div class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">if</span> (!next.done) &#123;</div><div class="line">      <span class="built_in">console</span>.log(next.value)</div><div class="line">      countDownWithLogger(logger)</div><div class="line">    &#125;</div><div class="line">  &#125;, <span class="number">1000</span>)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">countDown</span> (<span class="params">counter</span>) </span>&#123;</div><div class="line">  countDownWithLogger(nextId(counter))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// promise</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">countDown</span> (<span class="params">max</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> p = <span class="built_in">Promise</span>.resolve(max - <span class="number">1</span>)</div><div class="line">  <span class="keyword">let</span> i = <span class="number">0</span></div><div class="line">  <span class="keyword">while</span>(i &lt;= max - <span class="number">1</span>) &#123;</div><div class="line">    i++</div><div class="line">    p = p.then(<span class="function">(<span class="params">count</span>) =&gt;</span> &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">          setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            <span class="built_in">console</span>.log(count--)</div><div class="line">            resolve(count)</div><div class="line">          &#125;, <span class="number">1000</span>)</div><div class="line">      &#125;)</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">console</span>.log(max) <span class="comment">// 第一个值立即输出</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// async await</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">logCount</span> (<span class="params">count</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</div><div class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">          <span class="built_in">console</span>.log(count--)</div><div class="line">          resolve(count);</div><div class="line">      &#125;, <span class="number">1000</span>)</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">countDown</span> (<span class="params">count</span>) </span>&#123;</div><div class="line">  <span class="keyword">while</span>(count &gt;= <span class="number">0</span>) &#123;</div><div class="line">    count = <span class="keyword">await</span> logCount(count) </div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">countDown(<span class="number">4</span>)</div></pre></td></tr></table></figure>
-<h3 id="REDUX原理"><a href="#REDUX原理" class="headerlink" title="REDUX原理"></a>REDUX原理</h3><h3 id="双向绑定原理"><a href="#双向绑定原理" class="headerlink" title="双向绑定原理"></a>双向绑定原理</h3><p>  JS实现双向绑定</p>
-<h3 id="await原理"><a href="#await原理" class="headerlink" title="await原理"></a>await原理</h3><h3 id="项目经验"><a href="#项目经验" class="headerlink" title="项目经验"></a>项目经验</h3><h3 id="闭包作用，缺点？"><a href="#闭包作用，缺点？" class="headerlink" title="闭包作用，缺点？"></a>闭包作用，缺点？</h3><p>带环境的函数，可以访问到定义环境作用域的内容<br>缺点：受环境影响函数执行结果不同，环境作用域不会被垃圾回收机制回收，内存浪费</p>
-<h3 id="深浅拷贝的区别和用途？"><a href="#深浅拷贝的区别和用途？" class="headerlink" title="深浅拷贝的区别和用途？"></a>深浅拷贝的区别和用途？</h3><p>简单数据结构都是值拷贝，复杂数据区别:<br>深拷贝：值拷贝，不会相互影响<br>浅拷贝: 引用拷贝，操作同一块内存区域，相互影响</p>
-<h3 id="CSS-有哪些实现布局的方式？"><a href="#CSS-有哪些实现布局的方式？" class="headerlink" title="CSS 有哪些实现布局的方式？"></a>CSS 有哪些实现布局的方式？</h3><pre><code>[CSS常见布局方式](http://baijiahao.baidu.com/s?id=1580578435186877828&amp;wfr=spider&amp;for=pc)
-使用BFC隐藏属性
-float + margin
-absolute + margin
-圣杯布局
-双飞翼布局
-flex布局
-</code></pre><p>  以上5种方式都可以实现两栏或三栏布局</p>
-<h3 id="CSS-命名冲突如何解决？"><a href="#CSS-命名冲突如何解决？" class="headerlink" title="CSS 命名冲突如何解决？"></a>CSS 命名冲突如何解决？</h3><p>css-module</p>
-<h3 id="介绍下-ES-里的-Generator-是怎么运行的？和-async-await-有何区别？"><a href="#介绍下-ES-里的-Generator-是怎么运行的？和-async-await-有何区别？" class="headerlink" title="介绍下 ES 里的 Generator 是怎么运行的？和 async + await 有何区别？"></a>介绍下 ES 里的 Generator 是怎么运行的？和 async + await 有何区别？</h3><p><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/00143450083887673122b45a4414333ac366c3c935125e7000" target="_blank" rel="external">generator</a></p>
-<p>​ &gt; 从计算机角度看，生成器是一种类协程或半协程，它提供了一种可以通过特定语句或方法使其执行对象暂停的功能。<br>​ Generator函数，返回一个部署了Iterator接口的遍历器对象，用来操作内部指针。以后，每次调用遍历器对象的next方法，就会返回一个有着value和done两个属性的对象。value属性表示当前的内部状态的值，是yield语句后面那个表达式的值；done属性是一个布尔值，表示是否遍历结束。</p>
-<p>await的语义是:必须等到await后面跟的Promise有了返回值，才能继续执行await的下一行代码<br>generator由function<em>定义（注意多出的</em>号），并且，除了return语句，还可以用yield返回多次。<br>调用generator对象有两个方法</p>
-<pre><code>1. 一是不断地调用generator对象的next()方法（得到{value, done}）
-</code></pre><ol>
-<li>for … of循环迭代generator对象</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">logAfterSeconds</span> (<span class="params">seconds = <span class="number">1</span>, content</span>) </span>&#123;</div><div class="line">  setTimeOut(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(content)</div><div class="line">  &#125;, seconds * <span class="number">1000</span>)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> *<span class="title">nextId</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> count = <span class="number">1</span>;</div><div class="line">  <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</div><div class="line">    <span class="keyword">yield</span> count ++</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="React-里的-key-有什么用？"><a href="#React-里的-key-有什么用？" class="headerlink" title="React 里的 key 有什么用？"></a>React 里的 key 有什么用？</h3><pre><code>组件的唯一标示，用于virtual dom判断
-</code></pre><h3 id="React-里什么时候用-Context？"><a href="#React-里什么时候用-Context？" class="headerlink" title="React 里什么时候用 Context？"></a>React 里什么时候用 Context？</h3><pre><code>组件嵌套层级深且有数据共享情况时
-</code></pre><h3 id="render-props-是什么？什么时候用？和Hoc的异同"><a href="#render-props-是什么？什么时候用？和Hoc的异同" class="headerlink" title="render props 是什么？什么时候用？和Hoc的异同"></a>render props 是什么？什么时候用？和Hoc的异同</h3><h3 id="路由如何做权限校验？"><a href="#路由如何做权限校验？" class="headerlink" title="路由如何做权限校验？"></a>路由如何做权限校验？</h3><h3 id="SSR-的原理是什么？"><a href="#SSR-的原理是什么？" class="headerlink" title="SSR 的原理是什么？"></a>SSR 的原理是什么？</h3>
+        
       
 
       
@@ -288,7 +239,7 @@ flex布局
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http:/2019/03/06/summary/面试小结/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http:/2019/07/15/interview/算法相关/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -302,18 +253,9 @@ flex布局
   
 <nav id="article-nav">
   
-    <a href="/2019/03/28/dailyDiary/2019/2019-03-28/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          2019.03.28
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/03/06/front-end/advance/asynchronous/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JS异步编程</div>
+    <a href="/2019/04/12/front-end/basic/object-proxy/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">object-proxy</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -340,7 +282,7 @@ flex布局
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常见面试题"><span class="toc-number">1.</span> <span class="toc-text">常见面试题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise实现原理"><span class="toc-number">1.1.</span> <span class="toc-text">Promise实现原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS实现倒计时"><span class="toc-number">1.2.</span> <span class="toc-text">JS实现倒计时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#REDUX原理"><span class="toc-number">1.3.</span> <span class="toc-text">REDUX原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双向绑定原理"><span class="toc-number">1.4.</span> <span class="toc-text">双向绑定原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#await原理"><span class="toc-number">1.5.</span> <span class="toc-text">await原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目经验"><span class="toc-number">1.6.</span> <span class="toc-text">项目经验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#闭包作用，缺点？"><span class="toc-number">1.7.</span> <span class="toc-text">闭包作用，缺点？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#深浅拷贝的区别和用途？"><span class="toc-number">1.8.</span> <span class="toc-text">深浅拷贝的区别和用途？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-有哪些实现布局的方式？"><span class="toc-number">1.9.</span> <span class="toc-text">CSS 有哪些实现布局的方式？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-命名冲突如何解决？"><span class="toc-number">1.10.</span> <span class="toc-text">CSS 命名冲突如何解决？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍下-ES-里的-Generator-是怎么运行的？和-async-await-有何区别？"><span class="toc-number">1.11.</span> <span class="toc-text">介绍下 ES 里的 Generator 是怎么运行的？和 async + await 有何区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#React-里的-key-有什么用？"><span class="toc-number">1.12.</span> <span class="toc-text">React 里的 key 有什么用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#React-里什么时候用-Context？"><span class="toc-number">1.13.</span> <span class="toc-text">React 里什么时候用 Context？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#render-props-是什么？什么时候用？和Hoc的异同"><span class="toc-number">1.14.</span> <span class="toc-text">render props 是什么？什么时候用？和Hoc的异同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#路由如何做权限校验？"><span class="toc-number">1.15.</span> <span class="toc-text">路由如何做权限校验？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSR-的原理是什么？"><span class="toc-number">1.16.</span> <span class="toc-text">SSR 的原理是什么？</span></a></li></ol></li></ol>
+                    目录，不存在的…
                     </div>
                 </span>
             </div>
@@ -472,19 +414,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Network</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Network</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -532,11 +474,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color5">Front-end</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Front-end</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
