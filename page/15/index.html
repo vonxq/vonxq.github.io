@@ -156,30 +156,46 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-work/work" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-front-end/React/TechStack/react-router" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/15/work/work/">工作中的常用软件使用</a>
+      <a class="article-title" href="/2017/08/14/front-end/React/TechStack/react-router/">react-router学习笔记(未完成整理)</a>
     </h1>
   
 
         
-        <a href="/2017/08/15/work/work/" class="archive-article-date">
-  	<time datetime="2017-08-15T03:14:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-15</time>
+        <a href="/2017/08/14/front-end/React/TechStack/react-router/" class="archive-article-date">
+  	<time datetime="2017-08-14T09:20:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>来公司也已经整整一个月了，实际工程工作流程其实不是很清晰，先记一下已经学的东西吧<br>
-        
-          <a class="article-more-a" href="/2017/08/15/work/work/#more">more >></a>
-        
+        <p><a href="http://react-guide.github.io/react-router-cn/docs/API.html" target="_blank" rel="noopener">React中文文档——API</a></p>
+<h2 id="概念简介"><a href="#概念简介" class="headerlink" title="概念简介"></a>概念简介</h2><p><a href="http://www.jianshu.com/p/e3adc9b5f75c" target="_blank" rel="noopener">初探 React Router 4.0</a><br>上面链接详细讲解了React-router相关npm包的区别与联系</p>
+<blockquote>
+<p>react-router React Router 核心<br>react-router-dom 用于 DOM 绑定的 React Router(包含react-router)<br>react-router-native 用于 React Native 的 React Router<br>react-router-redux React Router 和 Redux 的集成<br>react-router-config 静态路由配置的小助手</p>
+</blockquote>
+<p>由上可知，若需要对dom操作，我们可以只导入react-router-dom<br>FIXME: dva使用的是ract-router，但<link> <browserrouter>这些组件也可以用,why???<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save react-router-dom</span><br></pre></td></tr></table></figure></browserrouter></p>
+<h2 id="react-router内部组件介绍"><a href="#react-router内部组件介绍" class="headerlink" title="react-router内部组件介绍"></a>react-router内部组件介绍</h2><p>推荐<a href="http://www.ruanyifeng.com/blog/2016/05/react_router.html?utm_source=tool.lu" target="_blank" rel="noopener">阮一峰React-router教程</a>，简单明了介绍了ROUTER组件的用法及相关参数配置</p>
+<h3 id="Router"><a href="#Router" class="headerlink" title="Router"></a>Router</h3><p>放置Route的容器，也可以嵌套其他组件，按序摆置，也可被嵌套进其他组件<br>要Routing的组件必须在Router中，可与Route同级也可包含route<br>示例：<hashrouter history="{hashHistory}"><br>History:Router 中有一个属性 history 的规则，这边使用我们使用 hashHistory，使用 routing 将由 hash（#）变化决定。例如：当使用者拜访 <a href="http://www.github.com/，实际看到的会是" target="_blank" rel="noopener">http://www.github.com/，实际看到的会是</a> <a href="http://www.github.com/#/。" target="_blank" rel="noopener">http://www.github.com/#/。</a><br>  A. hashHistory会通过 hash 进行对应。好处是简单易用，不用多余设定。<br>  B. browserHistory<br>      适用于伺服器端渲染，但需要设定伺服器端避免处理错误，这部份我们会在后面的章节详细说明。注意的是若是使用 Webpack 开发用伺服器需加上 –history-api-fallback<br>  C. createMemoryHistory 主要用于伺服器渲染，使用上会建立一个存在记忆体的 history 物件，不会修改浏览器的网址位置。</hashrouter></p>
+<h3 id="Route负责URL和对应的组件关系，可有多个"><a href="#Route负责URL和对应的组件关系，可有多个" class="headerlink" title="Route负责URL和对应的组件关系，可有多个"></a>Route负责URL和对应的组件关系，可有多个</h3><p>示例：<route path="/inbox" component="{Inbox}"><br>一般嵌套在Router中，也可嵌套于其他组件中，相当于添加到组件末端<br>path: Route的一个属性,是对应 URL 的规则。和Link组件的to属性中的路径相互对应<br>component:属性,指定此路由目的组件</route></p>
+<h3 id="IndexRoute"><a href="#IndexRoute" class="headerlink" title="IndexRoute"></a>IndexRoute</h3><p>由于 / 情况下 App 组件对应的 this.props.children会是undefinded，所以使用 IndexRoute 来解决对应问题。这样当 URL 为 / 时将会对应到 Home 组件。不过要注意的是 IndexRoute 没有 path 属性。</p>
+<h3 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h3><p>Link 组件主要用于点击后连接转换，可以想成是 <a> 超连接的 React 版本。若是希望当点击时候有对应的 css style，可以使用 activeStyle、activeClassName 去做设定。to属性用于指定链接地址</a></p>
+<h3 id="IndexLink"><a href="#IndexLink" class="headerlink" title="IndexLink"></a>IndexLink</h3><p>IndexLink 主要是了处理 index 用途，特别注意当 child route actived 时，parent route 也会 actived。所以我们回首页的连接使用 <indexlink> 内部的 onlyActiveOnIndex 属性来解决这个问题。</indexlink></p>
+<h3 id="Redirect、IndexRedirect"><a href="#Redirect、IndexRedirect" class="headerlink" title="Redirect、IndexRedirect"></a>Redirect、IndexRedirect</h3><p>这边虽然没有用到，但若读者有需要使用到连接跳转的话可以参考这两个组件，用法类似于 Route 和 IndexRedirect。</p>
+<h2 id="组件间参数传递"><a href="#组件间参数传递" class="headerlink" title="组件间参数传递"></a>组件间参数传递</h2><p><a href="http://blog.csdn.net/qq_23158083/article/details/68488831" target="_blank" rel="noopener">react router页面传值的三种方法</a><br>tips: </p>
+<blockquote>
+<p>path对应router定义的components中可以取到this.props.location</p>
+</blockquote>
+<h2 id="组件使用实例"><a href="#组件使用实例" class="headerlink" title="组件使用实例"></a>组件使用实例</h2><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><a href="https://github.com/vonxq/react-router-demo" target="_blank" rel="noopener">react-router-demo  github仓库</a></p>
+<h3 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h3><p>推荐<a href="http://www.ruanyifeng.com/blog/2016/05/react_router.html?utm_source=tool.lu" target="_blank" rel="noopener">阮一峰React-router教程</a>，简单明了介绍了ROUTER组件的用法及相关参数配置<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 组件本身可直接被渲染</span></span><br><span class="line"><span class="comment">// ROuter为容器，路由由Route定义，path可匹配通配符</span></span><br><span class="line"><span class="comment">// 路由嵌套1</span></span><br><span class="line">&lt;Router history=&#123;hashHistory&#125;&gt;</span><br><span class="line">  &lt;Route path=<span class="string">"/"</span> component=&#123;App&#125;&gt;</span><br><span class="line">    &lt;Route path=<span class="string">"/repos"</span> component=&#123;Repos&#125;/&gt;</span><br><span class="line">    &lt;Route path=<span class="string">"/about"</span> component=&#123;About&#125;/&gt;</span><br><span class="line">  &lt;<span class="regexp">/Route&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>Router&gt;</span><br><span class="line"><span class="comment">//路由嵌套2（在routes中传入）</span></span><br><span class="line"><span class="keyword">let</span> routes = <span class="xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">"/"</span> <span class="attr">component</span>=<span class="string">&#123;App&#125;</span>&gt;</span></span></span><br><span class="line">  &lt;Route path="/repos" component=&#123;Repos&#125;/&gt;</span><br><span class="line">  &lt;Route path="/about" component=&#123;About&#125;/&gt;</span><br><span class="line">&lt;/Route&gt;;</span><br><span class="line">&lt;Router routes=&#123;routes&#125; history=&#123;browserHistory&#125;/&gt;</span><br><span class="line">// App定义，必须的</span><br><span class="line">export default React.createClass(&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">          // this.props.children子组件</span><br><span class="line">    return &lt;div&gt;</span><br><span class="line">      &#123;this.props.children&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+
       
 
       
@@ -192,7 +208,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Tool</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
         		</li>
       		
 		</ul>
@@ -204,7 +220,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Work//" class="article-tag-list-link color5">Work</a>
+        			<a href="/categories/Front-end//" class="article-tag-list-link color5">Front-end</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Front-end/React//" class="article-tag-list-link color1">React</a>
         		</li>
       		
 		</ul>
@@ -213,7 +233,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/15/work/work/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/08/14/front-end/React/TechStack/react-router/">展开全文 >></a>
         </p>
       
 
@@ -305,113 +325,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/08/14/front-end/React/record/ReactProject/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-front-end/React/TechStack/react-router" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/14/front-end/React/TechStack/react-router/">react-router学习笔记(未完成整理)</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/14/front-end/React/TechStack/react-router/" class="archive-article-date">
-  	<time datetime="2017-08-14T09:20:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://react-guide.github.io/react-router-cn/docs/API.html" target="_blank" rel="noopener">React中文文档——API</a></p>
-<h2 id="概念简介"><a href="#概念简介" class="headerlink" title="概念简介"></a>概念简介</h2><p><a href="http://www.jianshu.com/p/e3adc9b5f75c" target="_blank" rel="noopener">初探 React Router 4.0</a><br>上面链接详细讲解了React-router相关npm包的区别与联系</p>
-<blockquote>
-<p>react-router React Router 核心<br>react-router-dom 用于 DOM 绑定的 React Router(包含react-router)<br>react-router-native 用于 React Native 的 React Router<br>react-router-redux React Router 和 Redux 的集成<br>react-router-config 静态路由配置的小助手</p>
-</blockquote>
-<p>由上可知，若需要对dom操作，我们可以只导入react-router-dom<br>FIXME: dva使用的是ract-router，但<link> <browserrouter>这些组件也可以用,why???<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save react-router-dom</span><br></pre></td></tr></table></figure></browserrouter></p>
-<h2 id="react-router内部组件介绍"><a href="#react-router内部组件介绍" class="headerlink" title="react-router内部组件介绍"></a>react-router内部组件介绍</h2><p>推荐<a href="http://www.ruanyifeng.com/blog/2016/05/react_router.html?utm_source=tool.lu" target="_blank" rel="noopener">阮一峰React-router教程</a>，简单明了介绍了ROUTER组件的用法及相关参数配置</p>
-<h3 id="Router"><a href="#Router" class="headerlink" title="Router"></a>Router</h3><p>放置Route的容器，也可以嵌套其他组件，按序摆置，也可被嵌套进其他组件<br>要Routing的组件必须在Router中，可与Route同级也可包含route<br>示例：<hashrouter history="{hashHistory}"><br>History:Router 中有一个属性 history 的规则，这边使用我们使用 hashHistory，使用 routing 将由 hash（#）变化决定。例如：当使用者拜访 <a href="http://www.github.com/，实际看到的会是" target="_blank" rel="noopener">http://www.github.com/，实际看到的会是</a> <a href="http://www.github.com/#/。" target="_blank" rel="noopener">http://www.github.com/#/。</a><br>  A. hashHistory会通过 hash 进行对应。好处是简单易用，不用多余设定。<br>  B. browserHistory<br>      适用于伺服器端渲染，但需要设定伺服器端避免处理错误，这部份我们会在后面的章节详细说明。注意的是若是使用 Webpack 开发用伺服器需加上 –history-api-fallback<br>  C. createMemoryHistory 主要用于伺服器渲染，使用上会建立一个存在记忆体的 history 物件，不会修改浏览器的网址位置。</hashrouter></p>
-<h3 id="Route负责URL和对应的组件关系，可有多个"><a href="#Route负责URL和对应的组件关系，可有多个" class="headerlink" title="Route负责URL和对应的组件关系，可有多个"></a>Route负责URL和对应的组件关系，可有多个</h3><p>示例：<route path="/inbox" component="{Inbox}"><br>一般嵌套在Router中，也可嵌套于其他组件中，相当于添加到组件末端<br>path: Route的一个属性,是对应 URL 的规则。和Link组件的to属性中的路径相互对应<br>component:属性,指定此路由目的组件</route></p>
-<h3 id="IndexRoute"><a href="#IndexRoute" class="headerlink" title="IndexRoute"></a>IndexRoute</h3><p>由于 / 情况下 App 组件对应的 this.props.children会是undefinded，所以使用 IndexRoute 来解决对应问题。这样当 URL 为 / 时将会对应到 Home 组件。不过要注意的是 IndexRoute 没有 path 属性。</p>
-<h3 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h3><p>Link 组件主要用于点击后连接转换，可以想成是 <a> 超连接的 React 版本。若是希望当点击时候有对应的 css style，可以使用 activeStyle、activeClassName 去做设定。to属性用于指定链接地址</a></p>
-<h3 id="IndexLink"><a href="#IndexLink" class="headerlink" title="IndexLink"></a>IndexLink</h3><p>IndexLink 主要是了处理 index 用途，特别注意当 child route actived 时，parent route 也会 actived。所以我们回首页的连接使用 <indexlink> 内部的 onlyActiveOnIndex 属性来解决这个问题。</indexlink></p>
-<h3 id="Redirect、IndexRedirect"><a href="#Redirect、IndexRedirect" class="headerlink" title="Redirect、IndexRedirect"></a>Redirect、IndexRedirect</h3><p>这边虽然没有用到，但若读者有需要使用到连接跳转的话可以参考这两个组件，用法类似于 Route 和 IndexRedirect。</p>
-<h2 id="组件间参数传递"><a href="#组件间参数传递" class="headerlink" title="组件间参数传递"></a>组件间参数传递</h2><p><a href="http://blog.csdn.net/qq_23158083/article/details/68488831" target="_blank" rel="noopener">react router页面传值的三种方法</a><br>tips: </p>
-<blockquote>
-<p>path对应router定义的components中可以取到this.props.location</p>
-</blockquote>
-<h2 id="组件使用实例"><a href="#组件使用实例" class="headerlink" title="组件使用实例"></a>组件使用实例</h2><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><a href="https://github.com/vonxq/react-router-demo" target="_blank" rel="noopener">react-router-demo  github仓库</a></p>
-<h3 id="代码片段"><a href="#代码片段" class="headerlink" title="代码片段"></a>代码片段</h3><p>推荐<a href="http://www.ruanyifeng.com/blog/2016/05/react_router.html?utm_source=tool.lu" target="_blank" rel="noopener">阮一峰React-router教程</a>，简单明了介绍了ROUTER组件的用法及相关参数配置<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 组件本身可直接被渲染</span></span><br><span class="line"><span class="comment">// ROuter为容器，路由由Route定义，path可匹配通配符</span></span><br><span class="line"><span class="comment">// 路由嵌套1</span></span><br><span class="line">&lt;Router history=&#123;hashHistory&#125;&gt;</span><br><span class="line">  &lt;Route path=<span class="string">"/"</span> component=&#123;App&#125;&gt;</span><br><span class="line">    &lt;Route path=<span class="string">"/repos"</span> component=&#123;Repos&#125;/&gt;</span><br><span class="line">    &lt;Route path=<span class="string">"/about"</span> component=&#123;About&#125;/&gt;</span><br><span class="line">  &lt;<span class="regexp">/Route&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>Router&gt;</span><br><span class="line"><span class="comment">//路由嵌套2（在routes中传入）</span></span><br><span class="line"><span class="keyword">let</span> routes = <span class="xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">"/"</span> <span class="attr">component</span>=<span class="string">&#123;App&#125;</span>&gt;</span></span></span><br><span class="line">  &lt;Route path="/repos" component=&#123;Repos&#125;/&gt;</span><br><span class="line">  &lt;Route path="/about" component=&#123;About&#125;/&gt;</span><br><span class="line">&lt;/Route&gt;;</span><br><span class="line">&lt;Router routes=&#123;routes&#125; history=&#123;browserHistory&#125;/&gt;</span><br><span class="line">// App定义，必须的</span><br><span class="line">export default React.createClass(&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">          // this.props.children子组件</span><br><span class="line">    return &lt;div&gt;</span><br><span class="line">      &#123;this.props.children&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Front-end//" class="article-tag-list-link color5">Front-end</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Front-end/React//" class="article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/14/front-end/React/TechStack/react-router/">展开全文 >></a>
         </p>
       
 
@@ -1067,6 +980,97 @@
 
 
   
+    <article id="post-Tec/accumulation/Recover Android PROS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/01/Tec/accumulation/Recover Android PROS/">恢复Android工程</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/01/Tec/accumulation/Recover Android PROS/" class="archive-article-date">
+  	<time datetime="2017-03-01T09:35:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://blog.csdn.net/itluochen/article/details/52816059" target="_blank" rel="noopener">导入android studio的正确姿势</a><br>如上所示，只要新建工程，再把工程里的几个gradle相关文件覆盖到徐导入文件里就行了<br><img src="http://img.blog.csdn.net/20141115095209446?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZWNsaXBzZXh5cw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="需复制的文件"><br>要是老是报错，还是建议下载一下适配sdk吧，毕竟有些新功能也许是自己的sdk版本没有的<br>
+        
+          <a class="article-more-a" href="/2017/03/01/Tec/accumulation/Recover Android PROS/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Tec//" class="article-tag-list-link color4">Tec</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Tec/Accumulation//" class="article-tag-list-link color3">Accumulation</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/01/Tec/accumulation/Recover Android PROS/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/14/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/16/">Next &raquo;</a>
@@ -1172,7 +1176,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Summery</a>
+                <a href="javascript:void(0)" class="js-tag color3">morningDiary</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1184,15 +1188,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">Summery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1204,15 +1200,27 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GitHub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">dns</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1229,10 +1237,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">svn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">morningDiary</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1276,11 +1280,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1335,7 +1339,7 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">&lt;br&gt;&lt;br&gt;要努力做个开心的人^^&lt;br&gt;</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">&lt;br&gt;程序媛，26岁，来自四川&lt;br&gt;当前北漂一枚&lt;br&gt;&lt;br&gt;欢迎新朋友一起交流&lt;br&gt;周末一起爬山逛街^^&lt;br&gt;&lt;br&gt;wechat： vonxqtx&lt;br&gt;&lt;br&gt;要做个开心的人^^&lt;br&gt;</div>
   	  	
     	</section>
     
