@@ -1,1224 +1,267 @@
 <!DOCTYPE html>
-
-
-
-
-<html class="theme-next gemini" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#eee">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<html>
+<head>
+  <meta charset="utf-8">
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="React,">
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="vonxq" type="application/atom+xml">
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
-
-
-
-
-
-
-<meta name="description" content="echarts已经做过demo了，但没有总结再回头翻还得重新记概念。">
-<meta name="keywords" content="React">
+  <title>在React中使用echarts | vonxq</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="echarts已经做过demo了，但没有总结再回头翻还得重新记概念。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在React中使用echarts">
-<meta property="og:url" content="/2017/09/24/front-end/advance/echarts学习总结/index.html">
+<meta property="og:url" content="http://example.com/2017/09/24/front-end/advance/echarts%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="vonxq">
 <meta property="og:description" content="echarts已经做过demo了，但没有总结再回头翻还得重新记概念。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-06-08T10:08:43.858Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-09-24T03:10:21.000Z">
+<meta property="article:modified_time" content="2021-06-08T10:08:43.858Z">
+<meta property="article:author" content="vonxq">
+<meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在React中使用echarts">
-<meta name="twitter:description" content="echarts已经做过demo了，但没有总结再回头翻还得重新记概念。">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.2',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":true},
-    fancybox: true,
-    tabs: true,
-    motion: "",
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '0AI31FA7U7',
-      apiKey: '7be4b2cbe9985b73e8b2031665966f3c',
-      indexName: 'blogSearch',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="/2017/09/24/front-end/advance/echarts学习总结/">
-
-
-
-
-
-  <title>在React中使用echarts | vonxq</title>
   
-
-
-
-
-
-
-
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+    <link rel="alternate" href="/atom.xml" title="vonxq" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
   
   
     
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
   
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta custom-logo">
+  
     
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">vonxq</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">vonxq</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">less is more</a>
+        </h2>
+      
     </div>
-      
-        <p class="site-subtitle">less is more</p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
+          <a class="main-nav-link" href="/">Home</a>
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
+          <a class="main-nav-link" href="/archives">Archives</a>
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
-            
-            关于
-          </a>
-        </li>
-      
+      </nav>
+      <nav id="sub-nav">
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
-            
-            搜索
-          </a>
-        </li>
-      
-    </ul>
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
     </div>
   </div>
-  <div id="local-search-result"></div>
-</div>
+</header>
 
+      <div class="outer">
+        <section id="main"><article id="post-front-end/advance/echarts学习总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/09/24/front-end/advance/echarts%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" class="article-date">
+  <time class="dt-published" datetime="2017-09-24T03:10:21.000Z" itemprop="datePublished">2017-09-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Frontend/">Frontend</a>►<a class="article-category-link" href="/categories/Frontend/React/">React</a>
+  </div>
 
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      在React中使用echarts
+    </h1>
+  
 
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>echarts已经做过demo了，但没有总结再回头翻还得重新记概念。</p>
+<span id="more"></span>
+<p>echarts的使用主要是其option的配置<br>使用的库为echarts-for-react</p>
+<h2 id="常用配置属性"><a href="#常用配置属性" class="headerlink" title="常用配置属性"></a>常用配置属性</h2><p>color: 配色方案，array<br>title: object<br>toolbox: 工具组件，可配置些工具<br>legend: 图例组件,展现了不同系列的标记(symbol)，颜色和名字。可以通过点击图例控制哪些系列不显示。<br>xAxis: 直角坐标系 grid 中的 x 轴array，一般只配置一个，由data指定坐标轴内容<br>      &gt; 其元素属性:<br>            type<br>            data: array,可定义其textStyle</p>
+<p>yAxis: 定义y轴格式<br>series: array，定义数据源，每个数组元素的name属性和legend需一一对应才能有legend控制隐藏显示<br>      &gt; 数组元素属性:<br>          1. name<br>          2. type<br>          3. data数据源的y轴坐标信息，按x轴坐标排列<br>          4. markLine: 标线，object,常用属性如下<br>                1. label(object,定义显示文本信息，分normal和emphasis)<br>                      子项（normal和emphasis）属性:<br>                          1. show: bool，是否显示<br>                          2. position： string 定义在何处显示，start，middle，end<br>                          3. formatter: ‘{a}{b}{c}{d}’，其中b为data中的name字段<br>                2. data: 标线的name和线条信息(可只定义xAxis or yAxis，默认贯穿坐标轴)<br>visualMap: 可配置按y值分区域显示不同颜色区块</p>
+<h2 id="动态加载数据"><a href="#动态加载数据" class="headerlink" title="动态加载数据"></a>动态加载数据</h2><p>只需动态替换xAxis和series的data即可</p>
+<h2 id="简单源码"><a href="#简单源码" class="headerlink" title="简单源码"></a>简单源码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> ReactEcharts <span class="keyword">from</span> <span class="string">&#x27;echarts-for-react&#x27;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EchartTest</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="title">constructor</span> (<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="built_in">super</span>(props)</span><br><span class="line">    <span class="built_in">this</span>.state = &#123;</span><br><span class="line">      <span class="attr">xdata</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>],</span><br><span class="line">      <span class="attr">seriesData</span>: [<span class="number">100</span>, <span class="number">700</span>, <span class="number">230</span>, <span class="number">370</span>, <span class="number">450</span>, <span class="number">260</span>, <span class="number">70</span>],</span><br><span class="line">      <span class="attr">yRange</span>: [<span class="number">392.96</span>, <span class="number">442.08</span>],</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">let</span> colors = [<span class="string">&#x27;#5793f3&#x27;</span>]</span><br><span class="line">    <span class="keyword">const</span> &#123; seriesData, xdata, yRange &#125; = <span class="built_in">this</span>.state</span><br><span class="line">    <span class="keyword">const</span> option = &#123;</span><br><span class="line">      <span class="attr">color</span>: colors,</span><br><span class="line">      <span class="attr">title</span>: &#123;</span><br><span class="line">        <span class="attr">text</span>: <span class="string">&#x27;存储状态&#x27;</span>,</span><br><span class="line">        <span class="attr">subtext</span>: <span class="string">&#x27;纯属虚构&#x27;</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">tooltip</span>: &#123;</span><br><span class="line">        <span class="attr">trigger</span>: <span class="string">&#x27;axis&#x27;</span>,</span><br><span class="line">        <span class="attr">axisPointer</span>: &#123;</span><br><span class="line">          <span class="attr">type</span>: <span class="string">&#x27;cross&#x27;</span>,</span><br><span class="line">          <span class="attr">label</span>: &#123;</span><br><span class="line">            <span class="attr">backgroundColor</span>: <span class="string">&#x27;#283b56&#x27;</span>,</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">legend</span>: &#123;</span><br><span class="line">        <span class="attr">x</span>: <span class="string">&#x27;40%&#x27;</span>,</span><br><span class="line">        <span class="attr">top</span>: <span class="string">&#x27;0%&#x27;</span>,</span><br><span class="line">        <span class="attr">textStyle</span>: &#123;</span><br><span class="line">          <span class="attr">color</span>: <span class="string">&#x27;#90979c&#x27;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">// 和series中的name一一对应</span></span><br><span class="line">        <span class="attr">data</span>: [<span class="string">&#x27;存储空间使用&#x27;</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">toolbox</span>: &#123;</span><br><span class="line">        <span class="attr">show</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">left</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">        <span class="attr">feature</span>: &#123;</span><br><span class="line">          <span class="attr">magicType</span>: &#123;</span><br><span class="line">            <span class="attr">type</span>: [<span class="string">&#x27;line&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>],</span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="attr">restore</span>: &#123;&#125;,</span><br><span class="line">          <span class="attr">saveAsImage</span>: &#123;&#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">dataZoom</span>: &#123;</span><br><span class="line">        <span class="attr">show</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">start</span>: <span class="number">0</span>,</span><br><span class="line">        <span class="attr">end</span>: <span class="number">100</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">xAxis</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">type</span>: <span class="string">&#x27;category&#x27;</span>,</span><br><span class="line">          <span class="attr">boundaryGap</span>: <span class="literal">false</span>,</span><br><span class="line">          <span class="attr">data</span>: xdata,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">yAxis</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">type</span>: <span class="string">&#x27;value&#x27;</span>,</span><br><span class="line">          <span class="attr">scale</span>: <span class="literal">true</span>,</span><br><span class="line">          <span class="attr">name</span>: <span class="string">&#x27;存储状态&#x27;</span>,</span><br><span class="line">          <span class="attr">min</span>: <span class="number">0</span>,</span><br><span class="line">          <span class="attr">axisLine</span>: &#123;</span><br><span class="line">            <span class="attr">lineStyle</span>: &#123;</span><br><span class="line">              <span class="attr">color</span>: colors[<span class="number">0</span>],</span><br><span class="line">            &#125;,</span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="attr">axisLabel</span>: &#123;</span><br><span class="line">            <span class="attr">formatter</span>: <span class="string">&#x27;&#123;value&#125; G&#x27;</span>,</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">visualMap</span>: &#123;</span><br><span class="line">        <span class="attr">top</span>: <span class="number">10</span>,</span><br><span class="line">        <span class="attr">right</span>: <span class="number">10</span>,</span><br><span class="line">        <span class="attr">pieces</span>: [&#123;</span><br><span class="line">          <span class="attr">min</span>: <span class="number">0</span>,</span><br><span class="line">          <span class="attr">max</span>: yRange[<span class="number">0</span>],</span><br><span class="line">          <span class="attr">color</span>: <span class="string">&#x27;#096&#x27;</span>,</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">          <span class="attr">min</span>: yRange[<span class="number">0</span>],</span><br><span class="line">          <span class="attr">max</span>: yRange[<span class="number">1</span>],</span><br><span class="line">          <span class="attr">color</span>: <span class="string">&#x27;#e9a11b&#x27;</span>,</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">          <span class="attr">min</span>: yRange[<span class="number">1</span>],</span><br><span class="line">          <span class="attr">color</span>: <span class="string">&#x27;#db5019&#x27;</span>,</span><br><span class="line">        &#125;],</span><br><span class="line">        <span class="attr">outOfRange</span>: &#123;</span><br><span class="line">          <span class="attr">color</span>: <span class="string">&#x27;#999&#x27;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">series</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">name</span>: <span class="string">&#x27;存储空间使用&#x27;</span>,</span><br><span class="line">          <span class="attr">type</span>: <span class="string">&#x27;line&#x27;</span>,</span><br><span class="line">          <span class="attr">xAxisIndex</span>: <span class="number">0</span>,</span><br><span class="line">          <span class="attr">yAxisIndex</span>: <span class="number">0</span>,</span><br><span class="line">          <span class="attr">areaStyle</span>: &#123;</span><br><span class="line">            <span class="attr">normal</span>: &#123;&#125;,</span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="attr">data</span>: seriesData,</span><br><span class="line">          <span class="attr">markLine</span>: &#123;</span><br><span class="line">            <span class="attr">silent</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">label</span>: &#123;</span><br><span class="line">              <span class="attr">normal</span>: &#123;</span><br><span class="line">                <span class="attr">show</span>: <span class="literal">false</span>,</span><br><span class="line">                <span class="attr">position</span>: <span class="string">&#x27;end&#x27;</span>,</span><br><span class="line">                <span class="attr">formatter</span>: <span class="string">&#x27;&#123;b&#125;&#x27;</span>,</span><br><span class="line">              &#125;,</span><br><span class="line">              <span class="attr">emphasis</span>: &#123;</span><br><span class="line">                <span class="attr">show</span>: <span class="literal">true</span>,</span><br><span class="line">                <span class="attr">position</span>: <span class="string">&#x27;middle&#x27;</span>,</span><br><span class="line">                <span class="attr">formatter</span>: <span class="string">&#x27;&#123;b&#125;&#x27;</span>,</span><br><span class="line">              &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">data</span>: [&#123;</span><br><span class="line">              <span class="attr">name</span>: <span class="string">&#x27;橙色预警&#x27;</span>,</span><br><span class="line">              <span class="attr">yAxis</span>: yRange[<span class="number">0</span>],</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">              <span class="attr">name</span>: <span class="string">&#x27;红色预警&#x27;</span>,</span><br><span class="line">              <span class="attr">yAxis</span>: yRange[<span class="number">1</span>],</span><br><span class="line">            &#125;],</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">ReactEcharts</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">          <span class="attr">option</span>=<span class="string">&#123;option&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        /&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> EchartTest</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
     </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/09/24/front-end/advance/echarts%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" data-id="ckpp9aeej004tcsqdfhmc3mg5" data-title="在React中使用echarts" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/25/front-end/advance/elm/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          函数式编程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/20/front-end/React/Practice/drag/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">使用react-dnd+antd tree实现两个列表的拖拽数据传递</div>
+    </a>
   
 </nav>
 
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
   
+</article>
 
-  
-  
-  
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2017/09/24/front-end/advance/echarts学习总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="vonxq">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="vonxq">
-    </span>
-
-    
-      <header class="post-header">
-
+</section>
         
-        
-          <h1 class="post-title" itemprop="name headline">在React中使用echarts</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-24T11:10:21+08:00">
-                2017-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Frontend/" itemprop="url" rel="index">
-                    <span itemprop="name">Frontend</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Frontend/React/" itemprop="url" rel="index">
-                    <span itemprop="name">React</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2017/09/24/front-end/advance/echarts学习总结/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/09/24/front-end/advance/echarts学习总结/" itemprop="commentsCount"></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  719
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </span></div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>echarts已经做过demo了，但没有总结再回头翻还得重新记概念。<br><a id="more"></a><br>echarts的使用主要是其option的配置<br>使用的库为echarts-for-react</p>
-<h2 id="常用配置属性"><a href="#常用配置属性" class="headerlink" title="常用配置属性"></a>常用配置属性</h2><p>color: 配色方案，array<br>title: object<br>toolbox: 工具组件，可配置些工具<br>legend: 图例组件,展现了不同系列的标记(symbol)，颜色和名字。可以通过点击图例控制哪些系列不显示。<br>xAxis: 直角坐标系 grid 中的 x 轴array，一般只配置一个，由data指定坐标轴内容<br>      &gt; 其元素属性:<br>            type<br>            data: array,可定义其textStyle</p>
-<p>yAxis: 定义y轴格式<br>series: array，定义数据源，每个数组元素的name属性和legend需一一对应才能有legend控制隐藏显示<br>      &gt; 数组元素属性: </p>
-<pre><code>1. name
-2. type
-3. data数据源的y轴坐标信息，按x轴坐标排列
-4. markLine: 标线，object,常用属性如下 
-      1. label(object,定义显示文本信息，分normal和emphasis)
-            子项（normal和emphasis）属性:
-                1. show: bool，是否显示
-                2. position： string 定义在何处显示，start，middle，end
-                3. formatter: &apos;{a}{b}{c}{d}&apos;，其中b为data中的name字段
-      2. data: 标线的name和线条信息(可只定义xAxis or yAxis，默认贯穿坐标轴)
-</code></pre><p>visualMap: 可配置按y值分区域显示不同颜色区块</p>
-<h2 id="动态加载数据"><a href="#动态加载数据" class="headerlink" title="动态加载数据"></a>动态加载数据</h2><p>只需动态替换xAxis和series的data即可</p>
-<h2 id="简单源码"><a href="#简单源码" class="headerlink" title="简单源码"></a>简单源码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> ReactEcharts <span class="keyword">from</span> <span class="string">'echarts-for-react'</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EchartTest</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> (props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props)</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      xdata: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>],</span><br><span class="line">      seriesData: [<span class="number">100</span>, <span class="number">700</span>, <span class="number">230</span>, <span class="number">370</span>, <span class="number">450</span>, <span class="number">260</span>, <span class="number">70</span>],</span><br><span class="line">      yRange: [<span class="number">392.96</span>, <span class="number">442.08</span>],</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">let</span> colors = [<span class="string">'#5793f3'</span>]</span><br><span class="line">    <span class="keyword">const</span> &#123; seriesData, xdata, yRange &#125; = <span class="keyword">this</span>.state</span><br><span class="line">    <span class="keyword">const</span> option = &#123;</span><br><span class="line">      color: colors,</span><br><span class="line">      title: &#123;</span><br><span class="line">        text: <span class="string">'存储状态'</span>,</span><br><span class="line">        subtext: <span class="string">'纯属虚构'</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      tooltip: &#123;</span><br><span class="line">        trigger: <span class="string">'axis'</span>,</span><br><span class="line">        axisPointer: &#123;</span><br><span class="line">          type: <span class="string">'cross'</span>,</span><br><span class="line">          label: &#123;</span><br><span class="line">            backgroundColor: <span class="string">'#283b56'</span>,</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      legend: &#123;</span><br><span class="line">        x: <span class="string">'40%'</span>,</span><br><span class="line">        top: <span class="string">'0%'</span>,</span><br><span class="line">        textStyle: &#123;</span><br><span class="line">          color: <span class="string">'#90979c'</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">// 和series中的name一一对应</span></span><br><span class="line">        data: [<span class="string">'存储空间使用'</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">      toolbox: &#123;</span><br><span class="line">        show: <span class="literal">true</span>,</span><br><span class="line">        left: <span class="string">'center'</span>,</span><br><span class="line">        feature: &#123;</span><br><span class="line">          magicType: &#123;</span><br><span class="line">            type: [<span class="string">'line'</span>, <span class="string">'bar'</span>],</span><br><span class="line">          &#125;,</span><br><span class="line">          restore: &#123;&#125;,</span><br><span class="line">          saveAsImage: &#123;&#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      dataZoom: &#123;</span><br><span class="line">        show: <span class="literal">false</span>,</span><br><span class="line">        start: <span class="number">0</span>,</span><br><span class="line">        end: <span class="number">100</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      xAxis: [</span><br><span class="line">        &#123;</span><br><span class="line">          type: <span class="string">'category'</span>,</span><br><span class="line">          boundaryGap: <span class="literal">false</span>,</span><br><span class="line">          data: xdata,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">      yAxis: [</span><br><span class="line">        &#123;</span><br><span class="line">          type: <span class="string">'value'</span>,</span><br><span class="line">          scale: <span class="literal">true</span>,</span><br><span class="line">          name: <span class="string">'存储状态'</span>,</span><br><span class="line">          min: <span class="number">0</span>,</span><br><span class="line">          axisLine: &#123;</span><br><span class="line">            lineStyle: &#123;</span><br><span class="line">              color: colors[<span class="number">0</span>],</span><br><span class="line">            &#125;,</span><br><span class="line">          &#125;,</span><br><span class="line">          axisLabel: &#123;</span><br><span class="line">            formatter: <span class="string">'&#123;value&#125; G'</span>,</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">      visualMap: &#123;</span><br><span class="line">        top: <span class="number">10</span>,</span><br><span class="line">        right: <span class="number">10</span>,</span><br><span class="line">        pieces: [&#123;</span><br><span class="line">          min: <span class="number">0</span>,</span><br><span class="line">          max: yRange[<span class="number">0</span>],</span><br><span class="line">          color: <span class="string">'#096'</span>,</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">          min: yRange[<span class="number">0</span>],</span><br><span class="line">          max: yRange[<span class="number">1</span>],</span><br><span class="line">          color: <span class="string">'#e9a11b'</span>,</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">          min: yRange[<span class="number">1</span>],</span><br><span class="line">          color: <span class="string">'#db5019'</span>,</span><br><span class="line">        &#125;],</span><br><span class="line">        outOfRange: &#123;</span><br><span class="line">          color: <span class="string">'#999'</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      series: [</span><br><span class="line">        &#123;</span><br><span class="line">          name: <span class="string">'存储空间使用'</span>,</span><br><span class="line">          type: <span class="string">'line'</span>,</span><br><span class="line">          xAxisIndex: <span class="number">0</span>,</span><br><span class="line">          yAxisIndex: <span class="number">0</span>,</span><br><span class="line">          areaStyle: &#123;</span><br><span class="line">            normal: &#123;&#125;,</span><br><span class="line">          &#125;,</span><br><span class="line">          data: seriesData,</span><br><span class="line">          markLine: &#123;</span><br><span class="line">            silent: <span class="literal">false</span>,</span><br><span class="line">            label: &#123;</span><br><span class="line">              normal: &#123;</span><br><span class="line">                show: <span class="literal">false</span>,</span><br><span class="line">                position: <span class="string">'end'</span>,</span><br><span class="line">                formatter: <span class="string">'&#123;b&#125;'</span>,</span><br><span class="line">              &#125;,</span><br><span class="line">              emphasis: &#123;</span><br><span class="line">                show: <span class="literal">true</span>,</span><br><span class="line">                position: <span class="string">'middle'</span>,</span><br><span class="line">                formatter: <span class="string">'&#123;b&#125;'</span>,</span><br><span class="line">              &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">            data: [&#123;</span><br><span class="line">              name: <span class="string">'橙色预警'</span>,</span><br><span class="line">              yAxis: yRange[<span class="number">0</span>],</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">              name: <span class="string">'红色预警'</span>,</span><br><span class="line">              yAxis: yRange[<span class="number">1</span>],</span><br><span class="line">            &#125;],</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;ReactEcharts</span><br><span class="line">          option=&#123;option&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">export default EchartTest</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/React/" rel="tag"># React</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/09/20/front-end/React/Practice/drag/" rel="next" title="使用react-dnd+antd tree实现两个列表的拖拽数据传递">
-                <i class="fa fa-chevron-left"></i> 使用react-dnd+antd tree实现两个列表的拖拽数据传递
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/25/front-end/advance/elm/" rel="prev" title="函数式编程">
-                函数式编程 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
+          <aside id="sidebar">
   
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/Practice/">Practice</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Net/">Net</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a></li></ul>
     </div>
   </div>
 
 
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-      <div id="SOHUCS"></div>
-    
-  </div>
-
-
-        </div>
-        
-          
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Antd/" rel="tag">Antd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Drag-dnd/" rel="tag">Drag-dnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net/" rel="tag">Net</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/" rel="tag">Network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Plugins/" rel="tag">Plugins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Snippets/" rel="tag">Snippets</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Summary/" rel="tag">Summary</a></li></ul>
     </div>
   </div>
 
-  <aside id="sidebar" class="sidebar">
-    
-      <div id="sidebar-dimmer"></div>
-    
-    <div class="sidebar-inner">
 
-      
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Antd/" style="font-size: 10px;">Antd</a> <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/Drag-dnd/" style="font-size: 10px;">Drag-dnd</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/HTML/" style="font-size: 12.5px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/JS/" style="font-size: 17.5px;">JS</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Net/" style="font-size: 10px;">Net</a> <a href="/tags/Network/" style="font-size: 10px;">Network</a> <a href="/tags/Plugins/" style="font-size: 10px;">Plugins</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Snippets/" style="font-size: 10px;">Snippets</a> <a href="/tags/Summary/" style="font-size: 10px;">Summary</a>
+    </div>
+  </div>
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/11/front-end/React/react-hooks/">react-hooks</a>
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+        
+          <li>
+            <a href="/2019/04/10/front-end/React/react-life-cycle/">REACT生命周期</a>
           </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          
-            <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="vonxq">
-          
-            <p class="site-author-name" itemprop="name">vonxq</p>
-            <p class="site-description motion-element" itemprop="description"></p>
-        </div>
-
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-            
-              <a href="/archives/">
-            
-                <span class="site-state-item-count">58</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">17</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
         
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
+          <li>
+            <a href="/2019/04/10/front-end/React/react-design-pattern/">React设计模式</a>
+          </li>
         
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
+          <li>
+            <a href="/2019/04/05/Tec/gitCommands/">GIT常用命令整理</a>
+          </li>
         
+          <li>
+            <a href="/2019/04/03/front-end/basic/event/">JS事件机制</a>
+          </li>
         
-
-        
-        
-
-        
-
-
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用配置属性"><span class="nav-number">1.</span> <span class="nav-text">常用配置属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态加载数据"><span class="nav-number">2.</span> <span class="nav-text">动态加载数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单源码"><span class="nav-number">3.</span> <span class="nav-text">简单源码</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
+      </ul>
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">vonxq</span>
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-  <span class="post-meta-divider">|</span>
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv">
-      <i class="fa fa-user"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
-    </span>
-  
-
-  
-    <span class="site-pv">
-      <i class="fa fa-eye"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
-    </span>
-  
-</div>
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
   </div>
 
   
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 vonxq<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 
 
-
-
-
-
+<script src="/js/jquery-3.4.1.min.js"></script>
 
 
 
   
+<script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
+<script src="/js/script.js"></script>
 
 
 
 
 
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
-
-
-
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-  
-    <script type="text/javascript">
-    (function(){
-      var appid = 'cytcbRovp';
-      var conf = 'prod_f13e5c3f69c7907d8777220535eedbf6';
-      var width = window.innerWidth || document.documentElement.clientWidth;
-      if (width < 960) {
-      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
-        window.changyan.api.config({appid:appid,conf:conf})});
-      }
-    })();
-    </script>
-    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
-  
-
-
-
-
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
-
-  
-
-  
-
-  
-
-  
-
+  </div>
 </body>
 </html>

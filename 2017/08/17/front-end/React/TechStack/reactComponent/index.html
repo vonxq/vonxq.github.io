@@ -1,492 +1,151 @@
 <!DOCTYPE html>
-
-
-
-
-<html class="theme-next gemini" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#eee">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<html>
+<head>
+  <meta charset="utf-8">
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="React,">
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="vonxq" type="application/atom+xml">
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
-
-
-
-
-
-
-<meta name="description" content="单说React的话，组件的构建与使用基本就是React的全部内容了，所以此文也可以叫React使用介绍。">
-<meta name="keywords" content="React">
+  <title>React组件及其生命周期(React核心概念介绍) | vonxq</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="单说React的话，组件的构建与使用基本就是React的全部内容了，所以此文也可以叫React使用介绍。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React组件及其生命周期(React核心概念介绍)">
-<meta property="og:url" content="/2017/08/17/front-end/React/TechStack/reactComponent/index.html">
+<meta property="og:url" content="http://example.com/2017/08/17/front-end/React/TechStack/reactComponent/index.html">
 <meta property="og:site_name" content="vonxq">
 <meta property="og:description" content="单说React的话，组件的构建与使用基本就是React的全部内容了，所以此文也可以叫React使用介绍。">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale">
 <meta property="og:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/react-component.jpeg">
-<meta property="og:updated_time" content="2021-06-08T10:15:04.691Z">
+<meta property="article:published_time" content="2017-08-17T03:02:13.000Z">
+<meta property="article:modified_time" content="2021-06-08T10:15:04.691Z">
+<meta property="article:author" content="vonxq">
+<meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React组件及其生命周期(React核心概念介绍)">
-<meta name="twitter:description" content="单说React的话，组件的构建与使用基本就是React的全部内容了，所以此文也可以叫React使用介绍。">
 <meta name="twitter:image" content="http://7xvi3w.com1.z0.glb.clouddn.com/react-component.jpeg">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.2',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":true},
-    fancybox: true,
-    tabs: true,
-    motion: "",
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '0AI31FA7U7',
-      apiKey: '7be4b2cbe9985b73e8b2031665966f3c',
-      indexName: 'blogSearch',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="/2017/08/17/front-end/React/TechStack/reactComponent/">
-
-
-
-
-
-  <title>React组件及其生命周期(React核心概念介绍) | vonxq</title>
   
-
-
-
-
-
-
-
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+    <link rel="alternate" href="/atom.xml" title="vonxq" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
   
   
     
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
   
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta custom-logo">
+  
     
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">vonxq</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">vonxq</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">less is more</a>
+        </h2>
+      
     </div>
-      
-        <p class="site-subtitle">less is more</p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
+          <a class="main-nav-link" href="/">Home</a>
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
+          <a class="main-nav-link" href="/archives">Archives</a>
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
-            
-            关于
-          </a>
-        </li>
-      
+      </nav>
+      <nav id="sub-nav">
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
-            
-            搜索
-          </a>
-        </li>
-      
-    </ul>
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
     </div>
   </div>
-  <div id="local-search-result"></div>
-</div>
+</header>
 
-
-
-    </div>
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
+      <div class="outer">
+        <section id="main"><article id="post-front-end/React/TechStack/reactComponent" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/08/17/front-end/React/TechStack/reactComponent/" class="article-date">
+  <time class="dt-published" datetime="2017-08-17T03:02:13.000Z" itemprop="datePublished">2017-08-17</time>
+</a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Frontend/">Frontend</a>►<a class="article-category-link" href="/categories/Frontend/React/">React</a>
+  </div>
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="/2017/08/17/front-end/React/TechStack/reactComponent/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="vonxq">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="vonxq">
-    </span>
-
+  </div>
+  <div class="article-inner">
     
-      <header class="post-header">
-
+    
+      <header class="article-header">
         
-        
-          <h1 class="post-title" itemprop="name headline">React组件及其生命周期(React核心概念介绍)</h1>
-        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      React组件及其生命周期(React核心概念介绍)
+    </h1>
+  
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-17T11:02:13+08:00">
-                2017-08-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Frontend/" itemprop="url" rel="index">
-                    <span itemprop="name">Frontend</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Frontend/React/" itemprop="url" rel="index">
-                    <span itemprop="name">React</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2017/08/17/front-end/React/TechStack/reactComponent/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/08/17/front-end/React/TechStack/reactComponent/" itemprop="commentsCount"></span>
-                </a>
-              
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,975
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  8
-                </span>
-              
-            </div>
-          
-
-          
-
-        </span></div>
       </header>
     
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+    <div class="e-content article-entry" itemprop="articleBody">
       
-      
-
-      
-        <p>单说React的话，组件的构建与使用基本就是React的全部内容了，所以此文也可以叫React使用介绍。<br><a id="more"></a>  </p>
-<h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><p><a href="http://jartto.wang/2017/02/19/grasp-react-component/#disqus_thread" target="_blank" rel="noopener">掌握 React 组件 Component</a>对组件创建方式、生命周期都有详细的介绍。<br><a href="https://fraserxu.me/2014/08/31/react-component-lifecycle/" target="_blank" rel="noopener">React入门教程 - 组件生命周期</a>比较详细的介绍了生命周期函数的执行过程，可结合上面链接中的图一起看  </p>
+        <p>单说React的话，组件的构建与使用基本就是React的全部内容了，所以此文也可以叫React使用介绍。</p>
+<span id="more"></span>  
+<h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><p><a target="_blank" rel="noopener" href="http://jartto.wang/2017/02/19/grasp-react-component/#disqus_thread">掌握 React 组件 Component</a>对组件创建方式、生命周期都有详细的介绍。<br><a target="_blank" rel="noopener" href="https://fraserxu.me/2014/08/31/react-component-lifecycle/">React入门教程 - 组件生命周期</a>比较详细的介绍了生命周期函数的执行过程，可结合上面链接中的图一起看  </p>
 <h2 id="React五大核心概念"><a href="#React五大核心概念" class="headerlink" title="React五大核心概念"></a>React五大核心概念</h2><p>包含JSX、组件、组件的props&amp;state、组件API、组件类型，可以看出React的核心都在组件化上了  </p>
 <h3 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h3><p>React是通过JSX语法扩展来实现的  </p>
 <h4 id="基本JSX语法"><a href="#基本JSX语法" class="headerlink" title="基本JSX语法"></a>基本JSX语法</h4><ol>
 <li>Component可以嵌套</li>
 <li>className代替class</li>
 <li>JavaScript 表达式需要用 {} 括起来，会执行并返回结果。</li>
-<li>Mapping Arrays to JSX,可以把数组映射为 JSX 元素列表   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    &lt;ul&gt;</span><br><span class="line">      &#123; <span class="keyword">this</span>.props.todos.map(<span class="function">(<span class="params">todo, i</span>) =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;i&#125;</span>&gt;</span>&#123;todo&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>) &#125;</span><br><span class="line">    &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">    ```  </span></span><br><span class="line"><span class="regexp">5.	Spread Attribute：这是 JSX 从 ECMAScript6 借鉴过来的很有用的特性，用于扩充组件 props 。  </span></span><br><span class="line"><span class="regexp">    ```javascript</span></span><br><span class="line"><span class="regexp">      const testProp = &#123;</span></span><br><span class="line"><span class="regexp">        att1: 'a',</span></span><br><span class="line"><span class="regexp">        prop2: '2',</span></span><br><span class="line"><span class="regexp">      &#125;</span></span><br><span class="line"><span class="regexp">      renturn (</span></span><br><span class="line"><span class="regexp">        &lt;TestNode &#123;...testProps&#125;&gt;ha&lt;/</span>TestNode&gt;</span><br><span class="line">      )</span><br></pre></td></tr></table></figure>
-</li>
+<li>Mapping Arrays to JSX,可以把数组映射为 JSX 元素列表   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    &lt;ul&gt;</span><br><span class="line">      &#123; <span class="built_in">this</span>.props.todos.map(<span class="function">(<span class="params">todo, i</span>) =&gt;</span> <span class="xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;i&#125;</span>&gt;</span>&#123;todo&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>) &#125;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">    <span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string">5.	Spread Attribute：这是 JSX 从 ECMAScript6 借鉴过来的很有用的特性，用于扩充组件 props 。  </span></span><br><span class="line"><span class="string">    `</span><span class="string">``</span>javascript</span><br><span class="line">      <span class="keyword">const</span> testProp = &#123;</span><br><span class="line">        <span class="attr">att1</span>: <span class="string">&#x27;a&#x27;</span>,</span><br><span class="line">        <span class="attr">prop2</span>: <span class="string">&#x27;2&#x27;</span>,</span><br><span class="line">      &#125;</span><br><span class="line">      renturn (</span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="name">TestNode</span> &#123;<span class="attr">...testProps</span>&#125;&gt;</span>ha<span class="tag">&lt;/<span class="name">TestNode</span>&gt;</span></span></span><br><span class="line">      )</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><p>React组件能够像原生的HTML标签一样输出特定的界面元素，并且也能包括一些元素相关逻辑功能的代码。<br>组件是一个由具有特定外观特定功能与数据集合的前端页面组成单位。  </p>
 <h3 id="组件的Props-amp-state（属性与状态）"><a href="#组件的Props-amp-state（属性与状态）" class="headerlink" title="组件的Props&amp;state（属性与状态）"></a>组件的Props&amp;state（属性与状态）</h3><p>props是一个组件暴露给使用者(父组件)的一些属性，父组件可通过props的配置对组件进行一些初始化，如对一个Table传入dataSource进行展示<br>State是组件内部状态，组件内部自己维护状态变化。外部使用者(父组件)不会关心这些状态<br>注意:<br>  props和state的变化都会引起组件的重绘(render)  </p>
-<h3 id="组件API"><a href="#组件API" class="headerlink" title="组件API"></a>组件API</h3><p>一些方法。常用如下：<br>1) render、setState、constructor  </p>
+<h3 id="组件API"><a href="#组件API" class="headerlink" title="组件API"></a>组件API</h3><p>一些方法。常用如下：  </p>
+<ol>
+<li>render、setState、constructor  </li>
+</ol>
 <ol>
 <li>render中返回将要被渲染的组件内容，纯函数组件不用render，直接return组件内容即可</li>
 <li>setState用于更新组件状态，会引起组件重绘(render被执行)</li>
-<li>constructor为当用ES6方式构建组件时的构造函数，主要进行state的初始化操作<br>2) 生命周期函数，如图所示<br>常用生命周期函数:  <ol>
+<li>constructor为当用ES6方式构建组件时的构造函数，主要进行state的初始化操作  </li>
+</ol>
+<ol start="2">
+<li>生命周期函数，如图所示<br>常用生命周期函数:  <ol>
 <li>componentDidMount: 组件刚mount上后执行，可在此函数中进行一些组件的初始化操作</li>
-<li>componentWillReceiveProps: 组件接收到新的props后执行，参数为nextProps,可在此进行一些组件更新操作<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/react-component.jpeg" alt="生命周期图示">  <h3 id="组件类型"><a href="#组件类型" class="headerlink" title="组件类型"></a>组件类型</h3>组件分类：<br>1) 容器组件：关注数据交互，如加载服务器端数据<br>2) 展示组件：关注UI逻辑，用来展示或隐藏内容<br>高阶组件（higher-order components，HOCs）：可以把它理解为一个工厂方法，你可以传入一个组件并得到一个HOC返回的附加了更多功能的新组件。HOC不能直接在render方法中调用。  <h2 id="组件定义与使用"><a href="#组件定义与使用" class="headerlink" title="组件定义与使用"></a>组件定义与使用</h2>定义组件方式：<br>1) React.createClass 最早，兼容最好<br>2) ES6 Class<br>3) 函数式组件（无状态组件，没state）  <h3 id="纯函数方式定义组件"><a href="#纯函数方式定义组件" class="headerlink" title="纯函数方式定义组件"></a>纯函数方式定义组件</h3><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4>与函数创建方式相同，props作为函数参数，return组件布局,每次调用从头执行到尾<br>使用 Functional Component 的写法，单纯渲染 UI<br>A. 组件不能被实例化，节约内存，提升一定的性能<br>B. 组件不能访问this对象<br>C. 组件无法访问生命周期方法<br>D. 只能访问props<br>E. 无状态组件内部其实是可以使用ref功能的，虽然不能通过this.refs访问到，但是可以通过将ref内容保存到无状态组件内部的一个本地变量中获取到。  <h4 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h4>一个hello组件<pre><code class="javascript"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>
-<span class="keyword">import</span> { render } <span class="keyword">from</span> <span class="string">'react-dom'</span>
-<span class="keyword">const</span> Hello = <span class="function"><span class="params">()</span> =&gt;</span> (
+<li>componentWillReceiveProps: 组件接收到新的props后执行，参数为nextProps,可在此进行一些组件更新操作<br><img src="http://7xvi3w.com1.z0.glb.clouddn.com/react-component.jpeg" alt="生命周期图示">  <h3 id="组件类型"><a href="#组件类型" class="headerlink" title="组件类型"></a>组件类型</h3>组件分类：  </li>
+</ol>
+</li>
+<li>容器组件：关注数据交互，如加载服务器端数据</li>
+<li>展示组件：关注UI逻辑，用来展示或隐藏内容<br>高阶组件（higher-order components，HOCs）：可以把它理解为一个工厂方法，你可以传入一个组件并得到一个HOC返回的附加了更多功能的新组件。HOC不能直接在render方法中调用。  <h2 id="组件定义与使用"><a href="#组件定义与使用" class="headerlink" title="组件定义与使用"></a>组件定义与使用</h2>定义组件方式：  </li>
+<li>React.createClass 最早，兼容最好</li>
+<li>ES6 Class</li>
+<li>函数式组件（无状态组件，没state）  <h3 id="纯函数方式定义组件"><a href="#纯函数方式定义组件" class="headerlink" title="纯函数方式定义组件"></a>纯函数方式定义组件</h3><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4>与函数创建方式相同，props作为函数参数，return组件布局,每次调用从头执行到尾<br>使用 Functional Component 的写法，单纯渲染 UI<br>A. 组件不能被实例化，节约内存，提升一定的性能<br>B. 组件不能访问this对象<br>C. 组件无法访问生命周期方法<br>D. 只能访问props<br>E. 无状态组件内部其实是可以使用ref功能的，虽然不能通过this.refs访问到，但是可以通过将ref内容保存到无状态组件内部的一个本地变量中获取到。  <h4 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h4>一个hello组件<pre><code class="javascript">import React from &#39;react&#39;
+import &#123; render &#125; from &#39;react-dom&#39;
+const Hello = () =&gt; (
 &lt;div&gt;
-hello {name}
-&lt;<span class="regexp">/div&gt;</span>
-<span class="regexp">)</span>
-<span class="regexp">render(&lt;Hello name="world"/</span>&gt;, <span class="built_in">document</span>.getElementById(<span class="string">"app"</span>))
+ hello &#123;name&#125;
+ &lt;/div&gt;
+)
+render(&lt;Hello name=&quot;world&quot;/&gt;, document.getElementById(&quot;app&quot;))
 </code></pre>
 <h3 id="ES5原生方式定义组件"><a href="#ES5原生方式定义组件" class="headerlink" title="ES5原生方式定义组件"></a>ES5原生方式定义组件</h3>如果是最新版16.0中createClass已经被废除了，可以使用es6的class替代。<br>现在基本上不用此方式了，之前一些旧代码组件定义方式基本是ES5原生方式，看懂即可。现在项目中一般用ES6的构建方式  <h4 id="构建出的组件特点"><a href="#构建出的组件特点" class="headerlink" title="构建出的组件特点"></a>构建出的组件特点</h4>React.createClass定义的组件  <blockquote>
 <ol>
@@ -495,62 +154,62 @@ hello {name}
 </blockquote>
 </li>
 </ol>
-</li>
+<ol start="2">
 <li>React.createClass在创建组件时，有关组件props的属性类型及组件默认的属性会作为组件实例的属性来配置，其中defaultProps是使用getDefaultProps的方法来获取默认组件属性的</li>
-<li>React.createClass创建的组件，其状态state是通过getInitialState方法来配置组件相关的状态  <h4 id="示例代码-1"><a href="#示例代码-1" class="headerlink" title="示例代码"></a>示例代码</h4><pre><code class="javascript"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>
-<span class="keyword">const</span> MyComponent = React.createClass({
-getInitialState: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-<span class="keyword">return</span> { <span class="attr">count</span>: [] };
-},
-getDefaultProps() {
-<span class="keyword">return</span> {
- name: <span class="string">'default'</span>
-}
-},
-onClick: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-<span class="keyword">let</span> { count } =<span class="keyword">this</span>.state
+<li>React.createClass创建的组件，其状态state是通过getInitialState方法来配置组件相关的状态  <h4 id="示例代码-1"><a href="#示例代码-1" class="headerlink" title="示例代码"></a>示例代码</h4><pre><code class="javascript">import React from &#39;react&#39;
+const MyComponent = React.createClass(&#123;
+getInitialState: function() &#123;
+return &#123; count: [] &#125;;
+&#125;,
+getDefaultProps() &#123;
+return &#123;
+ name: &#39;default&#39;
+&#125;
+&#125;,
+onClick: function() &#123;
+let &#123; count &#125; =this.state
 count++
-<span class="keyword">this</span>.setState({count})
-},
-render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-<span class="keyword">const</span> { name } = <span class="keyword">this</span>.props
-<span class="keyword">const</span> { count } = <span class="keyword">this</span>.state
-<span class="keyword">return</span> (
- &lt;button onClick={<span class="keyword">this</span>.onClick}&gt;{name},您点击了{count}次&lt;<span class="regexp">/button&gt;</span>
-<span class="regexp">)</span>
-<span class="regexp">}</span>
-<span class="regexp">})  </span>
-<span class="regexp">export default MyComponent</span>
+this.setState(&#123;count&#125;)
+&#125;,
+render: function() &#123;
+const &#123; name &#125; = this.props
+const &#123; count &#125; = this.state
+return (
+ &lt;button onClick=&#123;this.onClick&#125;&gt;&#123;name&#125;,您点击了&#123;count&#125;次&lt;/button&gt;
+)
+&#125;
+&#125;)  
+export default MyComponent
 </code></pre>
 <h3 id="ES6方式定义组件"><a href="#ES6方式定义组件" class="headerlink" title="ES6方式定义组件"></a>ES6方式定义组件</h3>有状态组件的定义多用ES6方式。<br>Class xx extends React.Components<blockquote>
 <ol>
 <li>React.Component在创建组件时配置这两个对应信息时，他们是作为组件类的属性，不是组件实例的属性，也就是所谓的类的静态属性来配置的。</li>
-<li>React.Component创建的组件，其状态state是在constructor中像初始化组件属性一样声明的。  </li>
 </ol>
 </blockquote>
-<h4 id="示例代码-2"><a href="#示例代码-2" class="headerlink" title="示例代码"></a>示例代码</h4>下面代码完成了一个可记录点击次数的组件<pre><code class="javascript"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>
-<span class="keyword">import</span> { render } <span class="keyword">from</span> <span class="string">'react-dom'</span>
-<span class="class"><span class="keyword">class</span> <span class="title">Hello</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>{
-<span class="keyword">constructor</span> (props) {
-<span class="keyword">super</span>(props)
-<span class="keyword">this</span>.state = { <span class="attr">count</span>: <span class="number">0</span> }
-}
-onClick = <span class="function"><span class="params">()</span> =&gt;</span> {
-<span class="keyword">let</span> { count } =<span class="keyword">this</span>.state
-count++
-<span class="keyword">this</span>.setState({count})
-}
-render () {
-<span class="keyword">const</span> { count } = <span class="keyword">this</span>.state
-<span class="keyword">const</span> { name } = <span class="keyword">this</span>.props
-<span class="keyword">return</span> (
- &lt;button onClick={<span class="keyword">this</span>.onClick}&gt;{name},您点击了{count}次&lt;<span class="regexp">/button&gt;</span>
-<span class="regexp">)</span>
-<span class="regexp">}</span>
-<span class="regexp">}  </span>
-<span class="regexp">render(&lt;Hello name="Anne"/</span>&gt;, <span class="built_in">document</span>.getElementById(<span class="string">"app"</span>))  
+</li>
+<li>React.Component创建的组件，其状态state是在constructor中像初始化组件属性一样声明的。  <h4 id="示例代码-2"><a href="#示例代码-2" class="headerlink" title="示例代码"></a>示例代码</h4>下面代码完成了一个可记录点击次数的组件<pre><code class="javascript">import React from &#39;react&#39;
+import &#123; render &#125; from &#39;react-dom&#39;
+class Hello extends React.Component &#123;
+constructor (props) &#123;
+ super(props)
+ this.state = &#123; count: 0 &#125;
+&#125;
+onClick = () =&gt; &#123;
+ let &#123; count &#125; =this.state
+ count++
+ this.setState(&#123;count&#125;)
+&#125;
+render () &#123;
+ const &#123; count &#125; = this.state
+ const &#123; name &#125; = this.props
+ return (
+   &lt;button onClick=&#123;this.onClick&#125;&gt;&#123;name&#125;,您点击了&#123;count&#125;次&lt;/button&gt;
+ )
+&#125;
+&#125;  
+render(&lt;Hello name=&quot;Anne&quot;/&gt;, document.getElementById(&quot;app&quot;))  
 </code></pre>
-<h3 id="组件使用相关tips"><a href="#组件使用相关tips" class="headerlink" title="组件使用相关tips"></a>组件使用相关tips</h3><ol>
+<h3 id="组件使用相关tips"><a href="#组件使用相关tips" class="headerlink" title="组件使用相关tips"></a>组件使用相关tips</h3></li>
 <li>组件使用时首字母必须大写，否则无法识别</li>
 <li>有状态组件才能用生命周期钩子函数</li>
 <li>组件更新时机：props/state的变化都会触发render()更新界面，同时也可以在生命周期函数中对界面进行处理</li>
@@ -561,754 +220,158 @@ render () {
 <li>在父组件中使用此组件，提供对象相同的一些props属性</li>
 <li>将const来源替换成props，并为组件定义propTypes  <h4 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h4>button+复杂modal(含子内容)肯定是要拆分的</li>
 </ol>
-</li>
-</ol>
 
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/React/" rel="tag"># React</a>
-          
-        </div>
-      
-
+    <footer class="article-footer">
+      <a data-url="http://example.com/2017/08/17/front-end/React/TechStack/reactComponent/" data-id="ckpp9aeew0062csqd7zei3ql6" data-title="React组件及其生命周期(React核心概念介绍)" class="article-share-link">Teilen</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/08/16/front-end/React/TechStack/ReactTechnologyStack/" rel="next" title="React技术栈简介">
-                <i class="fa fa-chevron-left"></i> React技术栈简介
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/17/front-end/React/antd/antd/" rel="prev" title="antd组件应用记录">
-                antd组件应用记录 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
     </footer>
   </div>
   
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
     
-      <div id="SOHUCS"></div>
-    
-  </div>
-
-
-        </div>
+<nav id="article-nav">
+  
+    <a href="/2017/08/17/front-end/React/antd/antd/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
         
-          
+          antd组件应用记录
+        
+      </div>
+    </a>
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  
+    <a href="/2017/08/16/front-end/React/TechStack/ReactTechnologyStack/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">React技术栈简介</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/">Frontend</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/">React</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Frontend/React/Practice/">Practice</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Net/">Net</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Server/">Server</a></li></ul>
     </div>
   </div>
 
-  <aside id="sidebar" class="sidebar">
-    
-      <div id="sidebar-dimmer"></div>
-    
-    <div class="sidebar-inner">
 
-      
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Antd/" rel="tag">Antd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Drag-dnd/" rel="tag">Drag-dnd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Net/" rel="tag">Net</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/" rel="tag">Network</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Plugins/" rel="tag">Plugins</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Server/" rel="tag">Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Snippets/" rel="tag">Snippets</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Summary/" rel="tag">Summary</a></li></ul>
+    </div>
+  </div>
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Antd/" style="font-size: 10px;">Antd</a> <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/Drag-dnd/" style="font-size: 10px;">Drag-dnd</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/HTML/" style="font-size: 12.5px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/JS/" style="font-size: 17.5px;">JS</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/Mysql/" style="font-size: 10px;">Mysql</a> <a href="/tags/Net/" style="font-size: 10px;">Net</a> <a href="/tags/Network/" style="font-size: 10px;">Network</a> <a href="/tags/Plugins/" style="font-size: 10px;">Plugins</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Snippets/" style="font-size: 10px;">Snippets</a> <a href="/tags/Summary/" style="font-size: 10px;">Summary</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/11/front-end/React/react-hooks/">react-hooks</a>
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
+        
+          <li>
+            <a href="/2019/04/10/front-end/React/react-life-cycle/">REACT生命周期</a>
           </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          
-            <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="vonxq">
-          
-            <p class="site-author-name" itemprop="name">vonxq</p>
-            <p class="site-description motion-element" itemprop="description"></p>
-        </div>
-
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-            
-              <a href="/archives/">
-            
-                <span class="site-state-item-count">58</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">17</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
         
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
+          <li>
+            <a href="/2019/04/10/front-end/React/react-design-pattern/">React设计模式</a>
+          </li>
         
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
+          <li>
+            <a href="/2019/04/05/Tec/gitCommands/">GIT常用命令整理</a>
+          </li>
         
+          <li>
+            <a href="/2019/04/03/front-end/basic/event/">JS事件机制</a>
+          </li>
         
-
-        
-        
-
-        
-
-
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#相关资料"><span class="nav-number">1.</span> <span class="nav-text">相关资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React五大核心概念"><span class="nav-number">2.</span> <span class="nav-text">React五大核心概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX"><span class="nav-number">2.1.</span> <span class="nav-text">JSX</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本JSX语法"><span class="nav-number">2.1.1.</span> <span class="nav-text">基本JSX语法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件"><span class="nav-number">2.2.</span> <span class="nav-text">组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件的Props-amp-state（属性与状态）"><span class="nav-number">2.3.</span> <span class="nav-text">组件的Props&amp;state（属性与状态）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件API"><span class="nav-number">2.4.</span> <span class="nav-text">组件API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件类型"><span class="nav-number">2.5.</span> <span class="nav-text">组件类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件定义与使用"><span class="nav-number">3.</span> <span class="nav-text">组件定义与使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#纯函数方式定义组件"><span class="nav-number">3.1.</span> <span class="nav-text">纯函数方式定义组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特点"><span class="nav-number">3.1.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例代码"><span class="nav-number">3.1.2.</span> <span class="nav-text">示例代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES5原生方式定义组件"><span class="nav-number">3.2.</span> <span class="nav-text">ES5原生方式定义组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#构建出的组件特点"><span class="nav-number">3.2.1.</span> <span class="nav-text">构建出的组件特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例代码-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">示例代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6方式定义组件"><span class="nav-number">3.3.</span> <span class="nav-text">ES6方式定义组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例代码-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">示例代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件使用相关tips"><span class="nav-number">3.4.</span> <span class="nav-text">组件使用相关tips</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件设计"><span class="nav-number">4.</span> <span class="nav-text">组件设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组件划分思想"><span class="nav-number">4.1.</span> <span class="nav-text">组件划分思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建议大型可复用组件的开发步骤"><span class="nav-number">4.2.</span> <span class="nav-text">建议大型可复用组件的开发步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tips"><span class="nav-number">4.2.1.</span> <span class="nav-text">tips</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
+      </ul>
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">vonxq</span>
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-  <span class="post-meta-divider">|</span>
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv">
-      <i class="fa fa-user"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      
-    </span>
-  
-
-  
-    <span class="site-pv">
-      <i class="fa fa-eye"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
-    </span>
-  
-</div>
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
   </div>
 
   
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 vonxq<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 
 
-
-
-
-
+<script src="/js/jquery-3.4.1.min.js"></script>
 
 
 
   
+<script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
+<script src="/js/script.js"></script>
 
 
 
 
 
-
-
-
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
-
-
-
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-  
-    <script type="text/javascript">
-    (function(){
-      var appid = 'cytcbRovp';
-      var conf = 'prod_f13e5c3f69c7907d8777220535eedbf6';
-      var width = window.innerWidth || document.documentElement.clientWidth;
-      if (width < 960) {
-      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
-        window.changyan.api.config({appid:appid,conf:conf})});
-      }
-    })();
-    </script>
-    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
-  
-
-
-
-
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
-
-  
-
-  
-
-  
-
-  
-
+  </div>
 </body>
 </html>
