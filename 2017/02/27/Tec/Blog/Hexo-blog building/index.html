@@ -331,11 +331,11 @@
 </blockquote>
 <h3 id="5-2配置deploy"><a href="#5-2配置deploy" class="headerlink" title="5.2配置deploy"></a>5.2配置deploy</h3><p>打开hexo的_config.yml文件，找到deployment章节,将type改为git，repository改为你的GitHubPages地址。这个地址应该长这样：</p>
 <blockquote>
-<p><a href="mailto:&#x67;&#x69;&#116;&#64;&#x67;&#105;&#x74;&#104;&#x75;&#x62;&#x2e;&#x63;&#111;&#109;">&#x67;&#x69;&#116;&#64;&#x67;&#105;&#x74;&#104;&#x75;&#x62;&#x2e;&#x63;&#111;&#109;</a>:[你的GitHub用户名]/[你的GitHub用户名].github.io.git</p>
+<p><a href="mailto:&#103;&#x69;&#x74;&#64;&#103;&#105;&#116;&#104;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#109;">&#103;&#x69;&#x74;&#64;&#103;&#105;&#116;&#104;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#109;</a>:[你的GitHub用户名]/[你的GitHub用户名].github.io.git</p>
 </blockquote>
 <p>branch用来指向分支，如果没有特定的分支配置，可以使用默认的master。<br>最终我的deployment部分如下，供参考</p>
 <blockquote>
-<h1 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h1><h2 id="Docs-http-hexo-io-docs-deployment-html"><a href="#Docs-http-hexo-io-docs-deployment-html" class="headerlink" title="Docs: http://hexo.io/docs/deployment.html"></a>Docs: <a target="_blank" rel="noopener" href="http://hexo.io/docs/deployment.html">http://hexo.io/docs/deployment.html</a></h2><p>deploy:<br>type: git<br>repository: <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#x62;&#x2e;&#99;&#x6f;&#109;">&#x67;&#x69;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#x62;&#x2e;&#99;&#x6f;&#109;</a>:vonxq/vonxq.github.io.git<br>branch: master<br><strong>注意：第一次deploy前需执行：</strong><br><code>npm install hexo-deployer-git --save</code><br>最后执行如下命令将博客发布到自己的github首页上<br><code>hexo deploy</code><br>之后可自行查看首页内容</p>
+<h1 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h1><h2 id="Docs-http-hexo-io-docs-deployment-html"><a href="#Docs-http-hexo-io-docs-deployment-html" class="headerlink" title="Docs: http://hexo.io/docs/deployment.html"></a>Docs: <a target="_blank" rel="noopener" href="http://hexo.io/docs/deployment.html">http://hexo.io/docs/deployment.html</a></h2><p>deploy:<br>type: git<br>repository: <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#x2e;&#99;&#111;&#109;">&#x67;&#x69;&#x74;&#x40;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#x2e;&#99;&#111;&#109;</a>:vonxq/vonxq.github.io.git<br>branch: master<br><strong>注意：第一次deploy前需执行：</strong><br><code>npm install hexo-deployer-git --save</code><br>最后执行如下命令将博客发布到自己的github首页上<br><code>hexo deploy</code><br>之后可自行查看首页内容</p>
 </blockquote>
 <p>deploy成功网页却404解决办法：</p>
 <blockquote>
