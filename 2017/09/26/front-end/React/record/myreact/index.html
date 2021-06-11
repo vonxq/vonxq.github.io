@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"0AI31FA7U7","apiKey":"7be4b2cbe9985b73e8b2031665966f3c","indexName":"blogSearch","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"0AI31FA7U7","apiKey":"7be4b2cbe9985b73e8b2031665966f3c","indexName":"blogSearch","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="一个对之前时间分配的记录">
@@ -28,7 +28,7 @@
 <meta property="og:description" content="一个对之前时间分配的记录">
 <meta property="og:locale">
 <meta property="article:published_time" content="2017-09-26T02:29:33.000Z">
-<meta property="article:modified_time" content="2021-06-11T03:30:26.608Z">
+<meta property="article:modified_time" content="2021-06-11T05:25:29.394Z">
 <meta property="article:author" content="vonxq">
 <meta property="article:tag" content="Summary">
 <meta name="twitter:card" content="summary">
@@ -139,21 +139,6 @@
     <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
 
   </li>
-        <li class="menu-item menu-item-schedule">
-
-    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a>
-
-  </li>
-        <li class="menu-item menu-item-sitemap">
-
-    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a>
-
-  </li>
-        <li class="menu-item menu-item-commonweal">
-
-    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a>
-
-  </li>
   </ul>
 </nav>
 
@@ -212,7 +197,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-06-11 11:30:26" itemprop="dateModified" datetime="2021-06-11T11:30:26+08:00">2021-06-11</time>
+                <time title="Modified: 2021-06-11 13:25:29" itemprop="dateModified" datetime="2021-06-11T13:25:29+08:00">2021-06-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -239,46 +224,35 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <script src=/js/crypto-js.js></script>
-<script>
-function doDecrypt (pwd, onError) {
-	console.log('in doDecrypt');
-	const txt = document.getElementById('enc_content').innerHTML;
-	let plantext;
-	try {
-		const bytes = CryptoJS.AES.decrypt(txt, pwd);
-		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {
-			onError(err);
-		}
-		return;
-	}
-	document.getElementById('enc_content').innerHTML = plaintext;
-	document.getElementById('enc_content').style.display = 'block';
-	document.getElementById('enc_passwd').style.display = 'none';
-	if(typeof MathJax !== 'undefined') {
-		MathJax.Hub.Queue(
-			['resetEquationNumbers', MathJax.InputJax.TeX],
-			['PreProcess', MathJax.Hub],
-			['Reprocess', MathJax.Hub]
-		);
-	}
-}
-</script>
-<div id="enc_content" style="display:none">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</div>
-<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>
+        <p>一个对之前时间分配的记录</p>
+<span id="more"></span>
+<p>李颉说sharing和training不同，才发现之前准备的报告方向错了。</p>
+<h1 id="学习期"><a href="#学习期" class="headerlink" title="学习期"></a>学习期</h1><h2 id="概念理解期-0715-0728"><a href="#概念理解期-0715-0728" class="headerlink" title="概念理解期(0715-0728)"></a>概念理解期(0715-0728)</h2><p>react+antd+webpack+dva(react-router/redux-saga)+less<br>React有许多新的概念，整个技术栈的内容对我来说是完全陌生的，一开始就是补概念<br><a target="_blank" rel="noopener" href="https://github.com/blueflylin/reactjs101">React大而全的入门教程</a><br>这个教程逐步深入，并配上了一些小示例及扩展阅读，第一周我看了前八章，记下了些让我似懂非懂的概念<br>webpack+react组件+组件生命周期+react-router+ImmutableJS+Flux/Redux<br>第二周看了antd+dva+ES6语法的一些内容</p>
+<h2 id="实践期"><a href="#实践期" class="headerlink" title="实践期"></a>实践期</h2><h3 id="组件复用理解"><a href="#组件复用理解" class="headerlink" title="组件复用理解"></a>组件复用理解</h3><p>0731-0804<br>项目源码学习、mock数据联调、通用组件复用(IM聊天)<br>理解组件化的概念，state、props的划分，前后端如何联调</p>
+<h3 id="组件设计规划"><a href="#组件设计规划" class="headerlink" title="组件设计规划"></a>组件设计规划</h3><p>0807-0811<br>自己设计组件，EditableCellList通用组件设计<br>dva model理解、组件间数据传递方式理解(单向数据流)<br>组件优化<br>梳理项目开发流程<br>经验: 要有大局观<br>0814-0818<br>做一些总结回顾、继续做组件复用，界面差异化设计<br>发帖正文弹出框(十次render)<br>0821-0825<br>十次render得到了解决<br>** 高阶组件学习(withModal)<br>界面的细节优化<br>可选择显示列的通用组件设计<br>界面优化，尽量使用无状态组件，Form组件改为无状态(为什么用有状态???componnetwillreceiveprops)<br>0828-0901<br>** echarts学习，动态数据获取<br>** dva学习与实践<br>国际化——&gt;脚本学习(对文件进行批量操作)key？？？<br>0904-0908(4天)<br>产品功能熟悉(统计报表)<br>统计报表界面功能理解，总体实现方案设计<br>国际化自动翻译<br>虚拟机配置<br>工作计划制定<br>0911-0915(3天)<br>产品功能熟悉(系统管理)<br>统计报表界面收藏中心、订阅中心(antd Table)<br>收藏中心收藏夹实现(antd tree)<br>表格设计(Form,问题：一个表项内容过多怎么组织)<br>0918-0922<br>表格设计、表单联动<br>组件拖拽功能(React-dnd+antd tree)<br>别名设计<br>学习总结<br>0925-<br>antd源码学习与分析<br>经验: </p>
+<h2 id="报告正文"><a href="#报告正文" class="headerlink" title="报告正文"></a>报告正文</h2><p>今天要跟大家分享的是我的React学习历程，其实不只是React，基本也是一个项目的学习历程</p>
+<h3 id="学习期-1"><a href="#学习期-1" class="headerlink" title="学习期"></a>学习期</h3><p>首先是概念学习期，第一周基本就是看文档，李颉分享了一个零基础学React，我就跟着文档学，然后也自己跟着做点小应用，基本理解了几个概念</p>
+<ol>
+<li>webpack用来干什么?</li>
+<li>react是什么?有什么特点？怎么用<br>JSX语法<br>组件生命周期(难)</li>
+<li>react-router是什么？</li>
+<li>webpack+react组件+组件生命周期+react-router+ImmutableJS+Flux/Redux</li>
+<li>dva是什么?怎么用<h3 id="依葫芦画瓢期"><a href="#依葫芦画瓢期" class="headerlink" title="依葫芦画瓢期"></a>依葫芦画瓢期</h3>看完一遍其实我对上面的概念理解也不是那么深刻，只是知道了技术栈的内容是什么，有什么用，但具体怎么用还不是很清晰<br>React的Todo这个最佳实践很有用，React+webpack+Router，能帮助人理解很多的React的应用，但其实在具体实践的时候我还是经常遇到一些不能够很好理解的概念<br>所以李颉又安排我做了IM聊天界面的通用组件复用，去帮助我理解组件生命周期以及组件的props与state的作用，如何划分<br>通过做这个界面，我大概认识到：</li>
+<li>props和state的区别</li>
+<li>组件生命周期一些操作</li>
+<li>如何自己mock数据<h3 id="自主实践期"><a href="#自主实践期" class="headerlink" title="自主实践期"></a>自主实践期</h3>formList</li>
+</ol>
+<h3 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h3><p>概念-&gt;读源码、做应用-&gt;自己设计实践</p>
+<h1 id="React实战总结"><a href="#React实战总结" class="headerlink" title="React实战总结"></a>React实战总结</h1><p>舍不得删就搬到这来了。<br>学习和使用React刚好一个月了，太久没接触新知识感觉思维蛮僵化的，还好有前辈的现成代码供参考，算是一条捷径了吧，当然一直这样学太浅也不行，但至少入门的时候能快一些。下面对这一个月碰到的问题及常用技巧做个小总结。<br> <!-- more --><br>学习的过程中参考了很多前辈写的教程，受益匪浅，但从知道到会用还是得有个过程的，我想好好做总结查漏补缺是很关键的一步</p>
+<h1 id="Tips："><a href="#Tips：" class="headerlink" title="Tips："></a>Tips：</h1><p>1.数据fetch之后调用then将result.data保存为本地state中的变量<br>    Table中定义好dataSpurce={dataSource}即可实现显示<br>2.service提供增删改方法（url,params），调用request实现<br>3.utils/request.js提供request(调用fetch返回数据)、fetch方法（！！！！！！！请求方法需掌握）<br>//alt+ctl+f格式化代码，eslint基本不报错</p>
+<p>请求步骤：</p>
+<ol>
+<li>从services/crud中导入响应请求方法</li>
+<li>调用方法（url与为组件文件夹，和mock调用的api地址一致）<br>（2.5. 方法会调用request方法（utils/request.js），之后request调用fetch，fetch调用相应axios完成(通过url找数据)，） </li>
+<li>在相应的mock数据文件中写逻辑（get、post、delete、、、要啥写啥）</li>
+</ol>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>分享结束，没有想象的糟糕，一开始紧张但到最后还是挺愉快的,有问题李颉能补充，大家也会问，哈哈~<br>一整天的阴天突然出了大太阳，蓝天上白云朵朵(真真写景)。<br>李颉也说了下存在的问题，要对照具体案例讲，讲自己的实现思路，比如如何开始的复用，如何开始做的设计开发，等等等等<br>说下次的分享就是代码层面的training了，要具体讲到代码实现，怎么跑代码。<br>还需要做一个邮件分享，分享如何学的，具体该看些什么内容，遇到问题解决思路</p>
+
     </div>
 
     
@@ -362,6 +336,7 @@ doDecrypt(passwd, onError);
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E6%9C%9F"><span class="nav-number">1.</span> <span class="nav-text">学习期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E7%90%86%E8%A7%A3%E6%9C%9F-0715-0728"><span class="nav-number">1.1.</span> <span class="nav-text">概念理解期(0715-0728)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E8%B7%B5%E6%9C%9F"><span class="nav-number">1.2.</span> <span class="nav-text">实践期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E5%A4%8D%E7%94%A8%E7%90%86%E8%A7%A3"><span class="nav-number">1.2.1.</span> <span class="nav-text">组件复用理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1%E8%A7%84%E5%88%92"><span class="nav-number">1.2.2.</span> <span class="nav-text">组件设计规划</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%A5%E5%91%8A%E6%AD%A3%E6%96%87"><span class="nav-number">1.3.</span> <span class="nav-text">报告正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E6%9C%9F-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">学习期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E8%91%AB%E8%8A%A6%E7%94%BB%E7%93%A2%E6%9C%9F"><span class="nav-number">1.3.2.</span> <span class="nav-text">依葫芦画瓢期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E4%B8%BB%E5%AE%9E%E8%B7%B5%E6%9C%9F"><span class="nav-number">1.3.3.</span> <span class="nav-text">自主实践期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93"><span class="nav-number">1.3.4.</span> <span class="nav-text">经验总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React%E5%AE%9E%E6%88%98%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">React实战总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tips%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">Tips：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -421,7 +396,7 @@ doDecrypt(passwd, onError);
   </span>
   <span class="author" itemprop="copyrightHolder">vonxq</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
 
         
@@ -447,7 +422,7 @@ doDecrypt(passwd, onError);
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
