@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"vonxq.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"3L870LDMUT","apiKey":"8b6efb02212c0f610f3f05c910cb208e","indexName":"vonxq","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="介绍 React 中常用的 ES6 高频语法及 ES6 语法学习笔记。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es6语法学习笔记">
+<meta property="og:url" content="https://vonxq.github.io/2017/09/25/front-end/basic/es6/index.html">
+<meta property="og:site_name" content="vonxq">
+<meta property="og:description" content="介绍 React 中常用的 ES6 高频语法及 ES6 语法学习笔记。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-09-25T13:31:22.000Z">
+<meta property="article:modified_time" content="2022-05-30T07:42:19.714Z">
+<meta property="article:author" content="vonxq">
+<meta property="article:tag" content="JS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://vonxq.github.io/2017/09/25/front-end/basic/es6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>es6语法学习笔记 | vonxq</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">vonxq</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">less is more</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://vonxq.github.io/2017/09/25/front-end/basic/es6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vonxq">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="vonxq">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          es6语法学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-09-25 21:31:22" itemprop="dateCreated datePublished" datetime="2017-09-25T21:31:22+08:00">2017-09-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-30 15:42:19" itemprop="dateModified" datetime="2022-05-30T15:42:19+08:00">2022-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frontend/" itemprop="url" rel="index"><span itemprop="name">Frontend</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>介绍 React 中常用的 ES6 高频语法及 ES6 语法学习笔记。</p>
+<span id="more"></span>
+
+<h1 id="React-高频语法"><a href="#React-高频语法" class="headerlink" title="React 高频语法"></a>React 高频语法</h1><h2 id="箭头函数-arrow-function"><a href="#箭头函数-arrow-function" class="headerlink" title="箭头函数 arrow function"></a>箭头函数 arrow function</h2><!-- 在ES6中开始投入使用，使用的话需要装babel-preset-stage-0来预处理 -->
+
+<p>新特性，可以省略 function，直接写参数和执行结果，语法：标识符=&gt;表达式，表达式{}会被解析为块（执行逻辑），若要解析为对象使用({})<br>箭头函数没有自身 this 值，其 this 值直接继承自外围作用域<br>示例:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">handleClick = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;点击操作&quot;</span>);</span><br><span class="line">  <span class="keyword">let</span> &#123; count &#125; = <span class="variable language_">this</span>.<span class="property">state</span>;</span><br><span class="line">  count++;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123; count &#125;);</span><br><span class="line">&#125;;</span><br><span class="line">render = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> count = <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">count</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span>点我&#123;count&#125;次<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="ES6-语法学习笔记"><a href="#ES6-语法学习笔记" class="headerlink" title="ES6 语法学习笔记"></a>ES6 语法学习笔记</h1><h2 id="Let-和-const"><a href="#Let-和-const" class="headerlink" title="Let 和 const"></a>Let 和 const</h2><h3 id="Let"><a href="#Let" class="headerlink" title="Let"></a>Let</h3><p>特性：</p>
+<ol>
+<li>只在所在代码块内有效</li>
+<li>不存在变量提升（变量提升：未声明前有 undefinded 值，且会覆盖外层同名变量）</li>
+<li>暂时性死区，temporal dead zone，简称 TDZ（let 覆盖 var 作用域，导致 var 不可用，且在 let 声明之前也不可用）</li>
+<li>不允许重复声明（包括和 const、var）<br>块级作用域</li>
+<li>（ES6 可在块级作用域中声明函数，最好声明变量式函数）</li>
+<li>ES5 只有全局作用域和函数作用域，没有块级作用域</li>
+<li>Do 方法获取块级作用域返回值</li>
+</ol>
+<h3 id="Const"><a href="#Const" class="headerlink" title="Const"></a>Const</h3><p>声明一个只读常量，必须在声明时赋值，否则报错。</p>
+<ol>
+<li>不存在变量提升，存在暂时性死区(同样会覆盖同名 var 作用域)</li>
+<li>不能重复声明（包括和 let、var）</li>
+<li>实现是通过不能修改内存地址。对象 const 不可控</li>
+</ol>
+<h3 id="顶层对象属性"><a href="#顶层对象属性" class="headerlink" title="顶层对象属性"></a>顶层对象属性</h3><p>浏览器：window<br>Node：global<br>ES5 的顶层对象属性与全局变量等价<br>let 命令、const 命令、class 命令声明的全局变量，不属于顶层对象的属性</p>
+<h2 id="变量的解构赋值"><a href="#变量的解构赋值" class="headerlink" title="变量的解构赋值"></a>变量的解构赋值</h2><h3 id="模式匹配"><a href="#模式匹配" class="headerlink" title="模式匹配"></a>模式匹配</h3><ol>
+<li>数组、对象均可</li>
+<li>等式两边都要是可遍历的结构，如 let [x, y, z] = new Set([‘a’, ‘b’, ‘c’]);</li>
+<li>允许指定默认值（惰性求值，当匹配项严格等于 undefiend 时生效）</li>
+<li>对象赋值结构{属性：变量}={属性：值}，等号两边属性同名才能得到对应值，无次序影响。</li>
+<li>数值对象解构赋值时会被转化成对象</li>
+<li>Undefined 和 NULL 不能解构赋值</li>
+<li>函数参数也可以解构赋值（eg.:add([x,y]){return x+y}），可以使用默认值（解构失败时使用）</li>
+<li>尽量不要放置圆括号</li>
+</ol>
+<h3 id="用途："><a href="#用途：" class="headerlink" title="用途："></a>用途：</h3><ol>
+<li>变换变量值</li>
+<li>函数返回多个值</li>
+<li>函数参数定义，可无序可有序</li>
+<li>快速提取 JSON 数据</li>
+<li>函数参数默认值</li>
+<li>遍历 MAP 结构</li>
+</ol>
+<h2 id="字符串扩展"><a href="#字符串扩展" class="headerlink" title="字符串扩展"></a>字符串扩展</h2><ol>
+<li>Unicode 支持</li>
+<li>codePointAT：JavaScript 内部，字符以 UTF-16 的格式储存，每个字符固定为 2 个字节。对于那些需要 4 个字节储存的字符（Unicode 码点大于 0xFFFF 的字符），JavaScript 会认为它们是两个字符。</li>
+<li>fromCodePoint</li>
+<li>字符串遍历接口：for(… of …)，可识别大于 0xFFFF 的码点</li>
+<li>at 方法（对应 charAt）</li>
+<li>normalize()</li>
+<li>includes(), startsWith(), endsWith()有、在头、在尾，返回 bool</li>
+<li>repeat(n)重复字符 n 次并返回</li>
+<li>padStart()，padEnd()，补全字符串</li>
+<li>模板字符串，可嵌入变量(${}引入，js 表达式均可，函数也可)，可多行，`标识<br>正则扩展<br>数值扩展</li>
+<li>Number.isFinite(), Number.isNaN()、Number.isInteger()</li>
+<li>Number.parseInt(), Number.parseFloat()</li>
+<li>Number.EPSILON:可接受的误差范围，常量</li>
+<li>安全整数和 Number.isSafeInteger()</li>
+<li>Math.trunc()去小数取整、Math.sign()判断正负零</li>
+<li>…………………………….</li>
+<li>指数运算符<strong>，eg：2</strong>3=8</li>
+<li></li>
+</ol>
+<h2 id="函数扩展"><a href="#函数扩展" class="headerlink" title="函数扩展"></a>函数扩展</h2><ol>
+<li>默认值</li>
+<li>与解构赋值配合使用</li>
+<li>Length 属性，返回未指定默认值的参数个数</li>
+<li>设置默认值有参数单独作用域</li>
+<li>Rest 参数，即…变量，只能是最后一个参数</li>
+<li>name 属性</li>
+<li>箭头函数</li>
+</ol>
+<ol>
+<li>返回对象得加大括号</li>
+<li>可与赋值解构、rest…配合使用</li>
+<li>This 指向固定化，this 对象是其定义时所在的对象的 this，箭头函数嵌套时 this 为外层对象的 this</li>
+<li>arguments、super、new.target 均指向外层函数对应变量</li>
+</ol>
+<ol start="8">
+<li>尾调用（Tail Call）优化（严格模式下有效）。函数 f 的最后一步是调用函数 g（return g()），这就叫尾调用。</li>
+<li>尾递归优化（严格模式下有效）</li>
+<li>允许函数参数尾逗号</li>
+</ol>
+<h2 id="数组扩展"><a href="#数组扩展" class="headerlink" title="数组扩展"></a>数组扩展</h2><ol>
+<li>扩展（spread）运算符…</li>
+</ol>
+<ol>
+<li>它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。</li>
+<li>主要用于函数调用（函数参数中…是将多个参数整合为一个数组，函数调用使用…将一个数组展开为多个参数）</li>
+<li>替代 apply 方法<br>应用：</li>
+<li>合并数组</li>
+<li>和解构赋值结合</li>
+<li>字符串转换为数组[…’hello’]即 [ “h”, “e”, “l”, “l”, “o” ]，比 split 精准</li>
+<li>Map、Set、Iterator、Generator</li>
+</ol>
+<ol start="2">
+<li>Array.from()<br>Array.from 方法用于将两类对象转为真正的数组：类似数组的对象（array-like object）和可遍历（iterable）的对象</li>
+<li>Array.of 方法用于将一组值，转换为数组。</li>
+<li>数组实例的 copyWithin(target,start,end)</li>
+<li>数组实例的 find() 和 findIndex()</li>
+<li>fill(定值)，用于初始化 or 格式化数组</li>
+<li>数组实例的 entries()键值对，keys()键 和 values()值 ，用于遍历数组</li>
+<li>Includes()，是否包含</li>
+<li>数组的空位指定为 undefined（尽量避免）</li>
+</ol>
+<h2 id="对象扩展"><a href="#对象扩展" class="headerlink" title="对象扩展"></a>对象扩展</h2><ol>
+<li>ES6 允许在对象之中，直接写变量。这时，属性名为变量名, 属性值为变量的值。注：简洁写法的属性名总是字符串</li>
+<li>Object.assign：Object.assign 方法用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target）。</li>
+</ol>
+<h2 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h2><p>原始数据类型，标识独一无二的值。<br>字符串或数字可以作为属性的键，symbol 也可以，它不等同于任何字符串，因而这个以 symbol 为键的属性可以保证不与任何其它属性产生冲突。<br>原始数据类型（7）：数值（Number）、字符串（String）、Boolean、Object、undefined、Null、Symbol</p>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>成员值唯一，类似数组结构。成员类型不定</p>
+<ol>
+<li>遍历：keys()、values()、entries()、forEach()</li>
+<li>WeakSet：成员只能是对象</li>
+</ol>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p>Object：键值对集合，字符串作为键值<br>Map: 键值对集合,键值类型不限<br>遍历：同 Set<br>WeakMap:只接受对象和 null 值作为键名<br>Proxy<br>Proxy 实际上重载（overload）了点运算符，即用自己的定义覆盖了语言的原始定义<br>Promise</p>
+<h2 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h2><p>任意一个对象的 Symbol.iterator 方法，等于该对象的遍历器生成函数，调用该函数会返回该对象的一个遍历器对象（由 next()方法）。<br>Genereator<br>yeild，函数分段执行。</p>
+<p>生成器是迭代器。所有的生成器都有内建.next()和<a href="">Symbol.iterator</a>方法的实现。你只须编写循环部分的行为。<br>作用：实现异步处理</p>
+<h2 id="Thunk-函数"><a href="#Thunk-函数" class="headerlink" title="Thunk 函数"></a>Thunk 函数</h2><p>编译器的”传名调用”实现，往往是将参数放到一个临时函数之中，再将这个临时函数传入函数体。这个临时函数就叫做 Thunk 函数。<br>JS 的 Thunk 函数：<br>JavaScript 语言是传值调用，它的 Thunk 函数含义有所不同。在 JavaScript 语言中，Thunk 函数替换的不是表达式，而是多参数函数，Thunk 函数将多参带回调的函数替换成单参数的版本，使该函数只接受回调函数作为参数。Thunk 函数接收多参数，返回一个只接受回调函数的函数，即返回一开始被替换的函数。<br>for…of<br>for…of：遍历的是值<br>for…in:数组遍历的是 index，对象遍历的是键</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>【】（<a target="_blank" rel="noopener" href="http://keenwon.com/1524.html%EF%BC%89">http://keenwon.com/1524.html）</a></p>
+<p>ES6 和 ES5 的继承是一模一样的，只是多了 class 和 extends ，ES6 的子类和父类，子类原型和父类原型，通过<strong>proto</strong> 连接。</p>
+<h1 id="dva-最小知识集中的-ES6"><a href="#dva-最小知识集中的-ES6" class="headerlink" title="dva 最小知识集中的 ES6"></a>dva 最小知识集中的 ES6</h1><p><a target="_blank" rel="noopener" href="https://github.com/dvajs/dva-knowledgemap#react-component">dva 最小知识集</a></p>
+<ol>
+<li>块级作用域，变量 let 关键字，常量 const</li>
+<li>对象字面量的属性赋值简写（property value shorthand）这是析构的反向操作，用于重新组织一个 Object 。</li>
+<li>赋值解构？？？（需要实践）（let,const 实现）析构赋值让我们从 Object 或 Array 里取部分数据存为变量。<br>Import 和 export 会用到<br>export 在导出接口的时候，必须与模块内部的变量具有一一对应的关系{}<br><a target="_blank" rel="noopener" href="http://imweb.io/topic/582293894067ce9726778be9">http://imweb.io/topic/582293894067ce9726778be9</a></li>
+<li>Spread Operator…<br>函数参数- 默认值、参数打包、数组展开（Default【函数参数可定默认值 x=1 一类】、Rest【获取数组部分项。函数参数…y 是多个值，进入函数被转换为 y 数组】、Spread【…[1,2,3]】）</li>
+<li>箭头函数</li>
+</ol>
+<ol>
+<li>简化了代码形式，默认 return 表达式结果。</li>
+<li>自动绑定语义 this，即定义函数时的 this。</li>
+</ol>
+<ol start="6">
+<li>字符串模板 Template strings</li>
+<li>Iterators（迭代器，next）+ for..of</li>
+<li>生成器（Generrators）<br>dva 的 effects 是通过 generator 组织的。Generator 返回的是迭代器，通过 yield 关键字实现暂停功能。</li>
+<li>Class（语法糖，有 constractor、extends、super 方法）<br>语法糖: 没有给计算机语言添加新功能，而只是对人类来说更“甜蜜”的语法。语法糖往往给程序员提供了更实用的编码方式，有益于更好的编码风格，更易读。不过其并没有给语言添加什么新东西。糖在不改变其所在位置的语法结构的前提下，实现了运行时等价。</li>
+<li>Modules(import and export)（AMD+CommonJs）<br>ES6 的内置模块功能借鉴了 CommonJS 和 AMD 各自的优点：</li>
+</ol>
+<ol>
+<li>具有 CommonJS 的精简语法、唯一导出出口(single exports)和循环依赖(cyclic dependencies)的特点。</li>
+<li>类似 AMD，支持异步加载和可配置的模块加载。</li>
+</ol>
+<ol start="11">
+<li>Map + Set + WeakMap + WeakSet<br>四种集合类型，WeakMap、WeakSet 作为属性键的对象如果没有别的变量在引用它们，则会被回收释放掉。</li>
+<li>新 API(Math + Number + String + Array + Object APIs)</li>
+<li>Proxies（使用代理（Proxy）监听对象的操作，然后可以做一些相应事情。）</li>
+<li>Symbols: Symbol 是一种基本类型。Symbol 通过调用 symbol 函数产生，它接收一个可选的名字参数，该函数返回的 symbol 是唯一的。</li>
+<li>Promises：Promises 是处理异步操作的对象，使用了 Promise 对象之后可以用一种链式调用的方式来组织代码，让代码更加直观（类似 jQuery 的 deferred 对象）。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JS/" rel="tag"># JS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/09/25/front-end/React/Practice/React%20click%20hide/" rel="prev" title="React实现点击其它地方隐藏组件">
+      <i class="fa fa-chevron-left"></i> React实现点击其它地方隐藏组件
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/09/25/front-end/React/TechStack/dva/" rel="next" title="dva学习笔记">
+      dva学习笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#React-%E9%AB%98%E9%A2%91%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">React 高频语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0-arrow-function"><span class="nav-number">1.1.</span> <span class="nav-text">箭头函数 arrow function</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6-%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="nav-number">2.</span> <span class="nav-text">ES6 语法学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Let-%E5%92%8C-const"><span class="nav-number">2.1.</span> <span class="nav-text">Let 和 const</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Let"><span class="nav-number">2.1.1.</span> <span class="nav-text">Let</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Const"><span class="nav-number">2.1.2.</span> <span class="nav-text">Const</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B6%E5%B1%82%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7"><span class="nav-number">2.1.3.</span> <span class="nav-text">顶层对象属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="nav-number">2.2.</span> <span class="nav-text">变量的解构赋值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D"><span class="nav-number">2.2.1.</span> <span class="nav-text">模式匹配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E9%80%94%EF%BC%9A"><span class="nav-number">2.2.2.</span> <span class="nav-text">用途：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95"><span class="nav-number">2.3.</span> <span class="nav-text">字符串扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E6%89%A9%E5%B1%95"><span class="nav-number">2.4.</span> <span class="nav-text">函数扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E6%89%A9%E5%B1%95"><span class="nav-number">2.5.</span> <span class="nav-text">数组扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%89%A9%E5%B1%95"><span class="nav-number">2.6.</span> <span class="nav-text">对象扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol"><span class="nav-number">2.7.</span> <span class="nav-text">Symbol</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">2.8.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">2.9.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterator"><span class="nav-number">2.10.</span> <span class="nav-text">Iterator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Thunk-%E5%87%BD%E6%95%B0"><span class="nav-number">2.11.</span> <span class="nav-text">Thunk 函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">2.12.</span> <span class="nav-text">继承</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dva-%E6%9C%80%E5%B0%8F%E7%9F%A5%E8%AF%86%E9%9B%86%E4%B8%AD%E7%9A%84-ES6"><span class="nav-number">3.</span> <span class="nav-text">dva 最小知识集中的 ES6</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vonxq</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vonxq</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '3c0d3faa413e82965f95',
+      clientSecret: '8207859f32e641615e3a46c6aa26b811b0f4fbe7',
+      repo        : 'vonxq.github.io',
+      owner       : 'vonxq',
+      admin       : ['vonxq'],
+      id          : 'f64f5b3a475356a5916d92c06ff09d4b',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"vonxq.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"3L870LDMUT","apiKey":"8b6efb02212c0f610f3f05c910cb208e","indexName":"vonxq","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="项目所用到的 React 技术栈如下:  语法: React 语法、ES6 语法、Less 语法 相关 lib: React、Dva、react-router、redux、redux-saga、Mock.js、ant-design 工具：Webpack、webpack-dev-server、roadhog、Bable、dva-cli">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React技术栈简介">
+<meta property="og:url" content="https://vonxq.github.io/2017/08/16/front-end/React/TechStack/ReactTechnologyStack/index.html">
+<meta property="og:site_name" content="vonxq">
+<meta property="og:description" content="项目所用到的 React 技术栈如下:  语法: React 语法、ES6 语法、Less 语法 相关 lib: React、Dva、react-router、redux、redux-saga、Mock.js、ant-design 工具：Webpack、webpack-dev-server、roadhog、Bable、dva-cli">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-08-16T13:12:53.000Z">
+<meta property="article:modified_time" content="2022-05-30T07:42:22.267Z">
+<meta property="article:author" content="vonxq">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://vonxq.github.io/2017/08/16/front-end/React/TechStack/ReactTechnologyStack/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>React技术栈简介 | vonxq</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">vonxq</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">less is more</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://vonxq.github.io/2017/08/16/front-end/React/TechStack/ReactTechnologyStack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vonxq">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="vonxq">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          React技术栈简介
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-08-16 21:12:53" itemprop="dateCreated datePublished" datetime="2017-08-16T21:12:53+08:00">2017-08-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-30 15:42:22" itemprop="dateModified" datetime="2022-05-30T15:42:22+08:00">2022-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frontend/" itemprop="url" rel="index"><span itemprop="name">Frontend</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Frontend/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>项目所用到的 React 技术栈如下:</p>
+<ol>
+<li>语法: React 语法、ES6 语法、Less 语法</li>
+<li>相关 lib: React、Dva、react-router、redux、redux-saga、Mock.js、ant-design</li>
+<li>工具：Webpack、webpack-dev-server、roadhog、Bable、dva-cli<span id="more"></span></li>
+</ol>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>React 语法： jsx 语法，就是在 js 中写 html 代码<br>ES6 语法: 即 ES2015，增加一些新特性，如箭头函数、class 继承(语法糖)、Generator 函数等<br>Less 语法: 用于 css 的编写，LESS 将 CSS 赋予了动态语言的特性，如变量、继承、运算、函数。LESS 既可以在客户端上运行(支持 IE 6+, Webkit, Firefox)，也可以借助 Node.js 或者 Rhino 在服务端运行，点击查看<a target="_blank" rel="noopener" href="http://www.bootcss.com/p/lesscss/#about">less 语法简介</a></p>
+<h2 id="相关-lib"><a href="#相关-lib" class="headerlink" title="相关 lib"></a>相关 lib</h2><h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><p>官方对 React 的定义为用于构建用户界面的 js 库。利用官方提供的组件生命周期钩子函数设计不同功能不同外观的可复用组件，界面由数据驱动，不用自己再重写了。<br>react 主要特点：</p>
+<ol>
+<li>组件化</li>
+<li>高效 DOM 操作，Virtual DOM 机制，Diff 算法</li>
+<li>单项数据流(Model-&gt;View)</li>
+<li>组件生命周期</li>
+<li>声明式 UI 设计 <a target="_blank" rel="noopener" href="http://www.oschina.net/news/41789/imperative-vs-declarative">声明式编程和命令式编程的比较</a></li>
+</ol>
+<h3 id="react-router"><a href="#react-router" class="headerlink" title="react-router"></a>react-router</h3><p>React 只解决了数据与界面的关联问题，对于一个单页面程序，路由必不可少，react-router 主要用于界面路由，页面的跳转<br>分为 HashRouter、BrowserRouter</p>
+<h3 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h3><p>React 的组件间通信规则基本如下:<br>父到子: 通过传给子组件的 props 传递数据<br>子到父: 通过父组件提供的回调函数传递数据<br>兄弟组件: 用父组件作为媒介通信<br>可以看出，当一个界面较为复杂，组件间嵌套层级深时，组件间数据传递非常困难，所以官方提供了 redux 库来进行大项目中的数据分发。基本原理与 flux 相同</p>
+<h3 id="redux-saga"><a href="#redux-saga" class="headerlink" title="redux-saga"></a>redux-saga</h3><p>redux 的异步解决方案</p>
+<h3 id="Dva"><a href="#Dva" class="headerlink" title="Dva"></a>Dva</h3><p>基于 redux、redux-saga 和 react-router 的轻量级前端框架。</p>
+<h3 id="Mock-js"><a href="#Mock-js" class="headerlink" title="Mock.js"></a>Mock.js</h3><p>用于数据的 mock，伪造一些数据供前端测试，下面示例造了一个含 20 条数据的数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> usersListData = <span class="title class_">Mock</span>.<span class="title function_">mock</span>(&#123;</span><br><span class="line">  <span class="string">&quot;data|20&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;id|+1&quot;</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="attr">tstamp</span>: <span class="title class_">Random</span>.<span class="title function_">datetime</span>(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>),</span><br><span class="line">      <span class="attr">ip</span>: <span class="string">&quot;@ip&quot;</span>,</span><br><span class="line">      <span class="attr">target_name</span>: <span class="string">&quot;@cname&quot;</span>,</span><br><span class="line">      <span class="string">&quot;system_type|1&quot;</span>: [<span class="string">&quot;Android&quot;</span>, <span class="string">&quot;ios&quot;</span>, <span class="string">&quot;windows&quot;</span>],</span><br><span class="line">      <span class="attr">link</span>: <span class="string">&quot;@url&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="ant-design"><a href="#ant-design" class="headerlink" title="ant-design"></a>ant-design</h3><p>蚂蚁金服提供的 React 组件库，包含了大部分日常前端开发的常见组件，设计简洁，开箱即用</p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><h3 id="Bable"><a href="#Bable" class="headerlink" title="Bable"></a>Bable</h3><p>浏览器对 ES6 的支持不全，且不能识别 React 语法写得程序，造成写好的程序在浏览器无法成功运行。<br>为了让我们提前用上浏览器的新特性切不用考虑浏览器支持的问题，babel 就诞生了。<br>babel 使用相关的 preset 插件对我们的文件进行预处理，使之能够被浏览器识别</p>
+<p>babel-cli 和 babel-core:<br>如果你想要在 CLI(终端或 REPL)使用 babel 就下载 babel-cli，如果想要在 node 中使用就下载 babel-core。<br>最常用的 babel preset 插件:<br>babel-preset-react: 预处理 react 语法<br>babel-preset-es2015: 预处理 ES6 语法<br>babel-preset-stage-0： 预处理 ES7 语法</p>
+<h3 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h3><p>webpack 是一个前端模块化构建工具，它能把整个工程通过用户配置的 module resolver 进行预处理并输出。<br>官方介绍如下:</p>
+<blockquote>
+<p>webpack 是一个现代 JavaScript 应用程序的模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成少量的 bundle - 通常只有一个，由浏览器加载。<br>它是高度可配置的，但是，在开始前你需要先理解四个核心概念：入口(entry)、输出(output)、loader、插件(plugins)。<br>一个简单的 react+babel+webpack 的示例:<br><a target="_blank" rel="noopener" href="https://github.com/vonxq/react-hello-world">react-hello-world</a></p>
+</blockquote>
+<h3 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h3><p>webpack-dev-server 是一个小型的 Node.js Express 服务器,它使用 webpack-dev-middleware 来服务于 webpack 的包,除此自外，它还有一个通过 Sock.js 来连接到服务器的微型运行时。<br><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000006964335">详解 webpack-dev-server 的使用</a></p>
+<h3 id="dva-cli"><a href="#dva-cli" class="headerlink" title="dva-cli"></a>dva-cli</h3><p>dva 官方提供的一个命令行工具，用于快速构建一个 dva 程序，使用户不用为项目环境的搭建费心。</p>
+<h3 id="roadhog"><a href="#roadhog" class="headerlink" title="roadhog"></a>roadhog</h3><p>用 json 格式进行配置的 cli 工具,提供了 mock 功能，可配置 webpack(有些接口未开放)<br>官方介绍如下:</p>
+<blockquote>
+<p>roadhog 是一个 cli 工具，提供 server、 build 和 test 三个命令，分别用于本地调试和构建，并且提供了特别易用的 mock 功能。命令行体验和 create-react-app 一致，配置略有不同，比如默认开启 css modules，然后还提供了 JSON 格式的配置方式。<br>本地开发:<br>$ roadhog server<br>打包发布:<br>$ roadhog build<br>测试，默认会跑 ./test 目录下的所有文件:<br>$ roadhog test</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/React/" rel="tag"># React</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/08/15/front-end/React/Practice/code%20analyze/" rel="prev" title="项目源码分析">
+      <i class="fa fa-chevron-left"></i> 项目源码分析
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/08/17/front-end/React/TechStack/reactComponent/" rel="next" title="React组件及其生命周期(React核心概念介绍)">
+      React组件及其生命周期(React核心概念介绍) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3-lib"><span class="nav-number">2.</span> <span class="nav-text">相关 lib</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#React"><span class="nav-number">2.1.</span> <span class="nav-text">React</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react-router"><span class="nav-number">2.2.</span> <span class="nav-text">react-router</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redux"><span class="nav-number">2.3.</span> <span class="nav-text">redux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redux-saga"><span class="nav-number">2.4.</span> <span class="nav-text">redux-saga</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dva"><span class="nav-number">2.5.</span> <span class="nav-text">Dva</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mock-js"><span class="nav-number">2.6.</span> <span class="nav-text">Mock.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ant-design"><span class="nav-number">2.7.</span> <span class="nav-text">ant-design</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">3.</span> <span class="nav-text">工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bable"><span class="nav-number">3.1.</span> <span class="nav-text">Bable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Webpack"><span class="nav-number">3.2.</span> <span class="nav-text">Webpack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack-dev-server"><span class="nav-number">3.3.</span> <span class="nav-text">webpack-dev-server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dva-cli"><span class="nav-number">3.4.</span> <span class="nav-text">dva-cli</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#roadhog"><span class="nav-number">3.5.</span> <span class="nav-text">roadhog</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vonxq</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vonxq</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '3c0d3faa413e82965f95',
+      clientSecret: '8207859f32e641615e3a46c6aa26b811b0f4fbe7',
+      repo        : 'vonxq.github.io',
+      owner       : 'vonxq',
+      admin       : ['vonxq'],
+      id          : '54a678b00a3caeec44cbbae95d2e029e',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

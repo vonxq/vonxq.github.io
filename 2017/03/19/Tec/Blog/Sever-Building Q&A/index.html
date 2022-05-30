@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"vonxq.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"appID":"3L870LDMUT","apiKey":"8b6efb02212c0f610f3f05c910cb208e","indexName":"vonxq","hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="搭建过程腾讯云服务器linux系统下apache php mysql安装解决CentOS7 无法启动mysql 的解决办法腾讯云公网IP访问不通的问题解决ps:访问时需注意公网ip和内网IP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="服务器搭建问题汇总">
+<meta property="og:url" content="https://vonxq.github.io/2017/03/19/Tec/Blog/Sever-Building%20Q&A/index.html">
+<meta property="og:site_name" content="vonxq">
+<meta property="og:description" content="搭建过程腾讯云服务器linux系统下apache php mysql安装解决CentOS7 无法启动mysql 的解决办法腾讯云公网IP访问不通的问题解决ps:访问时需注意公网ip和内网IP">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-03-19T13:11:57.000Z">
+<meta property="article:modified_time" content="2022-05-30T07:00:16.560Z">
+<meta property="article:author" content="vonxq">
+<meta property="article:tag" content="Mysql">
+<meta property="article:tag" content="Apache">
+<meta property="article:tag" content="Server">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://vonxq.github.io/2017/03/19/Tec/Blog/Sever-Building%20Q&A/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>服务器搭建问题汇总 | vonxq</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">vonxq</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">less is more</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://vonxq.github.io/2017/03/19/Tec/Blog/Sever-Building%20Q&A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="vonxq">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="vonxq">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          服务器搭建问题汇总
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-03-19 21:11:57" itemprop="dateCreated datePublished" datetime="2017-03-19T21:11:57+08:00">2017-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-05-30 15:00:16" itemprop="dateModified" datetime="2022-05-30T15:00:16+08:00">2022-05-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Server/" itemprop="url" rel="index"><span itemprop="name">Server</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h3><p><a target="_blank" rel="noopener" href="http://blog.csdn.net/csdnhyp/article/details/51930878">腾讯云服务器linux系统下apache php mysql安装</a><br><a target="_blank" rel="noopener" href="http://www.centoscn.com/CentosBug/softbug/2016/0115/6660.html">解决CentOS7 无法启动mysql 的解决办法</a><br><a target="_blank" rel="noopener" href="http://xbwcc.com.cn/2016/01/13/%E8%85%BE%E8%AE%AF%E4%BA%91%E5%85%AC%E7%BD%91ip%E8%AE%BF%E9%97%AE%E4%B8%8D%E9%80%9A%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">腾讯云公网IP访问不通的问题解决</a><br>ps:访问时需注意公网ip和内网IP</p>
+<span id="more"></span>
+
+<p>传输文件到linux服务器：电脑软件winscp<br>navicat可以在两个连接中传输数据库数据<br>5.配置好LAMP后，进入var/www/html下，这个目录里的文件就是外网所能访问到内容。</p>
+<p>php页面打开就自动下载，解析不成功</p>
+<p>1.loadmoudle(一直报错)<br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/52php/p/5668826.html">Linux下Apache、PHP、MySQL默认安装路径</a><br>尝试2.重装php(参考<a target="_blank" rel="noopener" href="http://www.cnblogs.com/liulun/p/3535346.html">在centos上安装lamp环境</a>)<br>yum install php php-devel<br>重启apache使php生效<br>service httpd restart<br>此时可以在目录：/var/www/html/下建立一个PHP文件<br>代码：<br><?php phpinfo(); ?><br>然后访问这个文件，就能看到PHP的一些信息，php.ini配置文件的路径可以在这个页面上看到</p>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/howlaa/article/details/46707159"> Android使用sqlliteOpenhelper更改数据库的存储路径放到SD卡上</a></p>
+<p>php的分号害人不浅…..</p>
+<h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><h4 id="忘记密码："><a href="#忘记密码：" class="headerlink" title="忘记密码："></a>忘记密码：</h4><p><a target="_blank" rel="noopener" href="http://www.2cto.com/database/201411/353328.html">windows下mysql忘记root密码</a><br><a target="_blank" rel="noopener" href="http://blog.csdn.net/u010603691/article/details/50379282">MySQL5.7更改密码时出现ERROR 1054 (42S22): Unknown column ‘password’ in ‘field list’</a><br>注：一定得先关服务（名字可能不同）</p>
+<p><a target="_blank" rel="noopener" href="http://jingyan.baidu.com/article/046a7b3ed85f3ef9c27fa9dc.html">mysql开启远程连接服务</a><br>具体步骤：</p>
+<blockquote>
+<p>1、登录mysql，use mysql<br>2、GRANT ALL PRIVILEGES ON <em>.</em> TO ‘root‘@’%’ IDENTIFIED BY ‘root’ WITH GRANT OPTION;修改权限<br>3、刷新：flush privileges;<br>4、使用“select host,user from user;”查看修改是否成功。</p>
+</blockquote>
+<p>ps：远程连接改表有时会报权限不够，不知道怎么回事，我过了一天再看就自己好了</p>
+<h4 id="表中无法插入中文字符"><a href="#表中无法插入中文字符" class="headerlink" title="表中无法插入中文字符"></a>表中无法插入中文字符</h4><p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/codeplus/archive/2011/08/02/2125546.html">java 向 mysql 插入汉字 Incorrect string value 解决办法</a><br>具体步骤：</p>
+<blockquote>
+<p>1、查看编码： show variables like ‘character%’ ；<br>2、修改编码：set 变量=utf8;或alter database 数据库名 character set utf8;（第二个不一定有效 ）</p>
+</blockquote>
+<h3 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a>Apache</h3><h4 id="服务无法启动"><a href="#服务无法启动" class="headerlink" title="服务无法启动"></a>服务无法启动</h4><p>step1：在命令行里，apache主目录中bin目录下，执行httpd看有什么提示<br>step2: 端口是否被占用，or直接在httpd.conf中修改listen的端口号（修改后访问需加端口号）<br>ps:在命令行用httpd启动apache服务后，不能同时在windows服务中启动该服务</p>
+<p>打开apache服务器，配置得好，浏览器中输入，127.0.0.1（即localhost，改了端口号的话请加端口号）就可以看到效果了。<br>这时候你就可以在浏览器中查看编写好的程序了（程序目录由httpd.conf的DocumentRoot指定）。</p>
+<h3 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h3><h4 id="apache无法连接php解析php文件"><a href="#apache无法连接php解析php文件" class="headerlink" title="apache无法连接php解析php文件"></a>apache无法连接php解析php文件</h4><p>指定httpd.conf中的PHPIniDir参数<br>      如:PHPIniDir “D:/shenghuo/php/php.ini”  (需要要指定php.ini的绝对路径)<br>参考：<br><a target="_blank" rel="noopener" href="http://blog.163.com/wf_shunqiziran/blog/static/176307209201332102259182/">PHP :Call to undefined function mysql_connect()</a><br><a target="_blank" rel="noopener" href="http://jingyan.baidu.com/article/1709ad808caf9d4634c4f0f8.html">JSP环境搭建</a></p>
+<p>tips:<br>购买服务器：<br>腾讯云：<br><a target="_blank" rel="noopener" href="https://www.ihewro.com/archives/619/">腾讯云“云+校园计划”学生机自动抢购脚本</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var getThread = null;</span><br><span class="line"> var timeInterval = 20;</span><br><span class="line"> var getCount = 0;</span><br><span class="line"> if (!getThread) &#123;</span><br><span class="line">     getThread = setInterval(() =&gt; &#123;</span><br><span class="line">         if ($(&quot;button[hotrep=&#x27;qcact.campus.getVoucherBtn&#x27;]&quot;)[0].disabled) &#123;</span><br><span class="line">             $(&quot;button[hotrep=&#x27;qcact.campus.getVoucherBtn&#x27;]&quot;).attr(&quot;disabled&quot;,false);</span><br><span class="line">         &#125;</span><br><span class="line">         $(&quot;button[hotrep=&#x27;qcact.campus.getVoucherBtn&#x27;]&quot;).click();</span><br><span class="line">         if ($(&quot;.J-close&quot;)) &#123;</span><br><span class="line">             $(&quot;.J-close&quot;).click();</span><br><span class="line">         &#125;</span><br><span class="line">         console.log(&quot;Already Tried: &quot; + (++getCount) + &quot; Times.&quot;);</span><br><span class="line">     &#125;, timeInterval);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Mysql/" rel="tag"># Mysql</a>
+              <a href="/tags/Apache/" rel="tag"># Apache</a>
+              <a href="/tags/Server/" rel="tag"># Server</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/02/27/front-end/basic/Web%20wheels/" rel="prev" title="前端轮子">
+      <i class="fa fa-chevron-left"></i> 前端轮子
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/04/09/Tec/Blog/hexo-project-sync/" rel="next" title="hexo工程同步">
+      hexo工程同步 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">搭建过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql"><span class="nav-number">2.</span> <span class="nav-text">mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">忘记密码：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A8%E4%B8%AD%E6%97%A0%E6%B3%95%E6%8F%92%E5%85%A5%E4%B8%AD%E6%96%87%E5%AD%97%E7%AC%A6"><span class="nav-number">2.2.</span> <span class="nav-text">表中无法插入中文字符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apache"><span class="nav-number">3.</span> <span class="nav-text">Apache</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8"><span class="nav-number">3.1.</span> <span class="nav-text">服务无法启动</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP"><span class="nav-number">4.</span> <span class="nav-text">PHP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#apache%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5php%E8%A7%A3%E6%9E%90php%E6%96%87%E4%BB%B6"><span class="nav-number">4.1.</span> <span class="nav-text">apache无法连接php解析php文件</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">vonxq</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vonxq</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '3c0d3faa413e82965f95',
+      clientSecret: '8207859f32e641615e3a46c6aa26b811b0f4fbe7',
+      repo        : 'vonxq.github.io',
+      owner       : 'vonxq',
+      admin       : ['vonxq'],
+      id          : 'ca124c9c5c69b95b78d6bfac16be8806',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
